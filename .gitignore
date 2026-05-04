@@ -1,0 +1,31 @@
+# Collected data (trajectories, results) — DO NOT commit
+data/
+data
+jobs/
+jobs
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.python-version
+
+# Secrets / env
+.env
+.env.*
+*.key
+secrets.json
+
+# Logs / temp
+*.log
+/tmp/
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
