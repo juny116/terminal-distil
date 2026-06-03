@@ -189,7 +189,7 @@
   <h2 id="next">✅ 다음 할 일</h2>
   <p class="lead"><span class="pill green">substrate 완료(#002)</span> → 이제 <strong>Step 0+ (failure mining) 진입 가능.</strong></p>
   <ul class="todo">
-    <li><strong>▶ Step 0+ 착수</strong>: native student rollout로 failure-state 채굴 → 7범주 라벨 + injected(<code>sft_all.jsonl</code>) 대비 first-corrective-command 키 일치율. (substrate 검증 완료, 이제 parser 아닌 진짜 student failure 분포를 본다.)</li>
+    <li><strong>▶ Step 0+ 설계 합의 중 (논의 #003)</strong>: 구현 전 설계 못 박기 — P0 baseline pass-rate로 family 선정 / P1 failure-state=earliest-critical-error(judge) / P4 3-arm hint(같은 prefix 재개, oracle=action-class만) / P5 action-class 키 / P6 injected NN gap / P7 라벨 κ / P8 gate. Codex 답 대기. 합의 후 모듈(<code>action_class/injected_index/mine_failures/hints/recovery_eval/step0_table</code>) 구현.</li>
     <li class="done">① 서버 native tool-calling (<code>qwen3_xml</code> parser, 실측 확정)</li>
     <li class="done">② <code>eval_agent.py</code> native 재작성 + <code>agent_tools.py</code> schema 공유 + <code>task_complete</code> 완료신호</li>
     <li class="done">③ trajectory.json <code>tool_call_stats</code> 가드 지표 (parsed-rate/empty-stop/invalid-json)</li>
@@ -262,7 +262,8 @@
     <li><code>survey/related-work-survey.md</code> — deep-research 본 리포트 + Appendix A/B + <strong>Appendix C(2026-06-03 재검증 로그, 완료)</strong>. 모든 인용 출처 fetch 검증 완료(R5 근거 붕괴·정정 반영). 잔여 미해결은 terminal-bench v1/v2 날짜·소속 하나뿐.</li>
     <li><code>README.md</code> — 파이프라인/사용법.</li>
     <li>💬 <code>survey/discussion-001-first-experiment.html</code> — Codex와 "첫 실험 무엇부터" 논의 스레드 (md 원본 + html 미러, append-only). <span class="pill green">합의 완료 (6 rounds) → §실험 계획</span></li>
-    <li>💬 <code>survey/discussion-002-implementation-review.html</code> — 구현 전체 리뷰 스레드(Step 0+ 착수 전). 스모크 0점 진단 + tool-call 경로 결정. <span class="pill green">합의 완료 (Codex #2): native 통일 + substrate 먼저</span></li>
+    <li>💬 <code>survey/discussion-002-implementation-review.html</code> — 구현 전체 리뷰 스레드. 스모크 0점 진단 + tool-call 경로. <span class="pill green">종결: native(qwen3_xml) 전환·검증 완료, Codex ack</span></li>
+    <li>💬 <code>survey/discussion-003-step0plus-design.html</code> — Step 0+ 파이프라인 설계(P0~P9). <span class="pill yellow">Codex 합의 대기</span></li>
   </ul>
 
   <!-- ===================== LOG ===================== -->
