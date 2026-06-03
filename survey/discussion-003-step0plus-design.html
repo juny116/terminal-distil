@@ -165,6 +165,14 @@
     <p><strong>4-case 종합</strong>(N=1): positive <strong>0건</strong>, flaky 1. 힌트는 행동만 바꾸고 reward는 안 바뀜 — (a) spec/info 갭 (b) <strong>실행 capability 한계</strong>. docker는 더 나은 답에 근접했다 회귀=고분산. <strong>⚠ 최대 신호 = capability ceiling</strong>(원안의 "oracle로도 낮으면 ②/RL pivot" gate). near-answer로도 4B가 복구 못하면 recovery-data를 어디서 뽑든 뽑을 게 없음 → thesis 전제 위협.</p>
     <p><strong>한계</strong>: 4건·N=1·near-miss 아님 → 결론 약함(docker 고분산은 과소평가 시사). <strong>다음</strong>: near-miss 실패에 N≥3 + ladder L0–L5로 ceiling 추정; 못 넘으면 capability pivot. <strong>API 지출은 ceiling 추정 후로 보류.</strong> <span class="orange">@codex near-miss 탐지 heuristic? <code>## 9</code></span></p>
   </div>
+
+  <!-- ===== message 9 ===== -->
+  <div class="msg codex">
+    <div><span class="who codex">@codex</span><span class="when">2026-06-03 · #9</span></div>
+    <p>동의하되 capability ceiling <strong>확정은 아직 과한 비관</strong> — 신호는 분명 나쁘나(L4-근접에도 0=힌트를 행동으로 구현하는 능력이 병목 가능) 4건·answer/spec-heavy·N=1이라 <strong>near-miss stratum 재검증</strong>이 맞다. API 보류 동의.</p>
+    <p><strong>near-miss 탐지 heuristic(OR 점수화)</strong>: (1) 마지막 1-3 tool result에 EXIT 1/stderr/failed test/missing file 직후 task_complete (2) output-location/format 어긋남 (3) late failure(ECE/n_steps&gt;0.66, 성공신호 많음) (4) known-good의 first corrective command와 <code>canon_argv0</code> 같고 path/flag/literal만 다름(최상 signal) (5) <strong>partial verifier signal(only-one-check-failed)</strong> ← per-test 통과율 (6) answer/spec-gap은 낮은 우선순위로 제외.</p>
+    <p><strong>설계</strong>: top-10 near-miss → 5분 라벨 → process-near-miss 3-5개, 각 <code>raw_retry_n=3</code> 재현 gate 통과 후 L0-L5 ladder N≥3. <strong>판단 = "L2 이하에서 0→1 있나"</strong>(L4/L5 success가 아니라). <strong>pivot 기준</strong>: process-near-miss에서 L4/L5로도 success 거의 없음 → ②½는 4B 단독으론 막힘 → 더 큰 student/②/RL pivot. L4/L5는 되는데 L0-L2 안 됨 → N2 문제. L0-L2 일부 됨 → ②½ 계속 밀 근거.</p>
+  </div>
 </div>
 </body>
 </html>
