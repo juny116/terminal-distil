@@ -93,7 +93,7 @@
   <div class="banner">
     <strong>이 파일은 terminal-distil 프로젝트의 "메모리 DB"입니다.</strong>
     새 Claude 세션·Codex·작성자(juny116)가 바로 follow-up 할 수 있도록 현재 상태/리스크/다음 할 일을 모아둔 단일 HTML.
-    <div class="when">마지막 갱신: 2026-06-03 (구현 리뷰·스모크 진단) · 출처: <code>survey/risks.md</code> + <code>survey/related-work-survey.md</code> 종합</div>
+    <div class="when">마지막 갱신: 2026-06-03 (substrate fix + Step 0+ 모듈①② + hint PoC, 전부 커밋/푸시) · 출처: <code>survey/risks.md</code> + <code>survey/related-work-survey.md</code> 종합</div>
   </div>
 
   <!-- ===================== NOW ===================== -->
@@ -103,11 +103,11 @@
       <dt>프로젝트</dt><dd>작은 open model을 <strong>terminal/CLI agent</strong>로 distill. recovery-training data를 어디서 뽑느냐가 핵심.</dd>
       <dt>Student 모델</dt><dd><strong>Qwen3.5-4B</strong> (instruct, tool-calling 강함). <span class="pill orange">thinking OFF</span>(<code>enable_thinking=False</code>)로 운영 — 복구가 hidden think 토큰이 아닌 명시적 bash command로 드러나야 N2/②½ 분석이 깨끗. thinking ON은 secondary study.</dd>
       <dt>vLLM 서버</dt><dd><span class="pill green">LIVE :8001 (native tool-calling)</span> <code>run_qwen35_server.sh</code> (GPU 6,7 TP=2, tmux <code>qwen-distil</code>, 가중치 /hf/hub). <strong>native tool-calling 켬</strong>: <code>--enable-auto-tool-choice --tool-call-parser qwen3_xml</code> (실측 — Qwen3.5 chat template은 <code>&lt;function=…&gt;&lt;parameter=…&gt;</code> XML을 내므로 <code>qwen3_xml</code>만 맞음; hermes는 0개). <code>--language-model-only</code> 유지(omni LM-only). ⚠ <strong>flashinfer sampler 끔</strong>(<code>VLLM_USE_FLASHINFER_SAMPLER=0</code>, gcc13 vs CUDA12.1 JIT). thinking-ON reasoning_content 미노출은 secondary 때. 8000은 identity-bias(Qwen3-32B) 점유.</dd>
-      <dt>코드 진행</dt><dd><span class="pill green">step 1–2 완료</span> teacher injected-SFT 수집 파이프라인 · <span class="pill red">step 3–4 미구현</span> student rollout failure mining (= 핵심 contribution)</dd>
-      <dt>가진 데이터</dt><dd><code>data/sft_all.jsonl</code> ≈ 2,302 traj — <em>정작 우리가 비판하려는 baseline(arm ①, injected-SFT)</em></dd>
-      <dt>최근 작업</dt><dd>6/3 = 리서치 검증 + 리스크 재정리(<code>survey/</code>) + <strong>첫 student 스모크 디버그</strong>. 코드는 <code>eval_agent.py</code>만 미커밋 수정(length/step env화).</dd>
+      <dt>코드 진행</dt><dd><span class="pill green">substrate 완료</span> teacher 수집(arm①) + student native rollout · <span class="pill yellow">Step 0+ 진행 중</span> 모듈 ①②(action_class/injected_index) 완료, ③~⑥(mine_failures/hints/recovery_eval/step0_table) 남음 = 핵심 contribution</dd>
+      <dt>가진 데이터</dt><dd><code>data/sft_all.jsonl</code> ≈ 2,302 traj(arm ①, step_log 없는 5/4 빌드) + <code>data/injected_index.jsonl</code>(6293 injected recovery, 원본 trajectory.json에서 추출).</dd>
+      <dt>최근 작업</dt><dd>6/3 = substrate fix(native tool-calling) → 논의 #002/#003 합의 → Step 0+ 모듈①② + hint PoC. <strong>전부 커밋/푸시 완료</strong>(<code>ad82429</code>→<code>9a146fd</code>). 서버 LIVE.</dd>
       <dt>✅ 스모크 버그 해결</dt><dd>첫 스모크 5/5=0.0의 원인 = <strong>tool-call 파싱 불일치</strong>(length 아님). XML 파서가 Qwen3.5 native 포맷을 0개로 떨굼 → episode 0 stop. <strong>native tool-calling으로 전환 후 해결</strong>: 같은 <code>amqp</code> 태스크 <span class="pill green">0.0 → 1.0 (24s)</span>, <code>parsed_tool_call_rate=1.0</code>.</dd>
-      <dt>✅ substrate 완료 (#002)</dt><dd><strong>4단계 구현·검증 끝.</strong> ① 서버 <code>qwen3_xml</code> parser ② <code>eval_agent.py</code> native 재작성 + <code>agent_tools.py</code>로 teacher/student schema 공유(완료=<code>task_complete</code> tool) ③ trajectory.json <code>tool_call_stats</code> 가드(parsed-rate/empty-stop/invalid-json) ④ <code>build_dataset.py</code> <code>step_log</code>+<code>source_trial_dir</code> 보존. <span class="pill orange">미커밋</span>. <strong>→ Step 0+ 진입 가능.</strong> 상세 = <code>survey/discussion-002</code>.</dd>
+      <dt>✅ substrate 완료 (#002)</dt><dd><strong>4단계 구현·검증 끝.</strong> ① 서버 <code>qwen3_xml</code> parser ② <code>eval_agent.py</code> native 재작성 + <code>agent_tools.py</code>로 teacher/student schema 공유(완료=<code>task_complete</code> tool) ③ trajectory.json <code>tool_call_stats</code> 가드(parsed-rate/empty-stop/invalid-json) ④ <code>build_dataset.py</code> <code>step_log</code>+<code>source_trial_dir</code> 보존. <span class="pill green">커밋/푸시 완료</span>. 상세 = <code>survey/discussion-002</code>.</dd>
       <dt>현재 top 리스크</dt><dd><span class="pill orange">N1 incremental</span> <span class="pill orange">N2 hint-leak</span> — 둘을 가르는 ablation이 첫 실험이어야 함.</dd>
       <dt>검증 상태</dt><dd><span class="pill green">survey 재검증 완료(6/3)</span> deep-research 크래시분 9개 출처 직접 fetch — 전부 실재. 단 <strong>R5 근거 붕괴</strong>(인용 3편이 주장 미지지) + attribution 정정 다수. 미해결: terminal-bench v1/v2 날짜·소속(tbench.ai 확인 필요).</dd>
     </div>
