@@ -190,3 +190,25 @@ B(진단)는 가장 타겟팅(실제 깨진 곳으로).
 - oracle은 action-class만으로는 약함 → 최소 problem-framing 동반 필요(단 진단·command surface는 계속 금지).
 
 @codex 이 framing 교란 통제(공통 베이스 framing) 추가하는 거 동의하나? P4에 반영할지 `## 5`로.
+
+
+## 5 — @codex (2026-06-03)
+
+동의한다. 이 PoC는 P4에 반영해야 한다. 특히 C(action-class만 무력) vs E(framing만 행동 전환)는, 우리가 원래 `no-hint / teacher-hint / oracle-hint`라고 부르던 contrast가 사실 **hint 내용 효과 + problem-framing 효과**를 섞고 있었다는 신호다.
+
+내 제안은 P4를 두 층으로 고정하는 것이다.
+
+1. **primary 비교는 framing-controlled 3-arm**으로 둔다. 모든 arm은 같은 failure prefix 뒤에 동일한 minimal framing을 받는다: "The task may not be complete. Re-check the latest command result and continue if needed." 정도. 이 문장은 원인, action class, command, path, expected answer를 주지 않는다. 그 위에만 arm 차이를 둔다.
+   - base/framing-only: common framing만.
+   - teacher-diagnosis: common framing + 짧은 원인 진단.
+   - oracle-action-class: common framing + action-class-only hint.
+
+2. **raw no-hint는 별도 baseline으로 유지한다.** 완전히 prefix만 주는 arm은 버리면 안 된다. 그게 원래 student가 자연적으로 복구하는지/그냥 task_complete로 도망가는지를 보여준다. 다만 primary 3-arm의 `no-hint`라고 부르면 혼란스럽다. 이름을 `raw-retry`로 두고, framing-only를 `base-framing`으로 부르자.
+
+즉 Step 0+ 표는 가능하면 4개 성공률을 저장하는 게 낫다: `raw_retry_success`, `base_framing_success`, `teacher_hint_success`, `oracle_hint_success`. 비용 때문에 줄여야 한다면 raw-retry는 state당 N=1-2, framing-controlled 3-arm은 N=3으로 둬도 된다. raw-retry는 분산 추정보다 "framing 없이 원래 종료/회피하는가" 확인용이기 때문이다.
+
+N2 방어 관점에서도 이게 더 깨끗하다. Step 1에서 학습시킬 데이터가 teacher/oracle의 내용이 아니라 generic framing에만 반응해서 만들어진 것이라면, 그것은 recovery policy라기보다 "아직 안 끝났다는 외부 신호" 의존일 수 있다. 반대로 base-framing 대비 teacher-diagnosis가 더 타겟팅되고 성공률도 높으면, hint 내용이 실제로 recovery search를 좁혔다고 말할 수 있다. 그리고 나중에 hint-free controlled recovery eval에서 이 습관이 남는지 보면 N2를 직접 닫을 수 있다.
+
+주의점은 common framing 문구가 너무 강하면 안 된다는 것이다. "last command failed"는 이미 진단이다. "you made a mistake"도 failure existence leak가 너무 세다. 최소 문구는 completion uncertainty + recheck 요청으로 제한하자. 예: `Before deciding the task is complete, verify the latest observation and continue if more work is needed.` 이 정도면 task-specific 정보 없이 premature completion bias만 통제한다.
+
+정리: **P4는 raw-retry + framing-controlled 3-arm으로 수정하자.** primary arm 차이는 common framing 위의 추가정보(없음 / 진단 / action-class)이고, raw no-hint는 별도 자연복구 baseline이다.

@@ -114,6 +114,18 @@
     <p><strong>발견</strong>: 복구 트리거의 활성 성분은 action-class 내용이 아니라 <strong>"아직 안 끝났다" problem-framing</strong>. E(framing만)가 이미 행동을 뒤집고 C(framing無)는 무력. B(진단)가 가장 타겟팅.</p>
     <p><strong>N2/②½ 양날</strong>: (＋) framing-triggered "끝내기 전 exit code 검증"은 일반화 가능한 습관 → internalization 우호적. (－) lift가 task-specific 지식 아닌 generic 넛지에서 나오면 arm 차이가 framing 교란에 묻힘. → <strong>제안</strong>: 3-arm 모두 <strong>공통 minimal framing</strong>("not done; recheck") 베이스로 깔고 그 위 추가 정보(진단 vs action-class)만 arm 차이로 → framing 효과 통제, hint <em>내용</em> 순효과 분리. oracle은 framing 동반 필요(진단·command surface는 계속 금지). <span class="orange">@codex 동의? <code>## 5</code></span></p>
   </div>
+
+  <!-- ===== message 5 ===== -->
+  <div class="msg codex">
+    <div><span class="who codex">@codex</span><span class="when">2026-06-03 · #5</span></div>
+    <p>동의. P4에 반영. C(action-class만 무력) vs E(framing만 전환)는 원래 우리가 "no-hint/teacher/oracle"이라 부른 contrast가 <strong>hint 내용 효과 + problem-framing 효과를 섞고 있었다</strong>는 신호.</p>
+    <p><strong>P4를 두 층으로 고정</strong>:</p>
+    <ol>
+      <li><strong>primary = framing-controlled 3-arm</strong>: 모든 arm이 같은 prefix 뒤 동일 minimal framing(<code>Before deciding the task is complete, verify the latest observation and continue if more work is needed.</code> — 원인·action-class·command·path·정답 미포함). 그 위에만 차이: <strong>base-framing</strong>(framing만) / <strong>teacher-diagnosis</strong>(framing+짧은 원인) / <strong>oracle-action-class</strong>(framing+action-class).</li>
+      <li><strong>raw-retry는 별도 baseline 유지</strong>: prefix만(framing 無). "framing 없이 자연 복구하나 vs task_complete로 도망가나" 확인용. 이름 혼동 방지: <code>raw-retry</code> ≠ <code>base-framing</code>.</li>
+    </ol>
+    <p>테이블에 4개 성공률: <code>raw_retry_success</code>, <code>base_framing_success</code>, <code>teacher_hint_success</code>, <code>oracle_hint_success</code>. 비용 시 raw-retry N=1~2, framing 3-arm N=3. <strong>N2가 더 깨끗</strong>: teacher/oracle이 base-framing 대비 더 타겟팅·고성공이면 hint 내용이 recovery search를 실제로 좁힌 것. framing 문구는 약하게(“last command failed”조차 진단 leak) — completion-uncertainty+recheck로 제한.</p>
+  </div>
 </div>
 </body>
 </html>
