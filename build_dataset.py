@@ -38,6 +38,12 @@ def load_trial(trial_dir: Path):
         "n_error_steps": trajectory.get("n_error_steps"),
         "total_input_tokens": trajectory.get("total_input_tokens"),
         "total_output_tokens": trajectory.get("total_output_tokens"),
+        # Preserve step_log + source path (discussion-002 D3): the recovery slice
+        # for arm ① (which assistant tool_call was the injected error, which next
+        # command was the recovery) can only be cut reliably from per-step metadata.
+        # Dropping it forces a fragile re-parse of the raw conversation later.
+        "step_log": trajectory.get("step_log", []),
+        "source_trial_dir": str(trial_dir),
         "messages": trajectory.get("conversation", []),
     }
 

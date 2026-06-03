@@ -11,46 +11,12 @@ from harbor.agents.base import BaseAgent
 from harbor.environments.base import BaseEnvironment
 from harbor.models.agent.context import AgentContext
 
+# Tool schema + system prompt are shared with the student (eval_agent.py) via
+# agent_tools so the two agents present an identical action surface (discussion-002).
+from agent_tools import BASH_TOOL, TASK_COMPLETE_TOOL, TOOLS, SYSTEM_PROMPT
 
-# ── Tool schema ────────────────────────────────────────────────────────────────
 
-BASH_TOOL = {
-    "type": "function",
-    "function": {
-        "name": "bash",
-        "description": "Execute a bash command in the terminal environment.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "command": {"type": "string", "description": "The bash command to execute."}
-            },
-            "required": ["command"],
-        },
-    },
-}
-
-TASK_COMPLETE_TOOL = {
-    "type": "function",
-    "function": {
-        "name": "task_complete",
-        "description": "Call this when the task is fully completed and verified.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "summary": {"type": "string", "description": "Brief summary of what was accomplished."}
-            },
-            "required": ["summary"],
-        },
-    },
-}
-
-TOOLS = [BASH_TOOL, TASK_COMPLETE_TOOL]
-
-SYSTEM_PROMPT = (
-    "You are an expert technical assistant. "
-    "Solve the given task by executing bash commands step by step. "
-    "Analyze each command's output before proceeding to the next step."
-)
+# ── Teacher-only error-injection prompts ────────────────────────────────────────
 
 ERROR_CATEGORIES = {
     "analysis_error": (
