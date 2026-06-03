@@ -29,3 +29,4 @@ secrets.json
 .vscode/
 *.swp
 *.swo
+.serve_creds
