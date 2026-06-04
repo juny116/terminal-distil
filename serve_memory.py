@@ -3,7 +3,7 @@
 
 Serves ONLY *.html under SERVE_DIR (default: this dir) behind HTTP Basic Auth.
 Directory listing disabled; non-.html paths 404 (so source files aren't exposed).
-`/` redirects to /MEMORY.html.
+`/` redirects to /index.html (clickable landing page).
 
 Env:
   SERVE_USER  (default: juny116)
@@ -61,9 +61,9 @@ class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):
         if not self._authed():
             return self._deny()
-        if self._path() in ("/", "/index.html"):
+        if self._path() == "/":
             self.send_response(302)
-            self.send_header("Location", "/MEMORY.html")
+            self.send_header("Location", "/index.html")
             self.send_header("Content-Length", "0")
             self.end_headers()
             return

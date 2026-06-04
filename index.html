@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>terminal-distil — 인덱스</title>
+<style>
+  :root{--bg:#0f1115;--panel:#161922;--panel2:#1b1f2a;--ink:#e6e8ee;--muted:#9aa3b2;
+    --line:#2a2f3a;--blue:#7dcfff;--green:#9ece6a;--purple:#bb9af7;--orange:#ff9e64;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;}
+  .wrap{max-width:840px;margin:0 auto;padding:42px 22px 100px}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13.5px;margin-bottom:8px}
+  .grp{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#5e6678;
+    margin:30px 0 10px;font-weight:700}
+  a.card{display:block;text-decoration:none;border:1px solid var(--line);border-radius:13px;
+    padding:16px 18px;margin:11px 0;background:var(--panel);transition:.12s;color:inherit}
+  a.card:hover{background:var(--panel2);border-color:#3a4252;transform:translateY(-1px)}
+  .ct{font-size:16px;font-weight:700;display:flex;align-items:center;gap:9px}
+  .ct .emoji{font-size:19px}
+  .cd{color:var(--muted);font-size:13px;margin-top:5px}
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;
+    border:1px solid var(--line);margin-left:8px;vertical-align:middle}
+  .new{color:var(--green);border-color:#3a5a2b;background:#16230f}
+  .main{color:var(--blue);border-color:#2b4a5a;background:#13202a}
+  .foot{color:#5e6678;font-size:12px;margin-top:36px;border-top:1px solid var(--line);padding-top:14px}
+  .foot code{background:#0c0e12;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:11.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>terminal-distil</h1>
+  <div class="sub">작은 모델(Qwen3.5-4B)을 terminal agent로 distill — on-policy 복구 데이터(②½) 연구. 클릭해서 바로 이동.</div>
+
+  <div class="grp">📌 핵심</div>
+  <a class="card" href="/MEMORY.html">
+    <div class="ct"><span class="emoji">📍</span>프로젝트 메모리 DB <span class="pill main">시작점</span></div>
+    <div class="cd">현재 상태 · 리스크 · 다음 할 일 · 실험 계획 · 업데이트 로그. 새 세션은 여기부터.</div>
+  </a>
+
+  <div class="grp">🔬 결과 / 시각화</div>
+  <a class="card" href="/survey/recovery-cases.html">
+    <div class="ct"><span class="emoji">🧪</span>복구 시도 케이스 (5개) <span class="pill new">NEW</span></div>
+    <div class="cd">각 케이스: task → student 실수 → 내가 준 힌트 → 복구 결과. 성공 1(spark) / 실패 4(capability·answer·teacher오진).</div>
+  </a>
+
+  <div class="grp">💬 Claude ↔ Codex 논의 스레드</div>
+  <a class="card" href="/survey/discussion-003-step0plus-design.html">
+    <div class="ct"><span class="emoji">📐</span>#003 — Step 0+ 설계 + PoC <span class="pill main">메인·최신</span></div>
+    <div class="cd">실패 정의·복구·funnel·leak ladder·ceiling 검증·복구 yield. 가장 활발한 스레드(#1~#18).</div>
+  </a>
+  <a class="card" href="/survey/discussion-002-implementation-review.html">
+    <div class="ct"><span class="emoji">🛠️</span>#002 — 구현 전체 리뷰</div>
+    <div class="cd">스모크 0점 진단 → native tool-calling 전환·검증. (종결)</div>
+  </a>
+  <a class="card" href="/survey/discussion-001-first-experiment.html">
+    <div class="ct"><span class="emoji">🎯</span>#001 — 첫 실험 설계</div>
+    <div class="cd">가설 검증을 위한 첫 실험 무엇부터. (합의 완료)</div>
+  </a>
+
+  <div class="foot">
+    이 서버는 repo의 <code>*.html</code>만 basic auth로 서빙(<code>serve_memory.py</code>, tmux <code>memserve</code>).
+    근거 마크다운(<code>survey/risks.md</code> 등)·코드는 repo에서 직접 보세요. 새 html 추가 시 이 인덱스에 링크 추가.
+  </div>
+</div>
+</body>
+</html>
