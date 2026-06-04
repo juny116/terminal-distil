@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>복구 시도 케이스 시각화 — terminal-distil ②½ PoC</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#161922; --panel2:#1b1f2a; --ink:#e6e8ee; --muted:#9aa3b2;
+    --line:#2a2f3a; --green:#9ece6a; --red:#f7768e; --orange:#ff9e64; --yellow:#e0af68;
+    --blue:#7dcfff; --purple:#bb9af7; --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 22px 100px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13.5px;margin-bottom:20px}
+  .legend{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 26px;font-size:12.5px}
+  .legend span{padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
+  .ok{color:var(--green);border-color:#3a5a2b!important;background:#16230f}
+  .bad{color:var(--red);border-color:#5a2b35!important;background:#23141a}
+  .cap{color:var(--orange);border-color:#5a3f2b!important;background:#231a12}
+  .ans{color:var(--yellow);border-color:#5a4f2b!important;background:#231f12}
+  .hintbad{color:var(--purple);border-color:#46356a!important;background:#1b1626}
+
+  .case{border:1px solid var(--line);border-radius:14px;margin:20px 0;overflow:hidden;background:var(--panel)}
+  .case.success{border-color:#3a5a2b}
+  .case.fail{border-color:#4a2b33}
+  .chead{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--panel2);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .cnum{font-size:20px;font-weight:800;color:var(--muted)}
+  .ctitle{font-family:var(--mono);font-size:14px;font-weight:700}
+  .tag{font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+  .verdict{margin-left:auto;font-weight:800;font-size:14px}
+  .verdict.ok{color:var(--green)} .verdict.bad{color:var(--red)}
+  .row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:none}
+  .rlabel{padding:14px 16px;background:#12151c;color:var(--muted);font-size:12.5px;font-weight:700;border-right:1px solid var(--line)}
+  .rbody{padding:14px 18px}
+  .rbody code,.mono{font-family:var(--mono);font-size:12.5px;background:#0c0e12;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:#dbe1ea}
+  pre{margin:8px 0 0;background:#0c0e12;border:1px solid var(--line);border-radius:8px;padding:10px 12px;
+    overflow:auto;font:12px/1.5 var(--mono);color:#cdd3df;white-space:pre-wrap}
+  .hint{border-left:3px solid var(--blue);background:#12151c;padding:10px 14px;border-radius:0 8px 8px 0;margin:6px 0;font-size:13.5px;color:#cfe3f0}
+  .hint .lv{font-size:11px;font-weight:800;color:var(--blue);letter-spacing:.04em}
+  .hint.bad{border-left-color:var(--purple);background:#1a1626}.hint.bad .lv{color:var(--purple)}
+  .ladder{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .arm{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:70px;padding:8px 6px;border:1px solid var(--line);border-radius:8px;background:#12151c}
+  .arm .an{font-size:10.5px;color:var(--muted);font-weight:700}
+  .arm .av{font-size:15px;font-weight:800}
+  .av.g{color:var(--green)} .av.r{color:var(--red)}
+  .why{margin-top:10px;font-size:13px;color:#d6dae3}
+  .why b{color:var(--ink)}
+  .err{color:var(--red);font-weight:700}
+  .arrow{color:var(--muted);font-size:18px;align-self:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>복구 시도 케이스 — ②½ PoC (teacher = Claude, N=2~3)</h1>
+  <div class="sub">student = Qwen3.5-4B · 각 케이스: <b>task → student 실수 → 내가 준 힌트(정답 안 줌) → 복구 결과</b> · 힌트 강도 ladder: <span class="mono">raw(힌트없음) · L1(진단) · L4(거의 정답)</span></div>
+  <div class="legend">
+    <span class="ok">✅ 복구됨 1</span>
+    <span class="bad">❌ 복구 실패 4</span>
+    <span class="cap">capability ceiling = 알려줘도 4B가 구현 못함</span>
+    <span class="ans">answer/spec = 정답 흘려야만 복구</span>
+    <span class="hintbad">teacher 오진 = 내가 힌트를 틀림</span>
+  </div>
+
+  <!-- ===== CASE 1: spark — SUCCESS ===== -->
+  <div class="case success">
+    <div class="chead">
+      <span class="cnum">1</span>
+      <span class="ctitle">spark_catalog_plugin_custom_medium</span>
+      <span class="tag ok">process · incomplete-but-fixable</span>
+      <span class="verdict ok">✅ 복구 성공</span>
+    </div>
+    <div class="row"><div class="rlabel">📋 Task</div><div class="rbody">메타데이터 카탈로그 인터페이스 <code>table_catalog.py</code>를 완성하라 (list_tables / get_table 등 구현).</div></div>
+    <div class="row"><div class="rlabel">❌ Student 실수</div><div class="rbody">
+      자기 기능 테스트(<code>run_tests.py</code>)를 돌려 <b>"4/4 PASSED"</b> 나오자 다 됐다고 <code>task_complete</code> 호출.
+      <br>→ 하지만 코드에 <b class="err">미구현 TODO 주석 4개</b>를 남김. 채점기는 <code>todo_count == 0</code>을 요구 → 실패.
+      <div class="why">즉 "기능은 되는데 *할 일을 덜 한*" 상태. 자기 테스트만 보고 끝냈고 채점기 기준은 놓침.</div>
+    </div></div>
+    <div class="row"><div class="rlabel">💡 내가 준 힌트</div><div class="rbody">
+      <div class="hint"><span class="lv">L1 진단 (비-leak)</span><br>"기능 테스트는 통과하지만 카탈로그 소스 파일에 <b>미구현 TODO 주석이 남아있고 채점기가 그걸 검사</b>한다. 남은 TODO를 전부 찾아 해결하라." <i>(어떻게 구현할지·정답은 안 줌)</i></div>
+      <div class="hint"><span class="lv">L4 거의 정답</span><br>"<code>table_catalog.py</code>에서 'TODO' 들어간 줄을 전부 찾아 각각 구현해 TODO가 0개가 되게 하라."</div>
+    </div></div>
+    <div class="row"><div class="rlabel">🎯 결과</div><div class="rbody">
+      <div class="ladder">
+        <div class="arm"><span class="an">raw</span><span class="av r">0/3</span></div><span class="arrow">→</span>
+        <div class="arm"><span class="an">L1 진단</span><span class="av g">2/3</span></div><span class="arrow">→</span>
+        <div class="arm"><span class="an">L4</span><span class="av g">3/3</span></div>
+      </div>
+      <div class="why"><b>raw 0% → L1 67% → L4 100% 단조 증가.</b> 정답을 안 줘도(L1 진단만으로) student가 빠뜨린 TODO를 마저 구현해 복구. <b>이게 ②½가 작동한다는 유일한 깨끗한 증거.</b></div>
+    </div></div>
+  </div>
+
+  <!-- ===== CASE 2: pubsub — answer + capability ===== -->
+  <div class="case fail">
+    <div class="chead">
+      <span class="cnum">2</span>
+      <span class="ctitle">google_pubsub_subscriber_medium</span>
+      <span class="tag ans">answer (틀린 필드) + capability</span>
+      <span class="verdict bad">❌ 복구 실패</span>
+    </div>
+    <div class="row"><div class="rlabel">📋 Task</div><div class="rbody">pubsub 메시지에서 <b>ERROR 이벤트가 가장 많은 component</b>를 찾아 <code>/tmp/error_analysis.txt</code>에 <code>component=…</code> <code>count=…</code>로 써라.</div></div>
+    <div class="row"><div class="rlabel">❌ Student 실수</div><div class="rbody">
+      base64 <code>data</code> 페이로드를 디코딩해 <code>event_type</code>으로 카운트 → <code>database-service: 28</code>.
+      <br>→ 하지만 채점기는 <b class="err">message의 <code>attributes.level == "ERROR"</code></b>로 카운트. <b>완전히 다른 필드를 봄.</b>
+    </div></div>
+    <div class="row"><div class="rlabel">💡 내가 준 힌트</div><div class="rbody">
+      <div class="hint"><span class="lv">L1 진단</span><br>"ERROR를 <b>잘못된 출처</b>로 세고 있을 수 있다. task 설명의 message attributes를 다시 읽고 어느 필드가 에러 레벨인지 재고하라."</div>
+      <div class="hint"><span class="lv">L4 거의 정답</span><br>"<code>attributes.level</code>이 <code>ERROR</code>인 메시지를 <code>attributes.component</code>별로 세라."</div>
+    </div></div>
+    <div class="row"><div class="rlabel">🎯 결과</div><div class="rbody">
+      <div class="ladder">
+        <div class="arm"><span class="an">raw</span><span class="av r">0</span></div>
+        <div class="arm"><span class="an">L0 framing</span><span class="av r">0</span></div>
+        <div class="arm"><span class="an">L1 진단</span><span class="av r">0</span></div>
+        <div class="arm"><span class="an">L2 action</span><span class="av r">0</span></div>
+        <div class="arm"><span class="an">L4 정답급</span><span class="av r">0</span></div>
+      </div>
+      <div class="why"><b class="err">거의 정답(L4)을 줘도 0.</b> L4 쿼리를 실제로 돌렸는데 <span class="mono">"No ERROR-level messages found in attributes"</span> 나오자 <b>포기하고 원래 오답으로 회귀.</b> → 정답 *방법*을 알려줘도 데이터 구조 접근을 못함 = answer 갭에 <b>capability까지 겹침.</b></div>
+    </div></div>
+  </div>
+
+  <!-- ===== CASE 3: ray — capability ceiling ===== -->
+  <div class="case fail">
+    <div class="chead">
+      <span class="cnum">3</span>
+      <span class="ctitle">ray_dataset_distributed_loading_hard</span>
+      <span class="tag cap">capability ceiling (Ray 파이프라인)</span>
+      <span class="verdict bad">❌ 복구 실패</span>
+    </div>
+    <div class="row"><div class="rlabel">📋 Task</div><div class="rbody">20개 parquet(2023 구스키마 10 + 2024 신스키마 10)을 <b>Ray로 병렬 로드·통합</b>, 불량 파일은 graceful 처리, <code>summary.json</code>(files_loaded 등) 생성.</div></div>
+    <div class="row"><div class="rlabel">❌ Student 실수</div><div class="rbody">
+      <code>files_loaded = 15</code>만 (채점 기준 <b>≥16</b> 필요). 진짜 불량은 ~3–5개뿐인데 <b class="err">멀쩡한 파일도 파이프라인에서 실패</b>(2024 스키마 매핑 추정).
+    </div></div>
+    <div class="row"><div class="rlabel">💡 내가 준 힌트</div><div class="rbody">
+      <div class="hint"><span class="lv">L1 진단</span><br>"15개뿐인데 16 필요. 불량은 3–5개뿐이라 멀쩡한 파일이 실패 중. 두 스키마 매핑(2024는 <code>cust_id/txn_amount/txn_timestamp</code>)을 확인하고, 한 파일 실패가 다른 파일을 죽이지 않게 하라."</div>
+      <div class="hint"><span class="lv">L4 거의 정답</span><br>"실패로 카운트된 파일을 점검해 멀쩡한 건 로더(스키마 매핑·파일별 에러처리)를 고쳐 ≥16 만들고 summary 갱신하라."</div>
+    </div></div>
+    <div class="row"><div class="rlabel">🎯 결과</div><div class="rbody">
+      <div class="ladder">
+        <div class="arm"><span class="an">raw</span><span class="av r">0/2</span></div>
+        <div class="arm"><span class="an">L1 진단</span><span class="av r">0/2</span></div>
+        <div class="arm"><span class="an">L4 정답급</span><span class="av r">0/2</span></div>
+      </div>
+      <div class="why"><b>무엇을 고쳐야 하는지 정확히 알려줘도 0.</b> Ray + parquet 분산 파이프라인을 디버깅·수정하는 게 4B의 능력 밖 = <b class="err">capability ceiling.</b></div>
+    </div></div>
+  </div>
+
+  <!-- ===== CASE 4: ladder_go — capability ceiling (algorithm) ===== -->
+  <div class="case fail">
+    <div class="chead">
+      <span class="cnum">4</span>
+      <span class="ctitle">ladder_capturing_go_medium</span>
+      <span class="tag cap">capability ceiling (알고리즘)</span>
+      <span class="verdict bad">❌ 복구 실패</span>
+    </div>
+    <div class="row"><div class="rlabel">📋 Task</div><div class="rbody">9×9 바둑판에서 <b>돌 그룹별 liberty(자유도) 수</b>를 계산해 <code>liberty_counts.json</code>에 저장. (연결된 같은색 돌 = 그룹, liberty = 그룹에 인접한 빈칸 수)</div></div>
+    <div class="row"><div class="rlabel">❌ Student 실수</div><div class="rbody">
+      liberty 수가 틀림. 한 보드에서 정답은 그룹 1개 <code>[3]</code>인데:
+      <pre>Expected [3]   got [6, 4, 4, 4, 3, 3, 3, 3]</pre>
+      → <b class="err">돌 그룹화(connected component)와 카운팅 알고리즘이 잘못됨</b> (그룹을 8개로 쪼개고 돌별로 셈).
+    </div></div>
+    <div class="row"><div class="rlabel">💡 내가 준 힌트</div><div class="rbody">
+      <div class="hint"><span class="lv">L1 진단</span><br>"liberty 수가 틀렸다. (1) 연결된 같은색 돌을 상하좌우 flood-fill로 <b>그룹화</b>하고, (2) 각 그룹에 대해 인접한 <b>유니크 빈칸의 개수</b>를 세라(중복·돌별 카운트 금지)."</div>
+      <div class="hint"><span class="lv">L4 거의 정답</span><br>"각 보드에서 4-이웃 BFS/DFS로 같은색 그룹을 찾고, 그룹별로 인접 빈칸의 *집합* 크기를 liberty로 하라."</div>
+    </div></div>
+    <div class="row"><div class="rlabel">🎯 결과</div><div class="rbody">
+      <div class="ladder">
+        <div class="arm"><span class="an">raw</span><span class="av r">0/2</span></div>
+        <div class="arm"><span class="an">L1 진단</span><span class="av r">0/2</span></div>
+        <div class="arm"><span class="an">L4 정답급</span><span class="av r">0/2</span></div>
+      </div>
+      <div class="why"><b>올바른 알고리즘을 말로 다 설명해도 0.</b> flood-fill 그룹화 + 유니크 liberty 카운팅을 정확히 코드로 구현하는 게 4B 능력 밖 = <b class="err">capability ceiling.</b></div>
+    </div></div>
+  </div>
+
+  <!-- ===== CASE 5: pkill — teacher 오진 ===== -->
+  <div class="case fail">
+    <div class="chead">
+      <span class="cnum">5</span>
+      <span class="ctitle">pkill_pattern_matching_multiple_hard</span>
+      <span class="tag hintbad">teacher(나) 오진 + spec 복잡</span>
+      <span class="verdict bad">❌ 복구 실패</span>
+    </div>
+    <div class="row"><div class="rlabel">📋 Task</div><div class="rbody">종료할 PID만 식별: <b>legacy 워커 / "testco" 테넌트 스테이징 / "defunct" 테넌트 전부</b>. prod 등 그 외는 <b>보호</b>(false positive 금지). 함정: 같은 PID가 여러 command로 중복됨.</div></div>
+    <div class="row"><div class="rlabel">❌ Student 실수</div><div class="rbody">
+      <code>terminate_list.txt</code>에 <b class="err">prod PID 9개를 잘못 포함</b>(false positive). 자체 검증까지 했는데도 놓침.
+    </div></div>
+    <div class="row"><div class="rlabel">💡 내가 준 힌트</div><div class="rbody">
+      <div class="hint bad"><span class="lv">⚠ 내가 준 힌트 — 틀림</span><br>"종료 리스트에 prod(<code>-prod-</code>) 프로세스가 들어있다, 빼라."</div>
+      <div class="why" style="margin-top:6px"><b class="err">그런데 이 힌트가 규칙상 틀림.</b> 종료 대상인 <b>"defunct" 테넌트 프로세스가 하필 <code>db-pool-prod-defunct</code></b> 처럼 prod 이름을 가짐 → 내 "prod 빼라"는 <b>종료해야 할 PID까지 빼라는</b> 잘못된 지시. 내가 규칙(legacy/testco/defunct)을 빨리 읽다 오진.</div>
+    </div></div>
+    <div class="row"><div class="rlabel">🎯 결과</div><div class="rbody">
+      <div class="ladder">
+        <div class="arm"><span class="an">raw</span><span class="av r">0/3</span></div>
+        <div class="arm"><span class="an">L1(틀린힌트)</span><span class="av r">0/3</span></div>
+        <div class="arm"><span class="an">L4(틀린힌트)</span><span class="av r">0/3</span></div>
+      </div>
+      <div class="why"><b>이건 "복구 불가"가 아니라 "내가 틀린 힌트를 줌"입니다.</b> spec이 복잡(legacy/testco/defunct + 중복 PID)할 때 <b>teacher(나·GPT 모두)가 오진할 수 있다</b>는 실증 → 진짜 teacher API를 쓸 때 task 명세를 충분히 줘야 하는 이유.</div>
+    </div></div>
+  </div>
+
+  <!-- summary -->
+  <div class="case" style="border-color:#2b4a5a">
+    <div class="chead" style="background:#13202a"><span class="cnum" style="color:var(--blue)">Σ</span><span class="ctitle">한 줄 요약</span></div>
+    <div class="rbody" style="padding:16px 18px">
+      5개 중 복구 = <b class="ok">1개(spark)</b>. 패턴이 명확: <b>"할 일을 덜 한"(incomplete-but-fixable)</b> 실패만 비-leak 힌트로 복구되고,
+      <b>capability ceiling</b>(Ray·Go 알고리즘 — 알려줘도 못 짬), <b>answer/spec 갭</b>(틀린 필드 — 정답 흘려도 실행 못함),
+      <b>teacher 오진</b>(복잡한 규칙)은 복구 안 됨. → "테스트 8/9 통과(near-miss)" ≠ "복구 가능".
+    </div>
+  </div>
+</div>
+</body>
+</html>
