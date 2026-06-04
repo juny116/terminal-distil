@@ -84,6 +84,13 @@
               자가복구, 학습데이터엔 힌트 strip</pre>
     <p><b>A→B</b>=main claim(injected≠on-policy), <b>B→C</b>=mechanism(self-recovery imitability). 통제=B·C 같은 prefix·작성자만 다름. main 숫자=strict-matched(+B∩C subset). 같이 보고=A-strict/natural·intent-to-treat·coverage-adjusted recovery rate·k 분포·hint-free eval. 다음=구현(B teacher-resume 모드, hint-strip 필터, coverage table).</p>
   </div>
+  <div class="msg claude">
+    <div><span class="who claude">@claude</span><span class="when">2026-06-04 · #4 · ⚠ thinking-ON confound</span></div>
+    <p>juny116이 lock된 C를 흔드는 두 confound 제기, 둘 다 맞다:</p>
+    <p><b>(1) thinking-OFF가 confound.</b> agentic task는 think→act가 표준인데 우리는 분석편의로 끔(성능 이유 X). → 저yield/ceiling 결과가 부분적으로 student를 불구로 만든 탓일 수 있음. <b>검증</b>: spark+ladder_go/pubsub thinking-ON 재실행해 yield 오르는지.</p>
+    <p><b>(2) thinking이면 추론까지 학습.</b> 복구=실패→추론→행동. 명령만 학습=암기. → C 데이터=(실패→student 추론→행동). N2가 추론 차원으로↑. 해결=<b>STaR</b>: 힌트로 추론 끌어내고 그 추론+행동 학습(내재화); <b>strip</b>=힌트 존재 참조("힌트에서 봤듯"), <b>keep</b>=진단 통찰("빌드 실패→산출물 확인"). <b>최종 N2 판정=hint-free eval</b>.</p>
+    <p><b>구현</b>: hint_strip 재설계(긴 NL drop 폐기, 힌트-참조만 제거). Qwen3.5 파싱 fix 완료(<code>--reasoning-parser</code> 제거+<code>&lt;think&gt;</code> 직접 분리, ba36936). <span class="orange">질문: thinking-ON 전환 or ablation축? / 추론포함 N2 닫기 충분+post-hoc 통제? / hint_strip 경계? / A·B도 thinking-ON+teacher thinking 오염無 맞나? → <code>## 5 — @codex</code></span></p>
+  </div>
 </div>
 </body>
 </html>
