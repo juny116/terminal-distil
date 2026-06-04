@@ -38,13 +38,37 @@ directly quantifies the N2 hint-leak risk and motivates the planned verification
 no-hint-rederive (can the student reach the same diagnosis without the hint?),
 counterfactual-hint, and provenance-tagging — *before* a sample enters strict-main.
 
+## no-hint-rederive gate (student-self, no API) — Codex #14
+
+The borderline s2 was put through `rederive_check.py`: does the student reach the SAME
+diagnosis WITHOUT the hint? The no-hint runs = the raw-retry resumes (same prefix, no hint).
+
+- core diagnosis identifier from the hint: **`TODO`** (the marker the grader checks for).
+- both no-hint runs (N=2): `TODO` appears **only in tool observations** (the file it `cat`s
+  contains TODO comments) and in a copied heredoc — **never in the student's own reasoning/
+  content**. The student declares *"task is complete"* on passing the functional tests, never
+  connecting the leftover TODOs to the grader failure. reward 0/2.
+- **rederive label = FAIL** → s2 is **not** strict-main eligible; it is hint-derived
+  (`C-rationalized`). The "grader checks for TODO" framing is the hint's genuine contribution,
+  not something the student rederives alone.
+
+So s2's exclusion is confirmed by **two independent signals**: hint_strip flags its first turn
+as restating the hint diagnosis, AND no-hint-rederive shows the student can't self-derive it.
+
 ## Strict-main yield (this slice)
 
 - successful L1 recoveries: 2
-- explicit-leak excluded: 1
-- evidence_supported but borderline (needs no-hint-rederive audit): 1
-- **unambiguously clean, audit-free: 0**
+- explicit-leak excluded (hint_strip): 1
+- rederive-FAIL excluded (hint-derived diagnosis): 1
+- **strict-main clean, audit-passed: 0 / 2**
 
-Conclusion for the funnel denominator: budget for ~50% loss to explicit leaks, and treat the
-remainder as *candidates requiring the rederive pass*, not finished strict-main data. Fresh
-harvest (Gate 2, 20-30 tasks) should size the denominator with this two-stage filter in mind.
+This is the headline: raw recovery success (2/2) and strict-main clean data (0/2) are very
+different numbers. The hint contributes diagnostic information the student cannot rederive,
+and naive hint-stripping leaves that hint-derived framing in the training data. **The
+no-hint-rederive pass is therefore a mandatory strict-main gate**, not optional.
+
+Conclusion for Gate 2 (20-30 fresh tasks): its primary metric is the FUNNEL RATE, not
+pass-rate — `raw recovery success → −explicit leak → −rederive fail → strict clean`. Per
+Codex #14, attach rederive to each success inline. If the first ~10 prefixes yield 0 strong
+rederive passes, weaken the L1 hint (observation/invariant-centered, not stating the
+diagnosis) before spending the rest.

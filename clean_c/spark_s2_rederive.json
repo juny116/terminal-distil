@@ -1,0 +1,30 @@
+{
+  "diagnosis_salient": [
+    "todo"
+  ],
+  "n_nohint_runs": 2,
+  "per_run": [
+    {
+      "dir": "jobs/recov_g1_spark_catalog_plugin_raw1_raw-retry",
+      "label": "fail",
+      "recovered": false,
+      "core_diagnosis_stated_in_student_voice": [],
+      "core_diagnosis_seen_only_in_observation": [
+        "todo"
+      ],
+      "soft_overlap_in_voice_ignored": []
+    },
+    {
+      "dir": "jobs/recov_g1_spark_catalog_plugin_raw2_raw-retry",
+      "label": "fail",
+      "recovered": false,
+      "core_diagnosis_stated_in_student_voice": [],
+      "core_diagnosis_seen_only_in_observation": [
+        "todo"
+      ],
+      "soft_overlap_in_voice_ignored": []
+    }
+  ],
+  "rederive_label": "fail",
+  "strict_main_eligible": false
+}
