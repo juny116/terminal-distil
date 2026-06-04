@@ -100,8 +100,10 @@ def rederive_label(diagnosis_salient: set, nohint_conv: List[Dict[str, Any]],
         label = "strong"
     elif stated:
         label = "weak"
+    elif in_obs_only:           # saw the cause in a tool output but never diagnosed it
+        label = "observed_only"
     else:
-        label = "fail"
+        label = "fail"          # never even encountered the cause
     return {
         "label": label,
         "recovered": recovered,
@@ -112,10 +114,14 @@ def rederive_label(diagnosis_salient: set, nohint_conv: List[Dict[str, Any]],
 
 
 def _reward_for(job_dir: Path) -> Optional[float]:
+    # there are two result.json levels: a job-summary (no verifier_result) and the
+    # per-instance one (has it). Scan all and return the first real reward.
     for p in glob.glob(str(job_dir / "**" / "result.json"), recursive=True):
         try:
             d = json.loads(Path(p).read_text())
-            return (d.get("verifier_result") or {}).get("rewards", {}).get("reward")
+            r = (d.get("verifier_result") or {}).get("rewards", {}).get("reward")
+            if r is not None:
+                return r
         except Exception:
             pass
     return None
@@ -141,7 +147,7 @@ def check(hint_sample: Path, nohint_dirs: List[Path]) -> Dict[str, Any]:
 
     labels = [r["label"] for r in results]
     # aggregate: best label across no-hint seeds (any strong -> strong, etc.)
-    rank = {"fail": 0, "weak": 1, "strong": 2}
+    rank = {"fail": 0, "observed_only": 1, "weak": 2, "strong": 3}
     agg = max(labels, key=lambda l: rank[l]) if labels else "fail"
     return {
         "diagnosis_salient": sorted(diag_salient),

@@ -1,0 +1,18 @@
+{
+  "prefix_id": "spark_s2",
+  "task": "spark_catalog_plugin_custom_medium",
+  "failure_type": "answer_spec",
+  "hint_level_used": "L1",
+  "hint_text": "Your implementation passes the functional tests, but the catalog source file still contains unimplemented TODO comments that the grader checks for. Find and resolve every remaining TODO so none are left.",
+  "hint_text_hash": "2364053396",
+  "hint_strength": "diagnosis",
+  "hint_recovery_reward": 1.0,
+  "reasoning_present_on_recovery_turn": true,
+  "hint_strip_label": "evidence_supported",
+  "rederive_label": "observed_only",
+  "core_identifiers": [
+    "todo"
+  ],
+  "strict_main_eligible": false,
+  "exclude_reason": "rederive:observed_only"
+}
