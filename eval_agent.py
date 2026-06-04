@@ -271,6 +271,14 @@ class BashAgent(BaseAgent):
             "model": self._model_name_for_api,
             "role": "student",
             "enable_thinking": self._enable_thinking,
+            # reasoning handling (discussion-004 #8, Codex): reasoning is saved per
+            # turn (reasoning_content) for training arm C as the per-turn LABEL, but is
+            # NOT carried into the next-step prompt (per-turn scratchpad). So SFT input
+            # = prior content/tool_calls/observations (no prior thinking); label =
+            # current reasoning_content + action.
+            "reasoning_in_context": False,
+            "reasoning_saved": True,
+            "reasoning_label_target": True,
             "max_tokens": self._max_tokens,
             "total_input_tokens": self._total_input_tokens,
             "total_output_tokens": self._total_output_tokens,
