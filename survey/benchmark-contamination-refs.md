@@ -62,3 +62,20 @@ ground truth로 의존하냐"**):
 - 우리 ②½: 채점기를 **두 번 ground truth로** 씀 — (1) "student가 진짜 실패했나"(reward 0; 깨진
   task면 가짜) (2) "힌트로 복구 성공했나"(reward 0→1; 깨진 task면 영원히 불가→힌트 탓/ task 탓 오염).
   → **그래서 verifier-bug 필터가 TermiGen은 안 해도 되지만 우리는 필수.**
+
+## ⚠️ 정정 2 (2026-06-04) — "TermiGen이 복구를 검증 안 한다"는 내 과장 철회
+
+원문 재확인 후 정정. 복구는 intent가 `correct`로 돌아갈 때 생성되는 **correct(=optimal) step**이고,
+Critic은 *"For optimal steps, it confirms that the action effectively advances the task state"* 라고
+명시 → **복구도 Critic의 optimal-step 검증에 걸릴 가능성이 높다.** 따라서 "TermiGen은 복구를 검증
+안 한다"는 내 이전 주장은 **근거 없는 과장이었고 철회한다.**
+
+**방어 가능한(verbatim 근거 있는) 주장만 남김:**
+- TermiGen은 최종 SFT 데이터를 **verifier로 *거르지 않는다*** (τ=0%, 실패 포함이 더 낫다는 ablation). [명시]
+- 복구 검증은 (있다면) **Critic = LLM의 soft 판단**("상태 진전했나"), **test.sh를 복구마다 재실행하는 게 아님**. [추론 — 원문은 복구별 test.sh 재검증을 *언급 안 함*(침묵)]
+- 우리 ②½는 복구를 **ground-truth verifier로 hard-gate**(reward 0→1만 채택).
+
+**오염 비대칭의 *방어 가능한* 형태**: "우리는 verifier 통과를 데이터 채택 *기준*으로 쓰고 TermiGen은
+안 쓴다(τ=0%)" — 이건 성립. "TermiGen은 복구를 아예 안 본다"는 과장 — 철회.
+
+**방법론 메모**: 논문 인용 시 **명시(quoted) / 침묵(absent) / 내 추론(inference)** 을 구분해 말할 것.
