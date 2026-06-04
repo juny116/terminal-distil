@@ -48,10 +48,14 @@ def load_trial(trial_dir: Path):
     }
 
 
-def selection_key(trial):
-    """Higher key = better. Prefer error_steps > 0, then fewer turns."""
-    has_errors = 1 if trial["n_error_steps"] > 0 else 0
-    return (has_errors, -trial["n_turns"])
+def selection_key(trial, prefer_success=False):
+    """Higher key = better. When prefer_success (include-failures mode), rank a
+    resolved attempt above an unresolved one first, then error-richness, then fewer
+    turns. Otherwise (success-only mode) reward is constant so it's just
+    error_steps > 0, then fewer turns."""
+    reward = trial["reward"] if prefer_success else 0
+    has_errors = 1 if (trial["n_error_steps"] or 0) > 0 else 0
+    return (reward, has_errors, -(trial["n_turns"] or 0))
 
 
 def main():
@@ -60,12 +64,23 @@ def main():
     ap.add_argument("--output", type=Path, default=Path("data/sft_dataset.jsonl"))
     ap.add_argument("--min-reward", type=float, default=1.0)
     ap.add_argument(
+        "--include-failures", action="store_true",
+        help="TermiGen-faithful arm-(1): keep injected-error trajectories regardless "
+             "of final reward. TermiGen trains on Test Pass Rate >= 0% (unresolved "
+             "attempts included) because filtering to only perfect runs skews to easy "
+             "tasks. Sets the effective min-reward to 0.0 and prefers a resolved "
+             "attempt per task when one exists, else keeps an error-rich failed one. "
+             "Default (off) keeps only reward>=min-reward, which is a WEAKER, "
+             "non-faithful baseline.",
+    )
+    ap.add_argument(
         "--models",
         nargs="*",
         default=None,
         help="Only include trajectories from these models (space-separated). Default: all.",
     )
     args = ap.parse_args()
+    effective_min_reward = 0.0 if args.include_failures else args.min_reward
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
 
@@ -83,7 +98,7 @@ def main():
             per_model_seen[trial.get("model") or "?"] += 1
             if args.models and trial.get("model") not in args.models:
                 continue
-            if trial["reward"] >= args.min_reward and trial["task_name"]:
+            if trial["reward"] >= effective_min_reward and trial["task_name"]:
                 by_task[trial["task_name"]].append(trial)
 
     # Dedupe — pick best trajectory per task
@@ -91,8 +106,8 @@ def main():
     n_with_errors = 0
     per_model_selected: dict[str, int] = defaultdict(int)
     for task_name, trials in by_task.items():
-        best = max(trials, key=selection_key)
-        if best["n_error_steps"] > 0:
+        best = max(trials, key=lambda t: selection_key(t, prefer_success=args.include_failures))
+        if (best["n_error_steps"] or 0) > 0:
             n_with_errors += 1
         per_model_selected[best.get("model") or "?"] += 1
         selected.append(best)
