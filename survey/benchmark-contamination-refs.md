@@ -42,3 +42,23 @@ flaky/timeout/불가능 task)가 섞인다. 이건 우리만의 문제가 아니
 - **티처 커버리지는 현재 한계**: gpt-5.4 single-attempt라 ~2,302 고유 성공. multiple-attempt +
   더 센 teacher면 크게 늘어남 → "티처가 못 풀어 데이터 적다"는 *지금 상태*지 근본 한계 아님.
 - ②½가 쓸 풀 = 저 **4,465 실패**인데, 그게 오염(verifier-bug/flaky/timeout)돼 있음 = funnel 필요 이유.
+
+## ⚠️ 정정 (2026-06-04) — TermiGen도 복구를 학습한다 / 오염이 우리에게 치명적인 *진짜* 이유
+
+논문 재확인: TermiGen은 명시적으로 복구를 학습한다 — *"training data rich in explicit
+error → diagnosis → correction cycles, teaching the model how to recover from runtime
+mistakes."* 따라서 "실패+복구 학습"은 우리 차별점이 **아니다**(공통).
+
+**진짜 차별점 (= 우리 thesis, risks.md와 동일)**:
+| | TermiGen | 우리 ②½ |
+|---|---|---|
+| 실패 출처 | teacher가 **주입**(5-mode taxonomy, off-policy) | student가 **실제로 깸**(on-policy) |
+| 복구 작성 | **teacher/generator**가 corrective action 합성 | **student 자신**(힌트만, 자가복구) |
+
+**오염이 TermiGen엔 가볍고 우리에겐 치명적인 진짜 이유** (= "실패를 쓰냐"가 아니라 **"verifier를
+ground truth로 의존하냐"**):
+- TermiGen: error→recovery 사이클을 **teacher가 trajectory 안에서 합성** → **채점기 정확성과 무관**.
+  깨진 task는 reward 0인 unresolved attempt로 희석될 뿐, 복구 데이터 자체는 생성됨.
+- 우리 ②½: 채점기를 **두 번 ground truth로** 씀 — (1) "student가 진짜 실패했나"(reward 0; 깨진
+  task면 가짜) (2) "힌트로 복구 성공했나"(reward 0→1; 깨진 task면 영원히 불가→힌트 탓/ task 탓 오염).
+  → **그래서 verifier-bug 필터가 TermiGen은 안 해도 되지만 우리는 필수.**
