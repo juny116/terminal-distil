@@ -15,6 +15,7 @@ $PY recovery_agent.py "$TRAJ" --ece "$ECE" --task-name "$TASK" --arm "$ARM" \
     ${HINT:+--hint "$HINT"} --output "$PREFIX" >/dev/null
 
 STEP0_PREFIX_FILE="$PREFIX" MODEL_NAME=Qwen/Qwen3.5-4B MODEL_ENDPOINT=http://172.17.0.1:8001/v1 \
+  QWEN_ENABLE_THINKING="${QWEN_ENABLE_THINKING:-0}" \
   harbor run -p "$ENV" --agent-import-path 'recovery_agent:ResumeBashAgent' \
   -e docker -i "$TASK" -n 1 -o "$OUT" --job-name "recov_${LABEL}_${ARM}" >/tmp/recov_run.log 2>&1 || true
 
