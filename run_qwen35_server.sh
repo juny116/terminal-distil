@@ -29,7 +29,12 @@ CUDA_VISIBLE_DEVICES=6,7 "$VLLM" serve Qwen/Qwen3.5-4B \
     --max-model-len 120000 \
     --gpu-memory-utilization 0.8 \
     --language-model-only \
-    --reasoning-parser qwen3 \
     --enable-auto-tool-choice \
     --tool-call-parser qwen3_xml \
     --enable-prefix-caching
+# NOTE: --reasoning-parser qwen3 REMOVED (2026-06-04). With thinking ON, Qwen3.5
+# emits <think>...</think>, but the qwen3 reasoning parser silently DROPS it
+# (reasoning_content comes back empty -> reasoning lost). For arm C we must keep the
+# reasoning (train on failure -> reasoning -> action), so we serve without a reasoning
+# parser and split <think> ourselves in eval_agent.py. Harmless for thinking-OFF (no
+# <think> emitted). Tool calling (qwen3_xml) is independent and still works.

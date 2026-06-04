@@ -170,7 +170,21 @@ class BashAgent(BaseAgent):
         self._n_model_responses += 1
         msg = response.choices[0].message
 
-        assistant_msg: Dict[str, Any] = {"role": "assistant", "content": msg.content}
+        # Capture reasoning when thinking is ON. Qwen3.5 emits <think>...</think>;
+        # vLLM's --reasoning-parser qwen3 silently DROPS it (empty reasoning_content),
+        # so we serve WITHOUT that parser and split <think> ourselves here. Prefer a
+        # populated reasoning_content if present; else split the content. The reasoning
+        # is kept in the trajectory so arm C can train on (failure -> reasoning -> action).
+        content = msg.content
+        reasoning = getattr(msg, "reasoning_content", None) or None
+        if reasoning is None and isinstance(content, str) and "</think>" in content:
+            head, _, tail = content.partition("</think>")
+            reasoning = head.replace("<think>", "", 1).strip()
+            content = tail.strip()
+
+        assistant_msg: Dict[str, Any] = {"role": "assistant", "content": content}
+        if reasoning:
+            assistant_msg["reasoning"] = reasoning
         commands: List[Tuple[str, str, str]] = []
 
         if msg.tool_calls:
@@ -198,7 +212,8 @@ class BashAgent(BaseAgent):
 
         (episode_dir / "response.json").write_text(
             json.dumps(
-                {"content": msg.content, "tool_calls": assistant_msg.get("tool_calls")},
+                {"reasoning": reasoning, "content": content,
+                 "tool_calls": assistant_msg.get("tool_calls")},
                 indent=2,
                 ensure_ascii=False,
             )
