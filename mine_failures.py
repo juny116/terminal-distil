@@ -52,6 +52,22 @@ _SUMMARY_RE = re.compile(r"(\d+)\s+passed|(\d+)\s+failed|(\d+)\s+error")
 #   "E       TypeError: ..."  and  "/tests/test_outputs.py:72: TypeError"
 _EXC_E_RE = re.compile(r"^E\s+([A-Za-z_][\w.]*(?:Error|Exception|Iteration)):", re.M)
 _EXC_LOC_RE = re.compile(r":\d+:\s+([A-Za-z_][\w.]*(?:Error|Exception|Iteration))\s*$", re.M)
+_ASSERT_MSG_RE = re.compile(r"^E\s+AssertionError:\s*(.+)$", re.M)
+
+# Tentative failure_layer keywords (discussion-003 #7/#12). A real label needs an
+# LLM judge reading task+assertion; this is a cheap pre-label only.
+_PROCESS_KW = (
+    "unimplemented", "todo", "missing", "not exist", "does not exist", "not found",
+    "no such", "is empty", "incomplete", "exit code", "nonzero", "non-zero",
+    "stderr", "permission denied", "not executable", "failed to compile",
+    "build failed", "did not create", "was not created", "timed out", "only",
+    "at least", "expected at least",
+)
+_ANSWER_KW = (
+    "incorrect", "does not match", "mismatch", "wrong", "should be", "should equal",
+    "expected ", "accuracy", "threshold", "got ", "!=", "is before", "is after",
+    "invalid result", "unexpected",
+)
 
 
 def _classify_exc(exc: str) -> str:
@@ -78,6 +94,7 @@ class FailRow:
     likely_verifier_bug: bool = False
     completed: bool = False
     likely_timeout: bool = False
+    failure_layer: str = "unknown"        # tentative: process | answer_spec | mixed | unknown
     parsed_tool_call_rate: Optional[float] = None
     substrate_ok: bool = True
     n_turns: Optional[int] = None
@@ -99,7 +116,24 @@ def _parse_verifier(stdout: str):
             s_err = int(m.group(3))
     n_pass = max(n_pass, s_pass)
     n_fail = max(len(failed_tests), s_fail + s_err)
-    return n_pass, n_fail, failed_tests, exc_types
+    assert_msgs = [m.lower() for m in _ASSERT_MSG_RE.findall(stdout)]
+    return n_pass, n_fail, failed_tests, exc_types, assert_msgs
+
+
+def _failure_layer(completed: bool, assert_msgs, near_miss_score: float) -> str:
+    """Tentative process vs answer_spec pre-label (needs LLM judge to confirm)."""
+    if not completed:
+        return "process"          # got cut off / stopped before finishing
+    blob = " ".join(assert_msgs)
+    proc = any(k in blob for k in _PROCESS_KW)
+    ans = any(k in blob for k in _ANSWER_KW)
+    if proc and not ans:
+        return "process"
+    if ans and not proc:
+        return "answer_spec"      # declared success, only a value/correctness assert failed
+    if proc and ans:
+        return "mixed"
+    return "unknown"
 
 
 def analyze_trial(trial_dir: Path) -> Optional[FailRow]:
@@ -120,8 +154,9 @@ def analyze_trial(trial_dir: Path) -> Optional[FailRow]:
     n_pass = n_fail = 0
     failed_tests = []
     exc_types = []
+    assert_msgs = []
     if so.exists():
-        n_pass, n_fail, failed_tests, exc_types = _parse_verifier(so.read_text(errors="ignore"))
+        n_pass, n_fail, failed_tests, exc_types, assert_msgs = _parse_verifier(so.read_text(errors="ignore"))
     kinds = [_classify_exc(e) for e in exc_types]
     has_assert = "assertion" in kinds
     has_crash = "crash" in kinds
@@ -163,13 +198,15 @@ def analyze_trial(trial_dir: Path) -> Optional[FailRow]:
         "Timeout" in str(exc_name) or (n_turns is not None and n_turns >= 40)
     )
 
+    layer = _failure_layer(completed, assert_msgs, score0)
     return FailRow(
         task_name=task, n_pass=n_pass, n_fail=n_fail, near_miss_score=round(score0, 3),
         fail_tests=failed_tests,
         fail_excs=sorted({e.split('.')[-1] for e in exc_types}),
         has_assertion_fail=has_assert, has_crash_fail=has_crash,
         likely_verifier_bug=likely_bug, completed=completed,
-        likely_timeout=likely_timeout, parsed_tool_call_rate=parsed_rate,
+        likely_timeout=likely_timeout, failure_layer=layer,
+        parsed_tool_call_rate=parsed_rate,
         substrate_ok=substrate_ok, n_turns=n_turns, trial_dir=str(trial_dir),
     )
 
@@ -215,10 +252,16 @@ def main():
     print(f"\n  verifier-bug candidates (test crashed, output passed most checks):")
     for r in vbug:
         print(f"    {r.near_miss_score:.2f}  {r.n_pass}/{r.n_pass+r.n_fail}  {r.task_name:42s} excs={r.fail_excs}")
+    layer_counts = Counter(r.failure_layer for r in genuine)
+    print(f"\n  genuine failure_layer (tentative): {dict(layer_counts)}")
+    proc_near = [r for r in near if r.failure_layer == "process"]
     print(f"\n  near-miss genuine failures (recovery candidates):")
     for r in near:
-        flag = " [completed]" if r.completed else " [stopped]"
-        print(f"    {r.near_miss_score:.2f}  {r.n_pass}/{r.n_pass+r.n_fail}  {r.task_name:42s}{flag}")
+        flag = "completed" if r.completed else "stopped"
+        print(f"    {r.near_miss_score:.2f}  {r.n_pass}/{r.n_pass+r.n_fail}  {r.failure_layer:11s} [{flag:9s}] {r.task_name}")
+    print(f"\n  => PRIMARY non-leak recovery targets (near-miss + process): {len(proc_near)}")
+    for r in proc_near:
+        print(f"       {r.task_name}")
     print(f"\nOutput: {args.output}  ({total} rows)")
 
 
