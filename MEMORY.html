@@ -265,6 +265,7 @@
     <li><code>README.md</code> — 파이프라인/사용법.</li>
     <li>💬 <code>survey/discussion-001-first-experiment.html</code> — Codex와 "첫 실험 무엇부터" 논의 스레드 (md 원본 + html 미러, append-only). <span class="pill green">합의 완료 (6 rounds) → §실험 계획</span></li>
     <li>💬 <code>survey/discussion-002-implementation-review.html</code> — 구현 전체 리뷰 스레드. 스모크 0점 진단 + tool-call 경로. <span class="pill green">종결: native(qwen3_xml) 전환·검증 완료, Codex ack</span></li>
+    <li>💬 <code>survey/discussion-004-core-experiment.html</code> — <strong>핵심 실험 lock</strong>: TermiGen(A)/DAgger(B)/Ours②½(C) 2×2 3-arm. <span class="pill yellow">Codex 검토 중</span></li>
     <li>💬 <code>survey/discussion-003-step0plus-design.html</code> — Step 0+ 파이프라인 설계(P0~P9). <span class="pill green">LOCK (Codex #2 ack, 3 rounds): ECE primary·oracle=action-class·룰+LLM fallback·단계적 backoff</span></li>
   </ul>
 
@@ -272,6 +273,7 @@
   <h2 id="log">🕒 업데이트 로그</h2>
   <table>
     <tr><th>날짜</th><th>내용</th></tr>
+    <tr><td>2026-06-04</td><td><strong>메인 실험 lock(#004)</strong>: juny116과 핵심 비교 확정 = <strong>2×2(failure출처×recovery작성자)</strong>의 3 arm <strong>A.TermiGen(주입+teacher) / B.DAgger②(on-policy+teacher) / C.Ours②½(on-policy+student자가,힌트strip)</strong>. A→B=main claim(injected≠on-policy), B→C=mechanism(STaR/imitability). 핵심 메커니즘=힌트는 생성 발판이고 <strong>학습엔 student 복구만(힌트 제거)→N2 설계로 해소</strong>. vs DAgger 차별=expert행동 imitation이 아니라 student 자기복구(in-distribution). B·C는 같은 실패 prefix 공유, 작성자만 다름. 저yield→grounded 힌트+k라운드 iterative. Codex 검토 요청.</td></tr>
     <tr><td>2026-06-04</td><td><strong>harvest50 복구 yield(sobering)</strong>: near-miss 7개 teacher-ladder 완료 → <strong>복구 1/7(spark만)</strong>, 나머지는 L4(거의정답)로도 0=capability ceiling/answer. cascade: 50task→26fail→genuine14→near-miss7→복구1. 핵심: <strong>per-test near-miss≠복구가능</strong>(실패 테스트가 capability 요구하면 못 고침); 진짜 복구=spark처럼 incomplete-but-fixable(부분집합). ②½ 작동하나 복구 stratum 희귀→rollout 볼륨 큼. harvest200으로 1/7 유지 확인 중. (#003 #18)</td></tr>
     <tr><td>2026-06-04</td><td><strong>제안 ablation 기록(#003 #16)</strong>: 복구 데이터 <strong>success-only vs include-failed</strong>. TermiGen은 teacher-저자에서 실패포함이 더 나음 — student-저자 ②½에서도 성립하나?(저자 비대칭으로 뒤집힐 수 있음). A=reward0→1만/B=전부. base고정+토큰매칭. 가설 A≥B. 비용≈0(<code>--include-failures</code> 인프라 있음). juny116 제안.</td></tr>
     <tr><td>2026-06-04</td><td><strong>정정2(과장 철회)</strong>: "TermiGen이 복구를 검증 안 한다"는 내 주장 <strong>철회</strong> — 복구=correct/optimal step이고 Critic이 "optimal step은 상태 진전하는지 confirm"한다 명시 → Critic(LLM)이 soft 검증할 여지 있음. <strong>방어 가능한 것만</strong>: TermiGen은 최종 데이터를 verifier로 *안 거름*(τ=0% 실패포함), 복구별 test.sh 재검증은 원문 *침묵*; 우리 ②½만 reward 0→1 hard-gate. 방법론: 인용 시 명시/침묵/추론 구분. 상세 <code>survey/benchmark-contamination-refs.md</code>.</td></tr>
