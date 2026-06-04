@@ -182,9 +182,15 @@ class BashAgent(BaseAgent):
             reasoning = head.replace("<think>", "", 1).strip()
             content = tail.strip()
 
+        # Store reasoning under "reasoning_content": vLLM IGNORES this field on INPUT
+        # (verified: +0 prompt tokens), so prior turns' thinking is NOT fed back into
+        # context -- standard reasoning-agent behavior (per-turn scratchpad). The
+        # thinking is still saved in the trajectory for training arm C on
+        # (failure -> reasoning -> action). Using the key "reasoning" instead would
+        # make vLLM RENDER it back into the prompt (+thinking tokens every turn).
         assistant_msg: Dict[str, Any] = {"role": "assistant", "content": content}
         if reasoning:
-            assistant_msg["reasoning"] = reasoning
+            assistant_msg["reasoning_content"] = reasoning
         commands: List[Tuple[str, str, str]] = []
 
         if msg.tool_calls:
