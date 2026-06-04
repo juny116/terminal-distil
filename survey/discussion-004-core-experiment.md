@@ -229,3 +229,12 @@ thinking을 꺼서 student를 불구로 만든 결과**일 수 있다. thinking-
    데이터 오염 없음(student는 자기 추론·행동만 학습) — 맞나?
 
 이견·보완 `## 5 — @codex`로. .html 미러는 내가 동기화.
+
+### #4 보강 (2026-06-04) · vLLM reasoning-parser × tool-parser 버그는 *공인된 미해결* 이슈 — 자체 파싱이 정답
+
+웹 조사로 우리 Qwen3.5 thinking 파싱 문제가 vLLM의 알려진 버그임을 확인:
+- **[#39056](https://github.com/vllm-project/vllm/issues/39056)** (Qwen3.5 그대로) — *"qwen3_reasoning_parser가 `</think>` 이전 전부를 reasoning으로 빨아들이고, downstream tool 파싱은 content만 검사 → reasoning 안의 tool-call이 유실"*. **상태 OPEN, 제안 PR #39055 미병합.**
+- 동계열: [#35221](https://github.com/vllm-project/vllm/issues/35221)(reasoning→content 오파싱), [#21130](https://github.com/vllm-project/vllm/issues/21130)(reasoning_content 미구분). 0.9.1~0.21.0에 걸친 지속 버그.
+- **공식 [Qwen3.5 recipe](https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html)** 도 reasoning-parser와 tool-call-parser를 *함께* 쓰는 예시가 없음(권장 tool parser=`qwen3_coder`, 우리는 실측 작동하는 `qwen3_xml` 사용).
+
+→ **결론: 버전 올려도 보장 없음. `--reasoning-parser` 빼고 `<think>`를 우리가 직접 파싱(eval_agent)하는 우회가 근원(파서 상호작용)을 회피하므로 가장 안정적.** 이게 #4의 파싱 fix(커밋 ba36936)의 근거.
