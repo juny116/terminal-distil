@@ -1305,3 +1305,340 @@ claim 분리: A→B(on-policy 실패 상태가 중요) / **B→C1(expert 정보 
 → rederive-fail 데이터 안 버림(C2라 안 부를 뿐). **0 strict-clean = 실패 아니라 논문구조를 정직하게 만드는 신호.** 메인 capability table=C1, 메커니즘/청결성 table=C2+rederive funnel.
 
 **다음 실험(capability-first):** B-teacher-recovery vs C1-hinted-student(+C1-action-only) = 능력 질문; C1 vs C2 = 메커니즘. C-v2c(global self-check + inspection-direction)는 C2의 rederive-strong 수율을 끌어올리는 장치로 위치. assistant-voice 주입은 여전히 금지(#20). juny116 보고 후 진행.
+
+## 24 — @codex (2026-06-05)
+
+juny116에게 전달할 현재 상황 요약.
+
+### 0. 한 줄 요약
+
+우리는 `hint로 복구 성공 → hint만 strip하면 C 데이터`라는 초기 가정을 버렸다. 대신 C를 **C1(capability arm: hint-mediated student recovery, input-stripped)**와 **C2(mechanism arm: rederive-strong strict self-recovery)**로 분리하기로 했다. 다음 실험은 과학적 청결성 실험이 아니라, 먼저 **B-teacher recovery vs C1-student-instantiated recovery가 실제 능력을 올리는가**를 보는 쪽이다.
+
+### 1. Gate 2 결과의 정확한 의미
+
+Gate 2 fresh harvest 결과는 `clean_c/GATE2_FUNNEL.md` 기준:
+
+```text
+30 fresh tasks
+→ 14 fail
+→ 11 genuine fail
+→ 8 near-miss
+→ 6 recoverable process near-miss + 2 benchmark bugs
+→ 5 hint-recovery success
+→ 2 non-leak after hint_strip
+→ 0 rederive-strong
+strict-main clean yield = 0/6
+```
+
+spark slice까지 합치면, 성공한 hint recovery 8개 중 naive hint-strip로 strict-clean C2에 들어갈 수 있는 샘플은 0개다. 이 숫자의 의미는 **hint recovery가 쓸모없다**가 아니다. 의미는 더 좁다.
+
+- raw hint recovery success는 실제로 있다.
+- 하지만 그 output을 그대로 "student self-recovery"라고 주장할 만큼 provenance-clean하지 않다.
+- leak/rederive gate를 통과하는 strict C2 샘플은 현재 수율이 매우 낮다.
+
+즉 `strict-clean 0/8`은 capability 실패가 아니라, **초기 C 정의가 과학적 claim에는 너무 낙관적이었다**는 증거다.
+
+### 2. C1 / C2 분리
+
+현재 LOCK된 구조:
+
+```text
+A. injected failure + teacher recovery
+B. on-policy failure + teacher recovery
+C1. on-policy failure + hint-mediated student recovery, hint input stripped
+C2. on-policy failure + rederive-strong student recovery
+```
+
+C1은 capability arm이다. generation 때 hint를 써서 student가 recovery action을 만들고, training input에서는 hint를 뺀다. output reasoning에 hint reference가 있거나 rederive-fail이어도, 능력 실험 후보로는 남긴다. 단 이것을 strict self-recovery라고 부르지 않는다.
+
+C2는 mechanism/science arm이다. student가 hint 없이도 같은 diagnosis 또는 inspection/action class를 재도출하는 rederive-strong 샘플만 들어간다. yield가 낮아도 괜찮다. C2는 "진짜 student self-recovery/internalization" claim을 방어하는 데 쓰인다.
+
+### 3. leak의 위치: capability vs mechanism
+
+합의된 reframing은 이렇다.
+
+- capability 관점: 치명적인 leak는 train input에 test-time에 없는 hint가 들어가는 경우다. 우리는 input-strip을 하므로, output reasoning의 `the user's hint` 같은 문구는 capability에는 cosmetic noise일 수 있다. 특히 action-only training이면 더 그렇다.
+- mechanism 관점: output reasoning leak와 rederive-fail은 중요하다. 그것이 남아 있으면 개선 원인을 "student self-recovery"라고 말할 수 없다.
+
+따라서 leak-filter/rederive-gate의 1차 가치는 capability 최적화가 아니라 **claim hygiene**다. C1은 leak를 일부 허용하고 능력으로 판단한다. C2는 leak/rederive를 엄격히 본다.
+
+### 4. DAgger와의 차이도 재정의됨
+
+rederive-fail C1은 순수 self-recovery가 아니다. 정보원은 teacher hint이므로 `hint-mediated DAgger`에 가깝다. 그래도 B와 완전히 같지는 않다.
+
+- B: teacher가 recovery trajectory를 직접 작성한다.
+- C1: teacher는 hint/diagnosis/inspection 방향을 주고, 최종 command/action sequence는 student가 작성한다.
+
+따라서 C1의 차별점은 "학생이 혼자 알아냈다"가 아니라 **teacher 정보를 student가 자기 action distribution으로 실현했기 때문에 teacher-written recovery보다 imitable할 수 있다**는 것이다. 이게 다음 capability experiment의 핵심 질문이다.
+
+### 5. C-v2c의 현재 위치
+
+C-v2c(global self-check + inspection-direction + student self-rederive)는 원래 C strict yield를 살릴 후보였다. 지금은 메인 capability arm이 아니라 **C2 수율을 올리는 보조 장치**로 내려갔다.
+
+즉 지금 우선순위는:
+
+1. B vs C1 capability 실험으로 실용 신호 확인.
+2. C2/rederive funnel은 mechanism table로 유지.
+3. C-v2c는 C2 샘플을 늘리거나 rederive-strong을 만들 수 있는지 보는 보조 PoC.
+
+assistant-voice hint 주입은 strict C 금지로 LOCK됐다. teacher-authored rationale을 student reasoning처럼 laundering하기 때문이다.
+
+### 6. 현재 구축된 인프라
+
+현재 이미 만들어진 쪽:
+
+- `build_clean_c.py`, `hint_strip.py`, `rederive_check.py`: Gate 1/2 funnel 검증에 사용됨. strict-clean 수율이 낮다는 결론을 만든 핵심 감사 파이프라인.
+- `clean_c/GATE2_FUNNEL.md`: fresh Gate 2 funnel 결과 기록.
+- `build_c1.py`: C1 dataset builder. hint-mediated student recovery를 input-stripped 학습 데이터로 만드는 쪽.
+- `train_sft.py`: LoRA SFT trainer. end-to-end 동작 확인됨.
+- B는 현재 실제 API teacher가 아니라 **Claude-as-teacher**로 recovery를 만드는 범위에서 진행. 실제 paid/API teacher recovery collection은 아직 건드리지 않음.
+
+요약하면, 이제 데이터 감사만 한 상태가 아니라 **B vs C1 능력 실험을 돌릴 수 있는 최소 학습 인프라가 생겼다**.
+
+### 7. 다음 할 일
+
+다음은 B vs C1 capability experiment다.
+
+권장 비교:
+
+```text
+baseline student
+B: same on-policy failure prefixes + Claude-as-teacher recovery
+C1: same prefixes + hint-mediated student recovery, hint input stripped
+C1-action-only: C1에서 reasoning을 버리고 tool/action만 학습
+```
+
+핵심 질문:
+
+- B teacher-written recovery보다 C1 student-instantiated recovery가 더 잘 imitated되는가?
+- C1의 reasoning leak가 실제 capability에 해로운가, 아니면 action supervision이 이기는가?
+- C1-action-only가 reasoning leak 문제를 우회하면서 성능을 유지/개선하는가?
+
+C2는 여기서 main capability arm이 아니다. C2는 rederive-strong subset이 얼마나 나오는지, 그리고 C1 개선을 "진짜 self-recovery"로 해석할 수 있는 범위가 어디까지인지 보여주는 mechanism/analysis table로 둔다.
+
+### 8. 현재 결론
+
+현재까지의 정확한 결론은:
+
+- `hint-strip만으로 strict self-recovery data를 만든다`는 초기 C 정의는 실패했다.
+- `hint-mediated student recovery가 capability에 도움이 되는가`는 아직 열린 질문이고, 바로 실험할 가치가 있다.
+- 논문 구조는 C 하나가 아니라 C1/C2 분리로 가야 방어 가능하다.
+- 다음 실험의 중심은 provenance purity가 아니라 **B vs C1 능력 차이**다.
+
+## 25 — @codex (2026-06-05)
+
+juny116에게 전달할 hint 정의/전달/비교 방법 제안. 전제는 #23/#24의 C1/C2 split이다. 즉 hint는 generation 때만 쓰고, training input에서는 제거한다. C1은 capability arm이라 leak/rederive에 관대할 수 있고, C2는 mechanism arm이라 rederive-strong만 인정한다.
+
+### 먼저 축을 명확히 하자
+
+hint는 두 축으로 정의하는 게 좋다.
+
+```text
+content axis:
+  inspection-direction < diagnosis < action-class < exact-action
+
+delivery axis:
+  user message / system standing rule / tool-or-env observation / retrieved doc / self-reflection prompt / assistant-voice scaffold
+```
+
+우리가 현재 실패한 것은 `diagnosis content + user-message delivery`다. capability에는 쓸 수 있지만, user-meta leak가 많고 C2 provenance는 거의 안 나온다. assistant-voice scaffold는 user leak를 줄이지만 teacher-authored rationale laundering이라 strict C 금지로 이미 LOCK했다.
+
+아래 TOP 5는 가장 유망한 순서다.
+
+---
+
+### 1. Global Self-Check Standing Rule
+
+**무엇인가**
+
+- content: inspection-direction, 아주 일반적 self-check.
+- delivery: system standing rule. 모든 baseline/A/B/C/eval에 동일하게 적용.
+- 예: "Before declaring completion, compare the task requirements against what your tests actually validate. Inspect non-functional constraints, hidden grading conditions, and leftover markers when relevant."
+
+**왜 유망한가**
+
+특정 prefix의 정답 정보를 주지 않고, recovery policy 자체를 바꾼다. 지금 Gate 2에서 보인 문제는 student가 functional test 통과 후 grader-specific 조건을 놓치는 경우가 많다는 점이다. 이건 task-specific diagnosis보다 general self-check 습관으로 잡는 게 논문상 방어가 쉽다.
+
+**leak/rederive 영향**
+
+- leak: 거의 없음. hint가 특정 user hint로 들어오지 않으므로 `the user's hint` meta-reference가 생기기 어렵다.
+- C2: 가장 유리하다. 같은 system rule이 eval에도 있으므로, rederive는 "hint 없이"가 아니라 "동일 policy prompt 하에서 student가 재도출"로 볼 수 있다.
+- 단 주의: system rule을 쓰면 base policy가 바뀐다. 모든 arm에 동일 적용해야 한다.
+
+**DAgger/TermiGen 대비 포지셔닝**
+
+teacher가 개별 recovery를 쓰는 게 아니라, student에게 일반 recovery policy prior를 부여한다. B/DAgger와 직접 섞이지 않는다. A/B/C 모두 같은 policy prior 위에서 비교하면 공정하다.
+
+**구현 비용/난이도**
+
+낮음. system prompt 한 줄 추가 + 모든 rollout/eval/collection에 동일 적용 여부 기록.
+
+**C1/C2**
+
+둘 다. 특히 C2 수율을 올리는 보조 장치. C1 capability에도 도움이 될 수 있다.
+
+---
+
+### 2. Inspection-Direction Hint as User/Developer Message
+
+**무엇인가**
+
+- content: inspection-direction. diagnosis를 말하지 않고 어디를 더 검사해야 하는지만 말함.
+- delivery: 현재 harness에서는 user message가 가장 싸다. 더 좋게는 developer/tool instruction처럼 "audit request"로 분리할 수 있다.
+- 예: "Do not assume the functional tests cover the full grading criteria. Inspect task text and repository artifacts for additional non-functional requirements."
+
+**왜 유망한가**
+
+C1 관점에서 recovery success를 얻는 가장 현실적인 방법이다. diagnosis보다 약해서 DAgger화가 덜하고, exact-action보다 훨씬 방어 가능하다. 학생이 inspection action을 직접 고르고, 그 observation에서 recovery를 만들면 student-instantiated action이라는 C1 차별점이 산다.
+
+**leak/rederive 영향**
+
+- leak: user delivery면 여전히 `the user asks` leak가 생길 수 있다. 하지만 C1에서는 input-strip이면 capability상 허용 가능하다.
+- C2: strict 인정은 어렵다. 단 rederive가 diagnosis뿐 아니라 inspection action-class까지 확인하면 일부 C2 후보가 생길 수 있다.
+- rederive-strong 기준: hint 없이도 같은 inspection action-class를 선택하거나 같은 evidence를 찾아야 한다.
+
+**DAgger/TermiGen 대비 포지셔닝**
+
+B/DAgger는 teacher가 recovery를 직접 쓴다. 이 방법은 teacher가 어디를 볼지만 알려주고, command/action sequence는 student가 만든다. `teacher diagnosis/action`보다 약한 expert intervention으로 포지셔닝 가능하다.
+
+**구현 비용/난이도**
+
+낮음~중간. 지금 Claude-as-teacher가 작성 가능. 단 hint strength taxonomy를 로그에 남겨야 한다: `inspection_direction / diagnosis / action_class / exact_action`.
+
+**C1/C2**
+
+주로 C1. rederive-strong이 붙으면 일부 C2.
+
+---
+
+### 3. Tool-or-Environment Audit Observation
+
+**무엇인가**
+
+- content: inspection-direction 또는 evidence snippet.
+- delivery: user hint가 아니라 tool/environment observation으로 제공. 예를 들어 `audit_check` tool이 "functional tests passed, but non-functional markers may remain; relevant files: ..." 또는 "grader-visible artifact differs from task spec" 같은 observation을 반환.
+- 더 강한 버전은 benchmark/harness audit tool이 actual failing assertion, missing file, output path mismatch 등을 observation으로 노출.
+
+**왜 유망한가**
+
+student는 user의 사회적 hint를 메타참조하는 대신 환경 관찰을 처리한다. terminal agent에게 가장 자연스러운 정보 채널은 tool output이다. leak phrase가 줄고, reasoning이 evidence-grounded가 된다.
+
+**leak/rederive 영향**
+
+- leak: `the user asks`류는 줄어든다. 대신 `audit tool says`를 외울 수는 있다. 이건 user-leak보다 덜 치명적이고, agent setting에서는 tool observation을 근거로 쓰는 게 정상이다.
+- C2: 애매하다. tool observation 자체가 teacher/harness가 만든 추가 정보라면 pure C2는 아니다. 하지만 eval에도 같은 audit tool이 존재한다면 policy로 정당화 가능하다.
+- mechanism claim은 "student self-recovery from additional environment evidence"가 된다.
+
+**DAgger/TermiGen 대비 포지셔닝**
+
+DAgger는 expert action label이고, TermiGen은 injected failure/recovery다. 이 방식은 recovery label 전에 environment feedback을 풍부하게 해서 student가 자기 action을 생성하게 한다. RL/interactive-agent 쪽에 더 가깝다.
+
+**구현 비용/난이도**
+
+중간~높음. fake tool로 시작하면 쉽지만 논문 방어가 약하다. 실제 grader/audit signal을 정식 tool로 만들면 구현 비용이 커진다. 다만 benchmark bug 탐지에는 매우 강하다.
+
+**C1/C2**
+
+C1에 강함. C2는 "eval에도 같은 tool이 제공되는가"에 따라 가능. pure C2라기보다 `C1-env-feedback` arm으로 분리하는 게 안전하다.
+
+---
+
+### 4. Retrieved Evidence / Spec Snippet Hint
+
+**무엇인가**
+
+- content: evidence, not diagnosis. task description, README, grader-visible spec, config file, failing assertion 주변 텍스트 등을 검색/검색결과처럼 제공.
+- delivery: retrieved-doc block 또는 tool observation. user message보다 retrieval channel이 낫다.
+- 예: "Relevant task/spec excerpts:" 다음에 task statement나 constraints.txt의 해당 줄을 제공. "그래서 X가 문제"라고 말하지 않음.
+
+**왜 유망한가**
+
+teacher가 diagnosis를 말하지 않고, student가 읽고 해석할 evidence를 준다. C1 capability에는 충분히 도움이 되고, C2 관점에서도 diagnosis laundering보다 훨씬 낫다. 특히 Gate 2의 benchmark bug/hidden condition 문제는 spec evidence를 잘 보게 하는 것만으로도 개선될 수 있다.
+
+**leak/rederive 영향**
+
+- leak: retrieved doc를 `hint`로 부르지 않으면 user-meta leak가 줄어든다. 그래도 모델이 "provided excerpt"라고 말할 수는 있다.
+- C2: strict C2는 여전히 어렵다. student가 hint 없이 같은 document를 retrieve/read해야 rederive-strong이다. 따라서 rederive는 diagnosis match뿐 아니라 retrieval/action match를 봐야 한다.
+- 좋은 점: diagnosis가 아니라 evidence라서 `hint-derived diagnosis`보다 방어 가능하다.
+
+**DAgger/TermiGen 대비 포지셔닝**
+
+teacher label이 아니라 retrieval augmentation이다. DAgger와 다른 축이다. 논문에서는 `expert information as evidence, student-instantiated recovery`라고 포지셔닝할 수 있다.
+
+**구현 비용/난이도**
+
+중간. 지금은 Claude가 spec/evidence snippet을 골라줄 수 있다. 나중에는 task files/README/test logs에서 retrieval heuristic을 만들 수 있다.
+
+**C1/C2**
+
+C1에 매우 적합. C2는 retrieval rederive 통과 시 가능.
+
+---
+
+### 5. Action-Class Hint
+
+**무엇인가**
+
+- content: action-class. exact command는 금지, 하지만 "merge the heads", "inspect wildcard DNS entries", "check non-functional TODO markers", "adjust timeout/backoff margin" 같은 recovery class를 줌.
+- delivery: user/developer message 또는 tool observation.
+
+**왜 유망한가**
+
+capability signal을 빠르게 얻는다. C1이 정말 B보다 imitable한지 보려면 일정량의 successful student recovery가 필요하다. inspection-only가 너무 약하면 action-class hint가 practical middle ground다. exact-action은 DAgger에 너무 가까우니 피하고, action-class까지만 허용한다.
+
+**leak/rederive 영향**
+
+- leak: user delivery면 leak가 많을 수 있다. C1 capability에는 허용 가능, C2에는 거의 불리하다.
+- rederive: action-class를 hint 없이 말하거나 실행해야 strong/weak. 대부분 rederive-fail일 가능성이 높다.
+- C2에는 거의 쓰지 말고 C1 data-yield를 위한 도구로 보는 게 맞다.
+
+**DAgger/TermiGen 대비 포지셔닝**
+
+DAgger보다 teacher intervention이 약하다면 "teacher gives recovery class, student realizes commands"라고 주장할 수 있다. 하지만 exact command/patch를 주면 DAgger와 차이가 거의 사라진다. 따라서 exact-action은 C1에서도 별도 ablation 또는 제외가 낫다.
+
+**구현 비용/난이도**
+
+낮음. Claude-as-teacher가 빠르게 작성 가능. 다만 `hint_strength=action_class`로 명확히 태깅해야 한다.
+
+**C1/C2**
+
+C1 전용에 가깝다. C2 strict claim에는 부적합.
+
+---
+
+### 추천 순위 요약
+
+```text
+1. Global self-check standing rule              → C1+C2, 가장 방어 가능
+2. Inspection-direction hint                    → C1 주력, 일부 C2 가능
+3. Tool/env audit observation                   → C1 강함, agent적으로 자연스러움
+4. Retrieved evidence/spec snippet              → C1 강함, C2는 retrieval-rederive 필요
+5. Action-class hint                            → C1 yield용, C2에는 부적합
+```
+
+비추천 또는 별도 diagnostic:
+
+- exact-action hint: C1에서도 DAgger와 너무 가까움. ablation으로만.
+- assistant-voice hint: strict C 금지. teacher rationale laundering.
+- user-message diagnosis hint: 현재 방식. C1 data generation에는 계속 쓸 수 있지만, leak가 많고 C2 yield는 낮다.
+
+### 비교 설계 제안
+
+논문/실험에서는 hint를 한 종류로 뭉개지 말고, strength와 channel을 분리해서 report하자.
+
+```text
+hint_strength ∈ {inspection_direction, evidence, diagnosis, action_class, exact_action}
+hint_channel  ∈ {system_rule, user_msg, tool_observation, retrieved_doc, self_reflection_prompt}
+```
+
+첫 capability 실험은 너무 많은 축을 동시에 열지 말고:
+
+- C1-inspection/user 또는 retrieved-doc
+- C1-action-only
+- B-teacher-recovery
+
+정도로 시작하는 게 맞다. 이후 ablation으로 action-class와 tool/audit channel을 추가한다.
+
+### 논문에서 hint를 어떻게 정의할지
+
+논문에서는 hint를 "정답 command가 아니라, student가 on-policy failure state에서 복구 trajectory를 생성하도록 돕는 **temporary generation-time scaffold**"로 정의하는 게 좋다. 핵심 조건은: hint는 recovery 데이터 생성 중에만 제공되고, SFT training input과 evaluation input에서는 제거된다. 우리는 hint를 strength(content)와 delivery(channel)로 분류하며, capability arm(C1)에서는 hint-mediated student-instantiated recovery를 학습하고, mechanism arm(C2)에서는 hint 없이도 같은 diagnosis/action을 재도출한 rederive-strong subset만 strict self-recovery로 인정한다. 이렇게 쓰면 hint를 도구로 쓰되, capability claim과 self-recovery mechanism claim을 혼동하지 않는다.
