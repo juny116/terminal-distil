@@ -1,0 +1,56 @@
+{
+  "amass_subdomain_enumeration_medium": {
+    "harvest": "gate2_harvest", "glob": "*amass*", "ece": 4, "failure_type": "answer_spec",
+    "l1": "Before declaring complete, inspect the exact format of every entry you wrote and check whether any name that the records contain is missing from your output.",
+    "l2": "Two normalization issues remain: wildcard entries keep a leading dot (e.g. '.example.megacorp.com') instead of being stripped to 'example.megacorp.com', and the apex name 'megacorp.com' is dropped even though it appears in the records.",
+    "l3": "Fix the subdomain normalization so wildcard prefixes are fully removed and the apex domain is included, then regenerate and re-verify the output."
+  },
+  "alembic_migration_conflict_medium": {
+    "harvest": "gate2_harvest", "glob": "*alembic*", "ece": 13, "failure_type": "process",
+    "l1": "Re-examine what the grader inspects about the revision you reported: check whether that revision file actually records more than one parent.",
+    "l2": "You linearized the two heads by editing a single migration's down_revision to one parent, but a real merge of two heads must be a migration whose down_revision lists BOTH parents.",
+    "l3": "Create a proper merge migration that joins the two divergent heads (instead of editing one migration's parent), and report that new revision."
+  },
+  "agda_cubical_homotopy_types_medium": {
+    "harvest": "gate2_harvest", "glob": "*agda_cubical*", "ece": 14, "failure_type": "answer_spec",
+    "l1": "Validity depends on more than logical soundness: re-read the required proof structure and check that every proof file actually contains all required sections.",
+    "l2": "proof_02's logic is sound but the file is missing the required CONCLUSION line, so by the structural-completeness rule it must be classified INVALID, not VALID.",
+    "l3": "Apply the structural-completeness criterion when classifying: a proof missing a required section is INVALID."
+  },
+  "alloy_analyzer_scope_insufficient_medium": {
+    "harvest": "gate2_harvest", "glob": "*alloy_analyzer*", "ece": 4, "failure_type": "answer_spec",
+    "l1": "Do not decide which limits to raise from the scene JSON numbers alone; cross-check each resource you plan to include against what the render log explicitly says about it.",
+    "l2": "You included vertex_attributes from the raw scene maximum, but the render log states vertex attributes are adequate and only flags texture_units and uniform_buffers; vertex_attributes should not be in the output.",
+    "l3": "Include only the resources the render log actually flags as insufficient, not every resource whose raw scene maximum exceeds the current limit."
+  },
+  "airflow_xcom_large_data_medium": {
+    "harvest": "gate2_harvest", "glob": "*airflow_xcom*", "ece": 5, "failure_type": "process",
+    "l1": "Compare how many records enter the pipeline against how many leave it, and re-read the required output record count.",
+    "l2": "Your fix kept the transform's status=='Completed' filter, which drops the input from 650 to 469 records, violating the no-data-loss requirement and the >=650 output count.",
+    "l3": "Stop discarding rows in the transform step so the full record count is preserved end to end, and report the full count."
+  },
+  "ansible_inventory_dynamic_script_medium": {
+    "harvest": "gate2b_harvest", "glob": "*ansible_inventory_dynamic*", "ece": 12, "failure_type": "answer_spec",
+    "l1": "Re-read exactly how the grader counts groups and hosts from the script's raw --list JSON, then compare that against the actual top-level key set of the JSON you emit.",
+    "l2": "The grader treats each top-level JSON key other than _meta as one group; if every role group is nested under all.children, only 'all' is a top-level group, so you expose 1 group while reporting 4.",
+    "l3": "Emit each role group as its own top-level entry with a hosts list (alongside _meta), rather than nesting them under all.children."
+  },
+  "ansible_template_rendering_error_medium": {
+    "harvest": "gate2b_harvest", "glob": "*ansible_template_rendering*", "ece": 1, "failure_type": "process",
+    "l1": "Re-examine every line of the template top to bottom, not just the block-tag lines, and compare each {...} against how the other variables in the same file are written.",
+    "l2": "A syntax-check that validates YAML does not validate Jinja2 variable bracketing; one variable is wrapped in single braces and is emitted as literal text, which is a distinct defect the grader checks separately from the if/for tag errors.",
+    "l3": "Build a complete inventory of distinct defects and validate by actually rendering the template, rather than stopping after the first check that returns success."
+  },
+  "a_star_pathfinding_medium": {
+    "harvest": "gate2b_harvest", "glob": "*a_star_pathfinding*", "ece": 1, "failure_type": "answer_spec",
+    "l1": "Re-examine how the grader relates path_length to path_coordinates, and contrast that with how you defined path_length.",
+    "l2": "There is an off-by-one mismatch: you set path_length to the number of moves (coordinates minus one), but the validation expects path_length to equal the exact number of entries in path_coordinates.",
+    "l3": "Make path_length (and path_cost, which must equal it) equal to the length of the path_coordinates list, without changing the path itself."
+  },
+  "ar_archive_index_corrupted_medium": {
+    "harvest": "gate2b_harvest", "glob": "*ar_archive*", "ece": 25, "failure_type": "process",
+    "l1": "After the build runs, inspect exactly what the archive's member listing prints and compare it to the member names the task expects.",
+    "l2": "The archive ends up holding a single combined object rather than the separately-named members the symbol-index test requires (the upstream fixtures are also damaged, so a rebuild is needed).",
+    "l3": "Produce the functions as individually-named object files and archive them as distinct members, then refresh the index, instead of bundling everything into one object."
+  }
+}
