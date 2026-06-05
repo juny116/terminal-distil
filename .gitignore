@@ -30,3 +30,5 @@ secrets.json
 *.swp
 *.swo
 .serve_creds
+runs
+data/c1/
