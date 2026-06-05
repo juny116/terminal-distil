@@ -1,0 +1,42 @@
+{
+  "airtable_api_rate_limit_handling_medium": {
+    "ece": 3,
+    "path_glob": "*airtable*",
+    "failure_type": "answer_spec",
+    "core": "duration, 19.0, test_duration_respects_rate_limit, RateLimitError, wait_time",
+    "l1": "Before declaring complete, re-check the duration you wrote to result.json against the rate-limit test's threshold with realistic margin: a value sitting right on the boundary will not pass reliably across runs; make sure it clears the bound comfortably, not by a hair.",
+    "l2": "Your script only sleeps the single wait_time from each RateLimitError, so 100 records produce 19 one-second waits and duration lands at ~19.00s, exactly on test_duration_respects_rate_limit's >= 19.0 edge, which fails under jitter. Throttle proactively to 5 requests/second (sleep ~1s after every batch of 5, or sleep 1.0/5 between records) so total duration is a comfortable ~20s, well above 19.0."
+  },
+  "alembic_migration_conflict_medium": {
+    "ece": 13,
+    "path_glob": "*alembic*",
+    "failure_type": "process",
+    "core": "alembic merge heads, down_revision, merge_revision, test_merge_revision_has_down_revisions, tuple",
+    "l1": "Re-read what the grader inspects about the revision you put in result.txt: the file named by merge_revision must itself record that it joined the two divergent branches. Ask whether a migration that simply points back to a single parent can ever represent a merge of two heads, and whether your reported revision actually has more than one parent.",
+    "l2": "Do not linearize by rewriting one migration's down_revision to a single string. Instead run 'alembic merge -m \"merge heads\" heads' to generate a NEW merge migration whose down_revision is a tuple of both parents ('b2c3d4e5f6g7', 'c3d4e5f6g7h8'). Put that new revision's ID in merge_revision= in result.txt. test_merge_revision_has_down_revisions requires the merge file to contain a parenthesized tuple of multiple down_revisions, which a single-parent revision fails."
+  },
+  "agda_cubical_homotopy_types_medium": {
+    "ece": 14,
+    "path_glob": "*agda_cubical*",
+    "failure_type": "answer_spec",
+    "core": "proof_02, CONCLUSION, test_proof_02_is_invalid, structural",
+    "l1": "Validity here depends on more than logical soundness: re-read the required proof structure in the instructions and check that every file actually contains all required sections, not just sound reasoning.",
+    "l2": "proof_02's logic (conjunction elimination) is sound, but the file has no CONCLUSION line, and the spec requires proofs to end with CONCLUSION. A proof missing the CONCLUSION keyword is structurally incomplete and must be classified INVALID; mark proof_02=INVALID."
+  },
+  "alloy_analyzer_scope_insufficient_medium": {
+    "ece": 4,
+    "path_glob": "*alloy_analyzer*",
+    "failure_type": "answer_spec",
+    "core": "vertex_attributes, texture_units, uniform_buffers, render_log.txt, resource_adjustments.json",
+    "l1": "Don't decide which limits to raise from the JSON numbers alone: render_log.txt tells you exactly which resources the renderer actually flagged as insufficient, and which it considers adequate. Cross-check every resource you plan to include against what the log explicitly says about it.",
+    "l2": "Do not include vertex_attributes. Although City Landscape lists vertex_attributes=12 (> current 10) in scene_complexity.json, render_log.txt states 'Vertex attributes configuration appears adequate' and 'Detailed analysis required for texture_units and uniform_buffers' - only texture_units and uniform_buffers should be in resource_adjustments.json. Taking the naive max across all scenes wrongly adds vertex_attributes; fragment_outputs must also be excluded."
+  },
+  "airflow_xcom_large_data_medium": {
+    "ece": 5,
+    "path_glob": "*airflow_xcom*",
+    "failure_type": "process",
+    "core": "transform_task, status Completed filter, record_count, 650, data_processor_fixed.py",
+    "l1": "Compare the number of records that go INTO the pipeline against the number that come OUT, and re-read the constraint about how many records the output must contain: the count the tests accept is tied to the full input, not a subset.",
+    "l2": "Your fix changed storage but kept transform_task's status == 'Completed' filter, which drops the input from 650 to 469 rows; the task forbids data loss and the tests require at least 650 output records, so remove that filter (or otherwise stop discarding rows) and report the full count in fix_summary.txt."
+  }
+}
