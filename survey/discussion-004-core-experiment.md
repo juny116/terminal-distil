@@ -1642,3 +1642,231 @@ hint_channel  ∈ {system_rule, user_msg, tool_observation, retrieved_doc, self_
 ### 논문에서 hint를 어떻게 정의할지
 
 논문에서는 hint를 "정답 command가 아니라, student가 on-policy failure state에서 복구 trajectory를 생성하도록 돕는 **temporary generation-time scaffold**"로 정의하는 게 좋다. 핵심 조건은: hint는 recovery 데이터 생성 중에만 제공되고, SFT training input과 evaluation input에서는 제거된다. 우리는 hint를 strength(content)와 delivery(channel)로 분류하며, capability arm(C1)에서는 hint-mediated student-instantiated recovery를 학습하고, mechanism arm(C2)에서는 hint 없이도 같은 diagnosis/action을 재도출한 rederive-strong subset만 strict self-recovery로 인정한다. 이렇게 쓰면 hint를 도구로 쓰되, capability claim과 self-recovery mechanism claim을 혼동하지 않는다.
+
+## 26 — @codex (2026-06-05)
+
+juny116 정정이 맞다. #25에서 내가 `Global self-check standing rule`을 TOP1로 둔 건 **hint ranking으로는 부정확**했다. 그건 problem-specific information이 0인 general policy/control이지, juny116이 말한 L1/L2식 "진짜 힌트"가 아니다. 내가 leak 방어와 C2 provenance 기준을 섞어서 "힌트를 덜 주는 것"을 위로 올린 셈이다. 연구 질문이 "진짜 hint content가 복구와 capability에 도움되나"라면 self-check는 hint 후보에서 빼야 한다.
+
+### 1. 축 재정의: content와 channel을 분리
+
+논문/실험에서 hint는 다음 두 축으로만 정의하자.
+
+```text
+Hint content strength:
+  L1 inspection-direction
+    = 어디를/무엇을 더 검사해야 하는지 알려줌. 원인/수정은 말하지 않음.
+  L2 diagnosis
+    = 무엇이 문제인지 알려줌. exact command/patch는 말하지 않음.
+  L3 action-class
+    = 어떤 종류의 복구 행동을 해야 하는지 알려줌. exact command/patch는 말하지 않음.
+  L4 exact-action
+    = 구체 command/patch/literal answer. 원칙적으로 main 제외, ablation/upper-bound.
+
+Delivery channel:
+  user message
+  developer/system episodic instruction
+  tool/environment observation
+  retrieved evidence/doc snippet
+  self-reflection prompt
+```
+
+`Global self-check standing rule`은 이 표 밖이다. 위치는:
+
+```text
+Base-policy control:
+  global self-check prompt applied to baseline/A/B/C/eval equally
+```
+
+이건 hint 효과를 재는 실험의 confound를 줄이거나 C2 yield를 올릴 수는 있지만, hint treatment 자체로 세면 안 된다.
+
+### 2. "진짜 hint가 도움되나"를 재는 content 우선순위
+
+복구성공 + capability 향상 기준이면 content priority는 이렇게 두는 게 맞다.
+
+#### 1순위: L1 inspection-direction
+
+가장 먼저 테스트할 진짜 hint다. 이유는 teacher 정보가 가장 약하면서도 recovery exploration을 바꿀 수 있기 때문이다. C1의 차별점, 즉 "teacher가 전체 trajectory를 쓰지 않고 student가 복구를 실현한다"를 가장 잘 살린다.
+
+예:
+
+```text
+Functional tests may not cover all grading criteria. Inspect task requirements and repository artifacts for non-functional constraints before declaring success.
+```
+
+기대:
+
+- raw recovery는 L2보다 낮을 수 있음.
+- C2 rederive 가능성은 가장 높음. diagnosis를 직접 주지 않으므로 student가 observation을 통해 스스로 도달할 여지가 있음.
+- DAgger와 가장 멀다.
+
+#### 2순위: L2 diagnosis
+
+현재 Gate 2에서 많이 쓴 진짜 hint에 가깝다. 복구성공 yield는 좋다. 단 rederive-fail이면 hint-mediated DAgger에 가까워진다.
+
+예:
+
+```text
+The likely issue is that the grader checks for TODO markers left in generated files, not just functional test behavior.
+```
+
+기대:
+
+- C1 capability data yield가 높음.
+- C2 strict yield는 낮을 가능성이 큼.
+- B와의 차별점은 "teacher diagnosis + student action realization"이다.
+
+#### 3순위: L3 action-class
+
+복구성공을 얻기 위한 practical lever다. 하지만 DAgger와 거리가 가까워진다. C1 capability arm에서는 쓸 수 있지만, C2 claim에는 거의 부적합하다.
+
+예:
+
+```text
+You likely need to merge the divergent migration heads rather than editing a single migration file.
+```
+
+기대:
+
+- raw recovery 높음.
+- capability 실험에는 가치 있음.
+- mechanism claim은 약함.
+- exact command를 주는 순간 L4로 넘어가므로 금지선이 필요.
+
+#### 4순위: L4 exact-action
+
+main hint가 아니다. upper-bound 또는 failure analysis용이다.
+
+예:
+
+```text
+Run `alembic merge -m ... heads`.
+```
+
+이건 DAgger/OEC expert action label과 너무 가까워진다. C1에서도 main에 넣으면 contribution이 흐려진다.
+
+### 3. channel 우선순위: capability 기준
+
+content를 고정한 뒤 channel을 바꿔야 한다. channel ranking은 hint 효과를 보되 leakage를 관리하는 실용 순서다.
+
+#### A. user message
+
+가장 싸고 현재 infra와 맞는다. leak는 많지만 C1 capability에는 input-strip이면 허용 가능하다. 첫 capability 실험은 user-msg로 가도 된다. 단 `hint_channel=user_msg`라고 명시하고, output leak는 analysis로 보고한다.
+
+#### B. retrieved evidence/doc snippet
+
+C1에 매우 좋다. teacher가 answer를 말하는 대신 relevant evidence를 보여준다. 특히 L1과 잘 맞는다. 다만 retrieval 자체가 teacher-selected라면 provenance annotation이 필요하다.
+
+#### C. tool/environment observation
+
+agentically 가장 자연스럽다. 하지만 tool이 실제 eval에도 존재하는지 여부가 중요하다. fake audit tool이면 C1 special setting이 되고, real tool이면 강한 방법이 된다.
+
+#### D. developer/system episodic instruction
+
+특정 prefix hint를 system/developer로 넣으면 user-leak는 줄지만, 여전히 generation-time hidden intervention이다. capability에는 괜찮을 수 있으나 channel 효과가 복잡하다. global self-check와 섞지 말아야 한다.
+
+#### E. self-reflection prompt
+
+"다시 생각해봐" 류는 content가 거의 없으면 hint가 아니라 control에 가깝다. 특정 inspection target을 포함하면 L1 hint가 된다. meta-prompt는 C1 yield를 올릴 수 있지만, 뭘 정보로 줬는지 흐려지므로 main보다는 ablation이 낫다.
+
+assistant-voice scaffold는 channel 후보에서 제외한다. strict C 금지이고, C1에서도 mixed-author diagnostic으로만 둔다.
+
+### 4. content × channel 매트릭스 설계
+
+처음부터 모든 조합을 열면 실험이 터진다. 가장 작은 matrix는 이렇게 가자.
+
+```text
+Rows = content strength
+  L1 inspection-direction
+  L2 diagnosis
+  L3 action-class
+
+Columns = delivery channel
+  user-msg
+  retrieved-evidence/doc
+  tool/env observation
+```
+
+우선순위는:
+
+1. **L1 × user-msg**: 현재 infra로 제일 싸고, 진짜 hint 최소 강도. baseline treatment.
+2. **L2 × user-msg**: recovery yield가 높을 가능성이 큰 capability treatment. 지금 Gate 2와 연결됨.
+3. **L1 × retrieved evidence**: diagnosis를 안 주면서 evidence를 줌. 논문화 방어가 좋음.
+4. **L2 × retrieved evidence**: diagnosis에 가까운 evidence를 주되 teacher statement가 아니라 source text로 제공.
+5. **L3 × user-msg**: yield upper-ish, C1 capability ablation. DAgger에 가까워지는 경계 확인.
+6. **L1/L2 × tool-env observation**: 구현 비용이 더 들지만 agent적으로 가장 자연스러운 후속.
+
+첫 capability run은 `L1 user`, `L2 user`, `L3 user`만으로도 된다. channel은 고정하고 content strength sweep을 먼저 하는 게 가장 깨끗하다. 그 다음 같은 L1/L2를 retrieved/tool channel로 옮겨 channel effect를 본다.
+
+### 5. C1/C2에서의 위치
+
+C1에서는 L1/L2/L3 모두 가능하다. 평가 기준은 간단하다.
+
+```text
+hint is present only during generation
+hint is stripped from training input
+deployment eval is hint-free
+primary metric = pass-rate / recovery success after SFT
+```
+
+C2에서는 content가 강해질수록 strict 인정 가능성이 낮아진다.
+
+- L1: C2 후보 가능. rederive는 같은 inspection action-class 또는 evidence discovery를 봐야 함.
+- L2: 대부분 rederive-fail일 가능성. strong이면 좋지만 기대 낮음.
+- L3: 거의 C2 아님. C1 capability/upper-bound용.
+- L4: C2 불가, C1 main도 비추천.
+
+따라서 C2는 hint ranking의 주목적이 아니라, 각 hint condition에서 "얼마나 self-derived로 볼 수 있는가"를 분석하는 secondary table이다.
+
+### 6. DAgger/TermiGen 대비 포지셔닝
+
+content strength에 따라 포지셔닝이 달라진다.
+
+```text
+L1 inspection-direction:
+  farthest from DAgger. Teacher nudges exploration, student finds evidence/action.
+
+L2 diagnosis:
+  hint-mediated DAgger-ish. Teacher supplies latent diagnosis, student instantiates action.
+
+L3 action-class:
+  close to DAgger. Teacher supplies recovery class, student supplies command surface.
+
+L4 exact-action:
+  basically expert action / DAgger-like. main C에서 제외.
+```
+
+TermiGen 대비 차이는 모든 L1-L3에서 유지된다. failure source가 on-policy student failure이기 때문이다. 하지만 B/DAgger 대비 차별점은 L1에서 가장 강하고, L3/L4로 갈수록 약해진다.
+
+### 7. juny116의 L1/L2 정의가 맞나?
+
+맞다. juny116가 말한 L1/L2가 우리가 논문에서 말해야 할 "진짜 hint"에 가깝다. 더 명확히 하려면 이렇게 정의하자.
+
+- **Hint** = a task/state-specific, generation-time informational intervention that changes the student's recovery attempt, removed from training and evaluation inputs.
+- **L1 inspection hint** = points to what evidence or invariant to inspect, without stating the fault.
+- **L2 diagnosis hint** = states the likely fault or missing condition, without specifying the recovery command.
+- **L3 action-class hint** = states the class of recovery action, without exact command/patch.
+- **L4 exact-action hint** = gives command/patch; not a main hint, only upper-bound/diagnostic.
+
+Global self-check는 이 정의에 안 들어간다. 그건 standing policy prior/control이다.
+
+### 8. 정정된 추천
+
+#25의 TOP5를 폐기하고, 정정된 추천은 다음이다.
+
+```text
+Main hint content sweep:
+  1. L1 inspection-direction
+  2. L2 diagnosis
+  3. L3 action-class
+  4. L4 exact-action only as upper-bound
+
+Main channel order:
+  1. user-msg first, because cheapest and already implemented
+  2. retrieved evidence/doc, because more paper-defensible
+  3. tool/env observation, because most agent-natural but more engineering
+
+Control, not hint:
+  global self-check standing rule, applied to all arms or used as separate baseline/control
+```
+
+최초 논문화용 실험은 `user-msg channel`을 고정하고 L1/L2/L3 content sweep으로 가는 게 제일 명료하다. 질문이 "진짜 hint content가 복구와 capability에 도움이 되나"라면 이것이 가장 직접적인 설계다. leak/rederive는 C2/provenance analysis로 옆에 붙이고, C1 capability 판단의 주 기준으로 삼지 않는다.

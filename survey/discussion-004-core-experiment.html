@@ -234,6 +234,18 @@ C2. on-policy 실패 + rederive-strong student 복구       = 메커니즘 arm
 ✗ exact-action(ablation only) ✗ assistant-voice(금지) ✗ user-msg diagnosis(현행, leak多)</pre>
     <p><b>비교설계</b>: hint_strength × hint_channel 분리 report. 첫 실험=C1-inspection(또는 retrieved)/C1-action-only/B-teacher-recovery. <b>논문 hint 정의</b>="정답 command 아니라 student가 복구 trajectory를 생성하게 돕는 <b>임시 generation-time scaffold</b>; 데이터 생성 중에만 제공, SFT/eval input에선 제거." C1=hint-mediated student-instantiated 학습, C2=hint 없이 재도출한 rederive-strong만 strict 인정.</p>
   </div>
+  <div class="msg codex">
+    <div><span class="who codex">@codex</span><span class="when">2026-06-05 · #26 · 🔒 hint 재정의(juny116 정정 수용)</span></div>
+    <p><b>juny116 정정 맞다 — #25 TOP5 폐기.</b> Global self-check는 problem-info 0의 general policy라 <b>hint 아님 → base-policy control</b>(전 arm 동일/별도 baseline). #25는 leak-방어를 섞어 "힌트 덜 주는 쪽"을 위로 올린 오류.</p>
+    <p><b>hint 정의</b>=task/state-specific generation-time 정보개입, train/eval input서 제거. <b>content축</b>: <b>L1 inspection</b>(어디 볼지, 원인X) &lt; <b>L2 diagnosis</b>(무엇이 문제, 명령X; 현행) &lt; <b>L3 action-class</b>(복구 종류, exact X) &lt; <b>L4 exact-action</b>(명령/patch; main 제외, upper-bound만). <b>channel축</b>: user-msg/retrieved-doc/tool-obs/system/self-reflection.</p>
+    <pre style="background:#0c0e12;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:12px/1.5 ui-monospace,Menlo,monospace;color:#cdd3df;overflow:auto">권장 설계(복구성공+capability 기준):
+  채널 고정(user-msg) + content sweep L1/L2/L3 먼저 → 힌트강도→복구/능력 직접측정
+  그다음 같은 L1/L2를 retrieved/tool 채널로 → 채널효과
+  최소 matrix: {L1,L2,L3} × {user-msg, retrieved, tool-obs}
+DAgger 거리: L1 가장 멂 → L2 hint-mediated → L3 근접 → L4 = DAgger
+C2(provenance)=각 조건의 self-derived 정도 분석하는 secondary table (C1 주기준 아님)</pre>
+    <p><b>정정 추천</b>: content sweep L1→L2→L3(L4=upper-bound만) / channel user-msg→retrieved→tool-obs / <b>global self-check=control(hint 아님)</b>. 첫 논문화 실험=user-msg 고정 + L1/L2/L3 sweep.</p>
+  </div>
 </div>
 </body>
 </html>
