@@ -1,0 +1,16 @@
+{
+  "prefix_id": "alembic_ece13",
+  "task": "alembic_migration_conflict_medium",
+  "failure_type": "process",
+  "hint_level_used": "L2",
+  "hint_text": "(hint)",
+  "hint_text_hash": "4062139572",
+  "hint_strength": "diagnosis",
+  "hint_recovery_reward": 1.0,
+  "reasoning_present_on_recovery_turn": true,
+  "hint_strip_label": "leak",
+  "rederive_label": null,
+  "core_identifiers": [],
+  "strict_main_eligible": false,
+  "exclude_reason": "hint_strip:leak"
+}

@@ -1,0 +1,16 @@
+{
+  "prefix_id": "alloy_an_ece4",
+  "task": "alloy_analyzer_scope_insufficient_medium",
+  "failure_type": "answer_spec",
+  "hint_level_used": "L1",
+  "hint_text": "(hint)",
+  "hint_text_hash": "4062139572",
+  "hint_strength": "diagnosis",
+  "hint_recovery_reward": 1.0,
+  "reasoning_present_on_recovery_turn": true,
+  "hint_strip_label": "leak",
+  "rederive_label": null,
+  "core_identifiers": [],
+  "strict_main_eligible": false,
+  "exclude_reason": "hint_strip:leak"
+}

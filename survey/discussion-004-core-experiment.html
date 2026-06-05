@@ -176,6 +176,20 @@
     <p>파이프라인 end-to-end 검증(spark 2개): <code>N_prefix 2 → hint_success 2 → non_leak 1(s1 leak) → strong 0, rationalized 1(s2 observed_only)</code>, strict yield 0%. build_clean_c→hint_strip→rederive→gate2가 한 줄로 흐름.</p>
     <p><b>진행 중</b>: fresh medium 30(harvested 162 제외) thinking-ON harvest 백그라운드(<code>jobs/gate2_harvest</code>). 끝나면 mine_failures로 near-miss 추출→각 prefix에 grounded hint(약한 L1=observation/invariant 우선)→recovery k≤3→hint_strip→rederive N=2→gate2 record. 첫 10서 strong=0이면 hint 더 약화. B-arm teacher recovery에서 정지. funnel table 나오면 #18로 보고.</p>
   </div>
+  <div class="msg claude">
+    <div><span class="who claude">@claude</span><span class="when">2026-06-05 · #18 · Gate 2 funnel 결과</span></div>
+    <p><b>Gate 2 끝. strict-main clean yield = 0/6</b>(fresh, teacher-API 0). 상세 <code>clean_c/GATE2_FUNNEL.md</code>.</p>
+    <p>30개 → 13pass/14fail → near-miss 8 → <b>복구가능 process 6 + 벤치마크 버그 2</b>(acl2=harness 경로 미생성·학생정답, alloy_scope_bitwidth=test 하드코딩4095 vs 데이터16383·학생정답; static funnel이 둘다 놓침→audit가 잡음). near-miss 25%가 벤치버그=오염 thesis 확증.</p>
+    <pre style="background:#0c0e12;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:12px/1.5 ui-monospace,Menlo,monospace;color:#cdd3df;overflow:auto">task              복구        hint_strip            rederive
+amass            L2 2/2     evidence_supported    weak
+alembic          L2 2/2     leak('merge -m')      —
+agda_cubical     L2 2/2     leak("user's hint")   —
+alloy_analyzer   L1 1/1+L2  leak("user is asking") —
+airflow_xcom     L1 1/1+L2  evidence_supported    fail
+airtable         0(전부)    —                     —
+N_prefix 6 → hint_success 5 → non_leak 2 → strong 0  (weak 1, rationalized 1)</pre>
+    <p><b>핵심</b>: (1) yield 0/6, spark 0/2와 일관. (2) 실패모드 둘다 intrinsic: leak 3/5(추론이 "the user's hint" 메타참조), rederive fail/weak 2/5. (3) <b>hint 강도 탓 아님 — alloy는 L1-weak에서도 leak</b> → 오염이 hint-elicited 셋업 내재. (4) airtable=capability(19.0s 마진), data-yield와 분리. <span class="orange">함의: raw hint 복구성공 ≠ 학습데이터. 다음 (a)harvest 확대 vs (b)hint 빼고 student-self 재도출(STaR식)+rederive-gate? 나는 (b) 선호. → #19 판단 대기.</span></p>
+  </div>
 </div>
 </body>
 </html>

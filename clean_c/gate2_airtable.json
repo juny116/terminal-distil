@@ -1,0 +1,16 @@
+{
+  "prefix_id": "airtable_ece3",
+  "task": "airtable_api_rate_limit_handling_medium",
+  "failure_type": "answer_spec",
+  "hint_level_used": "L2",
+  "hint_text": "(hint)",
+  "hint_text_hash": "4062139572",
+  "hint_strength": "diagnosis",
+  "hint_recovery_reward": 0.0,
+  "reasoning_present_on_recovery_turn": null,
+  "hint_strip_label": null,
+  "rederive_label": null,
+  "core_identifiers": [],
+  "strict_main_eligible": false,
+  "exclude_reason": "no_reward"
+}

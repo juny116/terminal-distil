@@ -1,21 +1,21 @@
 {
-  "prefix_id": "amass_ece4",
-  "task": "amass_subdomain_enumeration_medium",
+  "prefix_id": "airflow_ece5",
+  "task": "airflow_xcom_large_data_medium",
   "failure_type": "process",
-  "hint_level_used": "L2",
+  "hint_level_used": "L1",
   "hint_text": "(hint)",
   "hint_text_hash": "4062139572",
   "hint_strength": "diagnosis",
   "hint_recovery_reward": 1.0,
   "reasoning_present_on_recovery_turn": true,
   "hint_strip_label": "evidence_supported",
-  "rederive_label": "weak",
+  "rederive_label": "fail",
   "core_identifiers": [
-    "example.megacorp.com",
-    "extraction",
-    "megacorp.com",
-    "re-verify"
+    "into",
+    "out",
+    "re-read",
+    "subset"
   ],
   "strict_main_eligible": false,
-  "exclude_reason": "rederive:weak"
+  "exclude_reason": "rederive:fail"
 }
