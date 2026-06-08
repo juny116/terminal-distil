@@ -1,0 +1,134 @@
+{
+ "bugs": [
+  {
+   "task": "alloy_analyzer_scope_insufficient_medium",
+   "bug_type": "spec_contradicts_test",
+   "evidence": "Real data: max scene requirements vs current limits are texture_units 20>8, vertex_attributes 12>10, uniform_buffers 15>6, fragment_outputs 6>4 \u2014 all four are insufficient. The test hardcodes the expected set as exactly {texture_units, uniform_buffers} (test_only_required_resources_included/test_no_extra_fields) and asserts vertex_attributes and fragment_outputs are NOT included, but City Landscape requires vertex_attributes=12 and fragment_outputs=6, so a correct solution must include all four and cannot pass."
+  },
+  {
+   "task": "annovar_annotation_databases_medium",
+   "bug_type": "hardcoded_preview",
+   "evidence": "Test hardcodes installed_count=3 and missing={hg38_cosmic70,hg38_exac03} based on a truncated 5-line \"preview\" (its own comment says \"line 5 is cut off\"), but the real /opt/annovar/humandb/humandb_databases.txt has 23 lines \u2192 13 .txt database files and missing set {hg38_cosmic70,hg38_exac03,hg38_revel}. A correct solution computes 13 and 3 missing, failing test_installed_count_correct and test_missing_databases_correct."
+  },
+  {
+   "task": "ansible_async_task_status_check_medium",
+   "bug_type": "spec_contradicts_test",
+   "evidence": "Instruction says failed = \"status != 0 OR finished != 1\" (files use rc as return code). Real data has 6 failed jobs: the 4 finished=0 jobs plus 111222333.44444 and 333444555.66677, both finished=1 but rc=1 with msg \"non-zero return code\" and error stderr. But test_failed_jobs_identified_correctly hardcodes only the 4 finished=0 jobs and asserts len==4, so a correct rc-based answer (6 jobs) fails."
+  },
+  {
+   "task": "apt_cache_depends_circular_medium",
+   "bug_type": "hardcoded_preview",
+   "evidence": "Test hardcodes expected_packages={'libssl','libcrypto','python-requests','python-urllib3'} (4 pkgs) from a 5-line file preview, but the real deployed data/package_dependencies.txt yields 14 circular packages (also gcc/binutils/cpp, docker/containerd/runc, mysql-client/libmysql, webpack/babel). A correct solution fails the equality assertion."
+  },
+  {
+   "task": "arp_spoofing_mitm_attack_medium",
+   "verdict": "BUG",
+   "bug_type": "corrupted_fixture",
+   "hardcoded": "Test computes dynamically: first baseline-IP/non-baseline-MAC row => SPOOFED_IP 192.168.1.50, ATTACKER_MAC 00:1a:2b:3c:4d:50",
+   "computed": "Intended attack is 192.168.1.100 / aa:bb:cc:dd:ee:ff, but log uses 00:1a:2b:3c:4d:XX for ALL legit hosts (none match baseline 00:0c:29:XX), so 56 rows / 11 IPs falsely look spoofed; test breaks on first => .50",
+   "evidence": "The deployed arp_traffic.log assigns every legitimate host a 00:1a:2b:3c:4d:XX MAC that differs from its baseline 00:0c:29:XX MAC, so the grader flags the FIRST row (192.168.1.50) as the attack. The real attacker (192.168.1.100 / aa:bb:cc:dd:ee:ff, matching the instruction's example) is never selected; a correct solution following the instruction is rejected and an arbitrary non-attack host is required instead."
+  },
+  {
+   "task": "articulation_points_bridges_medium",
+   "bug_type": "hardcoded_preview",
+   "evidence": "Test hardcodes expected_critical_nodes=[\"D\"] and expected_critical_links=[[\"D\",\"E\"]] from the 5-edge example in its comment, but the real deployed network_topology.txt has 62 edges (3 components); a correct solution yields 27 critical nodes and 41 critical links, so a correct answer fails the grading tests."
+  },
+  {
+   "task": "aws_iam_privilege_escalation_medium",
+   "verdict": "BUG",
+   "bug_type": "corrupted_fixture",
+   "hardcoded": "Test only enforces vulnerable_user==\"dev-user\" (given verbatim in instruction), escalation_target=any non-empty string, and dangerous_permission=any of ~18 common AWS escalation substrings; the instruction's example {dev-user, admin-role, iam:PassRole} passes trivially.",
+   "computed": "No privilege escalation path exists in the deployed data. dev-user-policy.json is {\"Statement\":[{\"Resource\":\"*\"}]} with NO Action/Effect \u2014 it grants no iam:PassRole, sts:AssumeRole, or any dangerous permission. admin-role-trust-policy allows only lambda.amazonaws.com + account root, not dev-user.",
+   "evidence": "The fixture is corrupted: a correct analysis of /home/user/iam_policies/dev-user-policy.json finds no escalation permission at all, so the task's premise (dev-user can escalate to admin-role via a dangerous permission) is unprovable from the real data. Compounding this, the grader never checks the data \u2014 it accepts the exact example answer copied from the instruction, making it both unsupported by the fixture and trivially passable."
+  },
+  {
+   "task": "aws_lambda_timeout_increase_medium",
+   "verdict": "BUG",
+   "bug_type": "too_weak",
+   "hardcoded": "Per-function expected timeout = max(1,min(900, ceil(1.5 * p95_ms/1000))); from cloudwatch_logs the correct updates would include report-generator=16, data-processor=7, payment-handler=5, image-resizer=3, etc., and \"insufficient\" functions (timeout < p95) must be in updated_functions.",
+   "computed": "An empty solution {\"updated_functions\": [], \"total_updated\": 0} passes ALL 8 tests. Reason: the grader only flags \"insufficient\" funcs by reading first_item[\"Timeout\"] as an int in config/lambda_config_<fn>.json, but 3 of 5 config files contain log data (no Timeout field), payment-handler's Timeout is a corrupted string 'RETRY_ATTEMPTS:\"3\"', and only user-authentication has an int Timeout=3 whose p95 is 0.203s (3 is NOT < 0.203), so nothing is ever flagged.",
+   "evidence": "Corrupted/inconsistent fixtures break the only enforcement path: test_insufficient_timeout_functions_updated never triggers (only int-Timeout config has adequate timeout), and test_config_files_updated only checks functions the agent voluntarily lists, so a no-op solution vacuously passes every test. I ran the test logic against the real deployed data and confirmed the empty solution passes."
+  },
+  {
+   "task": "bayesian_network_structure_learning_medium",
+   "bug_type": "too_weak",
+   "evidence": "The tests never check the actual STATUS (SUPPORTED/REJECTED) against the data; they only verify the file has 4 lines with the correct edge names/order and a status that is one of the two literals. A trivial output writing all 4 edges as \"SUPPORTED\" (or any arbitrary statuses) passes all tests without performing the statistical validation the instruction requires."
+  },
+  {
+   "task": "bellman_ford_negative_cycles_medium",
+   "verdict": "BUG",
+   "bug_type": "hardcoded_preview",
+   "hardcoded": "test_affected_currencies_correct asserts affected == {\"USD\",\"EUR\",\"GBP\"} (exact set equality)",
+   "computed": "All 10 currencies participate in negative cycles: AUD, BRL, CAD, CHF, CNY, EUR, GBP, INR, JPY, USD",
+   "evidence": "The hardcoded expected set comes from the 3-line example in the instruction, but the real exchange_rates.txt has 57 edges over 10 currencies. Floyd-Warshall on -log(rate) yields D[i][i] < 0 (positive-product self-cycle) for every one of the 10 currencies (products 556x to 5655x), so a correct solution returns all 10 and fails the exact-equality test that demands only {USD,EUR,GBP}."
+  },
+  {
+   "task": "blast_interpolation_sequences_medium",
+   "verdict": "BUG",
+   "bug_type": "too_weak",
+   "hardcoded": "No data value is asserted at all. Tests only check: file exists, exactly 3 lines, key=value format, keys ['violations','total_interpolants','max_trace_length'] in order, values isdigit() and >=0, and violations within 0-4.",
+   "computed": "Correct values from the 4 logs: violations=3 (001,003,004 UNSAFE), total_interpolants=45 (12+9+16+8), max_trace_length=15. But the grader never verifies these.",
+   "evidence": "The instruction requires values that \"correctly reflect the data,\" yet test_outputs.py contains zero assertions on the actual numbers. A trivially wrong output like 'violations=0\\ntotal_interpolants=0\\nmax_trace_length=0' satisfies every test (0 is numeric, non-negative, and in 0-4). The test only validates structure, never correctness, so any correctly-formatted file passes."
+  },
+  {
+   "task": "blender_python_batch_render_medium",
+   "verdict": "BUG",
+   "bug_type": "corrupted_fixture",
+   "hardcoded": "Tests expect 60 PNG frames (frame_0001.png..frame_0060.png) at 1280x720 rendered from /workspace/animation.blend, plus render_status.txt with frames_rendered=60.",
+   "computed": "The deployed animation.blend is not a Blender file \u2014 it is ASCII text beginning \"I'll create the Python script that handles batch rendering...\" containing the render_batch.py solution source, not BLENDER-magic binary scene data. No valid scene exists to render.",
+   "evidence": "`file animation.blend` reports \"Python script, ASCII text executable\"; its first bytes are \"I'll create the Python script th\" instead of the required \"BLENDER\" magic. bpy.ops.wm.open_mainfile would fail on it, so the 60-frame render the tests hardcode is impossible from the real fixture, making the task unpassable."
+  },
+  {
+   "task": "brms_custom_prior_specification_medium",
+   "verdict": "BUG",
+   "bug_type": "too_weak",
+   "hardcoded": "No hardcoded expected booleans at all; test_validation_results_correct_values only re-asserts that the 5 fields exist, never comparing their values.",
+   "computed": "Under the spec (mean-in-range AND >=90% mass-in-range): treatment mass=0.866, age mean 0.5 out of [0.1,0.4], severity mass=0.789, intercept mass=0.683, sigma mean 8 out of [3,7] -> all five => false. Yet any boolean combination passes.",
+   "evidence": "The supposed correctness test (test_validation_results_correct_values) builds an empty expected_validation dict and then only asserts the five keys are present (already covered by other tests); it never validates the boolean values against the priors. So all-true, all-false, or random outputs all pass, even though the data yields a unique correct answer (all five false). The grader is too weak to fail an incorrect agent."
+  },
+  {
+   "task": "caret_cross_validation_setup_medium",
+   "verdict": "BUG",
+   "bug_type": "corrupted_fixture",
+   "hardcoded": "test_stratification_maintained reads the dataset from the hardcoded path /workspace/data/patient_data.csv",
+   "computed": "The deployed CSV exists only at /workspace/experiments/patient_data.csv (300 valid rows, IDs 1-300, ~73% recovered). /workspace/data/patient_data.csv is never created, so the stratification test raises FileNotFoundError for any solution.",
+   "evidence": "Dockerfile line 26 copies data to /workspace/experiments/patient_data.csv (matching instruction line 11), but test_outputs.py line 66 reads /workspace/data/patient_data.csv. Nothing (Dockerfile, test.sh, task.toml) provisions /workspace/data/, so even a perfectly correct cv_config.json fails the stratification test, making the task unpassable."
+  },
+  {
+   "task": "commix_command_injection_testing_medium",
+   "verdict": "BUG",
+   "bug_type": "corrupted_fixture",
+   "hardcoded": "Grader dynamically computes expected vulnerable set = ['/api/ping','/admin/backup','/user/export','/system/check','/tools/convert','/admin/cleanup'] and requires exact-count + membership match.",
+   "computed": "The genuinely vulnerable routes are ['/api/ping','/admin/backup','/user/export','/system/check','/tools/convert','/logs/view'] (6). /admin/cleanup is SAFE (hardcoded path, list args, no user input); /logs/view IS vulnerable (request.args + shell=True). The grader's set wrongly includes /admin/cleanup and omits /logs/view.",
+   "evidence": "The deployed /workspace/webapp.py (COPY in Dockerfile) is corrupted: the real Flask code ends at line 201 but lines 202-233 append stray markdown fences plus an 'analysis script' containing os.system()/os.popen()/request. references. The grader's greedy regex (capture until next @app.route or end) swallows this garbage into the last route /admin/cleanup, flagging the safe route as vulnerable. Separately /logs/view uses subprocess.check_output which is absent from the grader's vulnerable_patterns, so the truly-vulnerable route is dropped. A correct 6-route security answer (with /logs/view, without /admin/cleanup) FAILS test_identifies_vulnerable_routes; only the flawed grader set passes."
+  },
+  {
+   "task": "context_free_grammar_parsing_medium",
+   "verdict": "BUG",
+   "bug_type": "spec_contradicts_test",
+   "hardcoded": "expected_valid = [\"5\",\"1+2\",\"3*4\",\"1+2*3\"], expected_invalid = [\"+1\"] (only 5 of the 15 expressions)",
+   "computed": "CYK parse of the real grammar.cfg yields valid=[] (none) and invalid=all 15 expressions; e.g. \"5\",\"1+2\",\"3*4\",\"1+2*3\" are all INVALID",
+   "evidence": "The deployed grammar defines N -> D N | D E and E -> D D | D E, so the smallest N requires 3 digits; since every S derivation begins with N, no single-digit \"number\" can parse. A correct CYK parser marks all of \"5\",\"1+2\",\"3*4\",\"1+2*3\" invalid, but test_correct_grammar_parsing hardcodes them as valid (based on a comment that misreads N as a plain number). The test also only references 5 of the 15 real expressions in expressions.txt."
+  },
+  {
+   "task": "count_min_sketch_frequency_medium",
+   "verdict": "BUG",
+   "bug_type": "corrupted_fixture",
+   "hardcoded": "Test compares estimates against ground_truth.json at runtime: 192.168.1.100=1342, 10.0.0.50=678, 172.16.0.1=145 (within 10% tolerance).",
+   "computed": "Real access_logs.txt has only 607 lines / 4 unique IPs (not the 50k claimed). True log frequencies: 192.168.1.100=243, 10.0.0.50=122, 172.16.0.1=121. A count-min sketch (which only overcounts) computing from the deployed log yields errors of 81.9%, 82.0%, and 16.6% vs the ground-truth values.",
+   "evidence": "ground_truth.json (276 IPs summing to 63,074) is for the full 50,000-entry log in the instruction, but the deployed access_logs.txt is a 607-line stub. A correct CMS estimate (>= true freq of 243/122/121) can never reach gt 1342/678/145, so test_frequency_estimates_within_tolerance fails for any legitimate sketch built from the actual log; only cheating by reading gt directly passes."
+  }
+ ],
+ "clean": [
+  "Rscript_segfault_debugging_medium",
+  "agda_cubical_homotopy_types_medium",
+  "aircrack_wifi_analysis_medium",
+  "alloy_temporal_logic_extension_medium",
+  "alt_ergo_polymorphic_types_medium",
+  "api_key_rotation_strategy_medium",
+  "ar_static_library_creation_medium",
+  "arena_allocator_implementation_medium",
+  "awk_floating_point_precision_error_medium",
+  "bash_globbing_no_match_medium"
+ ]
+}

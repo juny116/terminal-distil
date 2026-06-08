@@ -38,7 +38,7 @@ Verdict (CONSERVATIVE, avoid false positives):
 - CLEAN: hardcode matches the real data, or the test checks structural properties (no data-derived hardcode).
 - UNCERTAIN: cannot compute within budget. Prefer UNCERTAIN over a guessed BUG.
 CRITICAL: your ONLY valid output is a call to the StructuredOutput tool with {task, verdict, bug_type, evidence}. Call it as your FINAL action no matter what — even if UNCERTAIN. Do not end without calling it.`,
-  { schema: SCHEMA, label: `audit:${task.slice(0, 26)}`, phase: 'Audit' }
+  { schema: SCHEMA, label: `audit:${task.slice(0, 26)}`, phase: 'Audit', model: 'sonnet' }
 )))
 
 const ok = results.filter(Boolean)
