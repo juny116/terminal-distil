@@ -1,0 +1,379 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=27 CLEAN=18 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 27,
+    "n_clean": 18,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.6,
+    "verdicts": [
+      {
+        "task": "ntp_server_time_sync_failure_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "numpy_structured_array_conversion_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "oauth2_token_exchange_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "objdump_disassembly_analysis_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "objdump_disassembly_analysis_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "ocr_scanned_invoice_data_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "ocr_scanned_invoice_data_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "od_endianness_byte_order_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "onnx_model_export_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "opengl_anisotropic_filtering_max_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "opengl_base_vertex_base_instance_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "opengl_clip_distance_planes_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "opengl_gpu_shader5_features_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "opengl_primitive_restart_index_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "opengl_shader_subroutine_dispatch_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "opengl_tessellation_shader_spacing_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "opengl_transform_feedback_varyings_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "opengl_vertex_attrib_divisor_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "openmp_false_sharing_cache_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "openmp_target_offload_gpu_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "openmp_task_dependency_graph_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "openmp_teams_distribute_gpu_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "openmp_thread_affinity_numa_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "openocd_jtag_debugging_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "openssh_user_enumeration_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "openssl_verify_chain_incomplete_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "opentelemetry_instrumentation_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "openvas_vulnerability_scanning_automation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "opposition_king_endgame_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "optix_curve_primitive_rendering_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "optix_instance_transform_motion_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "optix_shader_binding_table_stride_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "oracle_xmltype_extraction_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "ospray_volume_rendering_corruption_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "ossec_hids_agent_deployment_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "outlook_pst_extraction_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "pam_configuration_lockout_recovery_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "pandas_json_normalize_nested_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "pandas_merge_asof_timeseries_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "particle_swarm_optimization_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "paste_field_count_mismatch_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "paste_line_count_mismatch_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "pbs_server_high_availability_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "pcap_network_packet_analysis_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "pcap_network_packet_analysis_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "objdump_disassembly_analysis_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The file `/environment/data/libanalytics.so` has magic bytes `454c463e4040...` (starts with ASCII \"ELF>\" instead of the required `\\x7fELF` ELF magic), making it an invalid ELF binary that `nm -D`, `readelf`, and `objdump` all reject with \"file format not recognized\". The task requires agents to use binary analysis tools to extract symbol addresses, but those tools cannot process the file, making the task unpassable with standard tooling."
+      },
+      {
+        "task": "objdump_disassembly_analysis_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The file `/environments_harbor/objdump_disassembly_analysis_medium/environment/production_binary` is corrupted: it was stored as UTF-8 text, causing binary bytes to be replaced with UTF-8 replacement characters (0xEFBFBD / U+FFFD). Running `size -A` on it returns \"file format not recognized\", so the dynamic accuracy test (`test_section_sizes_accurate`) would silently default all actual sizes to 0 — making the task effectively impossible to pass correctly."
+      },
+      {
+        "task": "od_endianness_byte_order_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py contains zero hardcoded expected values for any device's endianness, corrupted fields, or corrected values. It only checks JSON structure, presence of all 5 devices, that at least 1 corrupted field exists total, and that corrected values are real numbers (not NaN/infinite). A trivially wrong submission like claiming device_id=42 is a corrupted field for one device passes all 8 tests, even though the real data shows clear endianness corruption: device_A bytes parse correctly only in big-endian (device_id=1500, temp=85, cal=0.98, samp=500, fw=12345) despite the spec saying little-endian — none of this correctness is verified by any test."
+      },
+      {
+        "task": "onnx_model_export_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed `/workspace/model_def.py` fixture contains markdown code fences (``` on line 53 and ```python on line 55) embedded in the Python file, making it syntactically invalid — `ast.parse()` raises `SyntaxError: invalid syntax` at line 53. The instruction tells agents to use the architecture from this file, but any `import model_def` will crash, making the task unpassable via the intended path."
+      },
+      {
+        "task": "opengl_anisotropic_filtering_max_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test file has no hardcoded expected values and never validates correctness: it only checks that extracted_value is numeric/positive/in-range-1-256 and meets_minimum is boolean. Any agent writing {\"extracted_value\": 1.0, \"meets_minimum\": false} would pass all 8 tests, even though the real data (gl_capabilities_primary.txt line 17) shows GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT: 16.0 and the correct meets_minimum depends on the conformance spec minimum threshold."
+      },
+      {
+        "task": "opengl_base_vertex_base_instance_medium",
+        "bug_type": "too_weak",
+        "evidence": "The tests never validate the `correct` field values (only that they exist as booleans), so an agent can set `correct: true` for all 5 files — including draw_call_2 which deliberately uses wrong parameters — and pass every test. The instruction requires accurately assessing implementation correctness, but no test enforces it."
+      },
+      {
+        "task": "opengl_tessellation_shader_spacing_medium",
+        "bug_type": "too_weak",
+        "evidence": "The real constraints.txt explicitly requires \"FRACTIONAL ODD spacing\" only, but test_solution_matches_constraints accepts both \"fractional_even_spacing\" and \"fractional_odd_spacing\" (line 75). This means an agent that reads the conflicting shader_errors.log recommendation for fractional_even_spacing and submits that value would also pass, making the test too weak to verify the actual constraint. Additionally, the task name includes \"spacing_medium\" suggesting spacing is the key discriminating parameter, yet the test allows either fractional variant."
+      },
+      {
+        "task": "opengl_transform_feedback_varyings_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes captured_count=5 with variables [\"v_Position\",\"v_Velocity\",\"v_Color\",\"v_TexCoord\",\"v_Normal\"] and total_components=15, but main.cpp actually calls glTransformFeedbackVaryings with 6 variables [\"out_position\",\"out_velocity\",\"out_lifetime\",\"terrain_position\",\"terrain_normal\",\"terrain_height\"] yielding total_components=14 (confirmed by the code comment \"Components per particle: 14 (3+3+1+3+3+1)\" on line 279)."
+      },
+      {
+        "task": "openmp_target_offload_gpu_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test only asserts specific CORRECT/INCORRECT verdicts for programs a, b, and c (tests test_program_a_is_correct, test_program_b_is_incorrect, test_program_c_is_incorrect), but has NO correctness assertions for program_d.c and program_e.c — the test_analysis_results_correctness function only checks that the keys exist in the results dict, not their values. Any verdict for d and e passes grading, making the test too weak to validate the full task. Additionally, test_program_b_is_incorrect has a wrong rationale in its docstring (\"missing '#pragma omp target' directive\") when program_b.c clearly contains that directive on line 10; the real issue is missing map clause for array B, which could confuse an agent being graded."
+      },
+      {
+        "task": "openmp_task_dependency_graph_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_output_results_are_correct() hardcodes [18000, 2010, 15125, 38000, 385000] but running the standard matrix chain DP on the actual input data (/environment/data/matrix_chains.txt) yields [18000, 1655, 9375, 35000, 80500] — 4 of 5 values are wrong (e.g. test case 5: expected 385000 vs computed 80500)."
+      },
+      {
+        "task": "openmp_teams_distribute_gpu_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction.md example shows sample_2.c=INCORRECT and sample_5.c=INCORRECT, but the test's dynamic grading logic (checking for '#pragma omp target', 'teams', 'distribute' in the raw file text) would mark both as CORRECT: sample_2 has '#pragma omp target' only inside a comment string (\"// INCORRECT: Missing #pragma omp target directive\"), making the substring check fire falsely; sample_5 has #pragma omp target teams distribute but is missing map clauses, which the test ignores. An agent following the instruction's stated expected answers would fail the test."
+      },
+      {
+        "task": "openmp_thread_affinity_numa_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test never checks which specific configs are valid vs invalid, nor verifies the topology values match the actual data. `test_validation_logic_applied` only asserts counts are non-negative (trivially true) and total == 5, so an agent can pass every test by dumping all 5 configs into `valid_configs` (or `invalid_configs`) with any arbitrary topology string — zero actual validation required. Additionally, `numa_topology.json` is never provisioned in the Dockerfile (only the 5 `.env` files are copied), so the key input the task depends on does not exist in the deployed workspace."
+      },
+      {
+        "task": "openocd_jtag_debugging_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test code in test_crash_function_correct and test_caller_function_correct calls `sorted(symbols, key=lambda x: int(x['address'], 16))`, expecting symbols.json to be a list of dicts with 'address' and 'function_name' keys. However, the actual deployed /environment/data/symbols.json is a flat dict (e.g. {\"0x08002a40\": \"sensor_data_handler\"}), causing a TypeError (\"string indices must be integers\") that makes these tests unconditionally fail regardless of the agent's output. The instruction also shows this flat-dict format, so both the spec and deployed data contradict the test's assumed schema."
+      },
+      {
+        "task": "openssh_user_enumeration_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_valid_accounts_identified hardcodes expected_accounts = {'admin', 'deploy', 'postgres'} with comment \"From preview: admin (Accepted), postgres (Failed), deploy (Accepted)\" — derived only from the first 3 lines of ssh_auth.log. The real log (151 lines) shows the attacker IPs (203.0.113.45, 198.51.100.78) triggered \"Failed password for\" on at least 15 distinct valid usernames: admin, backup, deploy, elasticsearch, jenkins, mongodb, mysql, nginx, oracle, postgres, redis, root, tomcat, ubuntu, www-data. A correct solution reading the full log would produce this set and fail the test."
+      },
+      {
+        "task": "openssl_verify_chain_incomplete_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "All 6 certificate files in /environment/data/ are corrupted and cannot be parsed by OpenSSL (\"bad base64 decode\" / ASN1 errors) or the Python cryptography library (InvalidData/ParseError on every file). The test hardcodes expected chain [\"server.crt\", \"intermediate1.crt\", \"intermediate3.crt\", \"root.crt\"] and missing cert \"intermediate2.crt\", but since the fixtures are unreadable, no agent can derive the chain relationships from the actual data to produce the correct answer legitimately."
+      },
+      {
+        "task": "optix_curve_primitive_rendering_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The grading test has two bugs: (1) it calls `ref_module.find_intersection(...)` (line 44 of test_outputs.py) but the reference implementation only exports `find_ray_curve_intersection(...)`, causing an AttributeError at runtime; (2) it reads claimed_t via `tc.get('intersection_t')` (line 31) but the actual JSON key is `claimed_intersection_t`, so all 87 test cases' claimed values are incorrectly read as None instead of their actual float values (e.g., first case should be 2.0)."
+      },
+      {
+        "task": "optix_instance_transform_motion_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test's grader reads `motion_config.get(\"motion_blur_enabled_instances\", [])` which returns an empty set because the actual YAML nests the data under `motion_config[\"motion_blur_settings\"][\"enabled_instances\"]` (34 IDs). With an empty `motion_enabled_ids`, every instance that has `motion_blur_enabled=True` (44 out of 55) triggers a config mismatch, inflating the grader's `expected_invalid` to 44 instances. A correct agent that properly reads the YAML structure would identify a different (smaller) set of invalid instances and would fail the test despite being correct."
+      },
+      {
+        "task": "optix_shader_binding_table_stride_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks 16-byte alignment and loose bounds (>= 32, <= 1024/2048), but never enforces the 64-byte stride alignment from alignment_requirements.txt nor validates the exact correct values (raygen=64, miss=192, hitgroup=256). A trivially wrong answer like {raygen_stride:32, miss_stride:32, hitgroup_stride:32} would pass all tests."
+      },
+      {
+        "task": "oracle_xmltype_extraction_hard",
+        "bug_type": "too_weak",
+        "evidence": "test_expected_valid_orders_present (line 149-151) only checks that the intersection of output order_ids with {'ORD-12345','ORD-12346','ORD-12347','ORD-12349'} is non-empty (len > 0), so an agent outputting a single valid order passes trivially. Additionally, ORD-12347 is a malformed/truncated XML (confirmed ParseError: no element found at line 9) that Python's xml.etree cannot parse, so a correct implementation skips it — yet the test includes it in the \"expected\" set, creating an inconsistency between the spec (\"skip unparseable files\") and the hardcoded expectation."
+      },
+      {
+        "task": "ospray_volume_rendering_corruption_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed fixture /environment/data/corrupted_volume.csv has only 2,045 data rows (2,046 lines including header), but test_corrected_volume_has_correct_row_count and test_complete_3d_grid require exactly 262,144 voxels (64x64x64). After applying all corrections per the instructions (removing 8 out-of-bounds rows, deduplicating), only ~2,012 unique valid voxels remain — 260,132 short of the required count. No instruction tells the agent to synthesize missing voxels, making the tests impossible to pass with the actual deployed data."
+      },
+      {
+        "task": "outlook_pst_extraction_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The test reads the mbox at `/workspace/output/outlook_pst_extraction_medium/files/data/emails.mbox` (test_outputs.py lines 49 and 111), but the Dockerfile copies the file to `/data/emails.mbox`. This path mismatch means `test_all_matching_emails_included` and `test_attachment_counts_accurate` will raise FileNotFoundError and fail even when a correct solution produces the right `/output/report.txt`."
+      },
+      {
+        "task": "pam_configuration_lockout_recovery_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test never hardcodes the correct total_errors count or the set of broken files derived from the real PAM configs (all 4 files contain errors including typos like \"requireed\", \"suficient\", \"requisit\", \"optonal\", invalid modules like \"pam_unix2.so\"/\"pam_denyd.so\", and missing control flags). A trivially wrong answer reporting total_errors=1 and broken_files=\"sshd\" passes all tests, since test_total_errors_type_and_value only checks > 0 and < 100, and test_broken_files_type_and_format only requires the listed files be a subset of the four valid names."
+      },
+      {
+        "task": "pandas_json_normalize_nested_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction claims orders.json has \"deeply nested structures\" with items arrays per order, and test_all_items_flattened counts items via `order.get('items', [])`. But the actual deployed data (/environment/data/orders.json) is already flat — 27 top-level objects each representing one item with no 'items' sub-array. This causes `total_items = 0`, so the test asserts `len(df) == 0` and will fail for any correct 27-row output."
+      },
+      {
+        "task": "particle_swarm_optimization_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed fixture /workspace/benchmark_functions.py is syntactically invalid Python: after the last valid function definition (line 157), line 158 contains a raw markdown backtick fence \"```\" followed by prose and a second code block. The test `test_positions_within_bounds` does `importlib.util.spec_from_file_location` on this file and will raise a SyntaxError, causing that test to fail regardless of how correct the agent's output JSON is."
+      },
+      {
+        "task": "paste_field_count_mismatch_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes 5 data rows (`assert len(lines) == 6`, product IDs P001-P005) and matching expected_sales/expected_revenue arrays of length 5, but the deployed product_ids.txt has 18 lines (P001-P018). A correct solution processing all 18 products would produce 19 lines and fail `test_correct_number_of_data_rows` as well as `test_product_ids_correct` and the alignment tests."
+      },
+      {
+        "task": "pcap_network_packet_analysis_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The file at /home/juny116/Workspace/terminal-bench-env/environments_harbor/pcap_network_packet_analysis_hard/environment/data/suspicious_traffic.pcap is not a valid PCAP binary — it is a plain-text Python script (LLM-generated code that was meant to create the pcap, but was saved as the data file). Running scapy's rdpcap() on it raises \"Not a supported capture file\", causing test_post_bodies_match_pcap_content and test_post_body_count_from_pcap to crash (the exists() guard does not protect against an unreadable/invalid file)."
+      },
+      {
+        "task": "pcap_network_packet_analysis_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The fixture file `/data/traffic.pcap.b64` decodes (via `base64 -d`) to a corrupt ZIP archive (PK magic, 2197 bytes, missing 17 bytes per unzip) rather than a valid PCAP file. The test `test_dns_queries_match_pcap_content` decodes the b64 file and passes it to scapy's `rdpcap`, which will fail on the corrupt ZIP data, making the task unpassable regardless of agent effort."
+      }
+    ]
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=19 CLEAN=26 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 19,
+    "n_clean": 26,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.4222222222222222,
+    "verdicts": [
+      {
+        "task": "toxiproxy_network_chaos_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "transformers_token_limit_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "uci_protocol_implementation_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "unbound_dnssec_validation_setup_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "unicorn_engine_emulation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "univa_grid_engine_slots_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "uppaal_timed_automata_modeling_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "vampire_fof_proof_generation_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "vampire_higher_order_reasoning_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "variable_length_arrays_vla_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "vault_secret_renewal_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "vault_unseal_key_recovery_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "vcftools_filtering_syntax_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "veracrypt_hidden_volume_detection_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "verit_proof_reconstruction_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "version_script_symbol_export_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "visibility_attribute_export_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "visibility_attribute_export_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "visibility_hidden_default_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "visibility_hidden_default_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "viterbi_algorithm_decoding_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "vulkan_dynamic_rendering_api_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "vulkan_mesh_shader_pipeline_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "vulkan_ray_tracing_sbt_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "watermark_event_time_processing_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "wazuh_agent_centralized_management_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "weblogic_deserialization_exploit_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "weblogic_deserialization_exploit_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "windows_event_log_xml_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "windows_token_impersonation_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "wireguard_peer_configuration_routing_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "wireshark_packet_capture_analysis_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "xcodebuild_command_line_build_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "xcuitest_ios_automation_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "xml_namespaces_parsing_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "xml_parsing_external_entity_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "xmllint_xpath_query_empty_result_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "xmllint_xpath_query_empty_result_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "xxd_reverse_conversion_failure_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "xxd_reverse_conversion_failure_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "z3_constraint_solving_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "zfs_pool_scrub_scheduling_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "zfs_snapshot_replication_remote_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "zip_central_directory_corrupt_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "zip_central_directory_corrupt_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "toxiproxy_network_chaos_medium",
+        "bug_type": "too_weak",
+        "evidence": "The tests only verify proxy existence, address fields, port numbers, and enabled status — they never check any toxic configurations (latency_ms, bandwidth rate_kbps, timeout_ms, slow_close delay) that are the core of the task (\"network chaos\" simulation). An agent could produce a valid config with all correct addresses but zero toxics and pass every test, making the benchmark trivially passable without implementing the key requirement."
+      },
+      {
+        "task": "univa_grid_engine_slots_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test file contains no hardcoded expected values for total_slots, host_count, or queue_count — it only checks that values are non-negative integers > 0 and that total_slots >= host_count. A trivial/wrong answer like {\"total_slots\": 1, \"host_count\": 1, \"queue_count\": 0} passes all 8 tests, even though the correct values computed from the real config data are total_slots=632, host_count=11, queue_count=9."
+      },
+      {
+        "task": "uppaal_timed_automata_modeling_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks JSON structure, field types, and internal logical consistency (violations>0 → valid=false). It never validates the correct violation count or the correct `valid` flag against the actual log data. The real log (/environment/data/dispenser_events.log, 328 events) contains at least 7 actual timing violations (dispenses below min interval), meaning a correct script must output `valid=false` and `violations>=7`. But an agent can output `{\"valid\": true, \"violations\": 0, \"total_events\": 328}` (incorrect analysis) and all 7 tests will still pass."
+      },
+      {
+        "task": "vampire_fof_proof_generation_medium",
+        "bug_type": "too_weak",
+        "evidence": "The Dockerfile installs only `python-sat` (pysat), but `test_sat_results_correctness` tries `minisat` (not installed) then `pycosat` (not installed), causing `verify_cnf_satisfiability()` to always return `None`. The guard `if actual_status is not None` then skips the correctness assertion entirely, so an agent can write completely wrong SAT/UNSAT answers and still pass all tests."
+      },
+      {
+        "task": "vampire_higher_order_reasoning_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test never checks the actual computed values for occurs_check_violations, type_mismatches, or valid_proofs against the real data (correct answer: occurs=6, type_mismatches=3, valid=11). All tests only verify structural properties (fields exist, are integers, non-negative, don't exceed total_processed), so any trivially wrong output like {occurs=0, type_mismatches=0, valid=20} would pass all tests."
+      },
+      {
+        "task": "variable_length_arrays_vla_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes VLA line numbers that do not match the real source files. For matrix_mult.c the test expects lines [23,24,25] but actual VLAs are at lines 18 and 53; for matrix_add.c the test expects [18,19] but VLAs are at lines 29 and 51; for matrix_transpose.c the test expects [17,18] but VLAs are at lines 31, 56, and 78. A correct solution reading the real deployed code would report different line numbers and fail the grading test."
+      },
+      {
+        "task": "vault_unseal_key_recovery_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction states \"recover at least 3 valid unseal keys\" (minimum 3, maximum 5), but test_recovered_keys_match_vault_init_log requires ALL 5 exact keys to be present in the output. A correct solution that recovers exactly 3 valid keys (as the spec allows) would pass all structural tests but fail this final test, making the task ungradeable as specified."
+      },
+      {
+        "task": "veracrypt_hidden_volume_detection_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "All 6 image files are plain text files (sizes 776–29271 bytes, not the expected 2MB binary images). image_02.img begins \"Starting generation of image_02.img (2MB VeraCrypt volume with header at offset 0)\" — they are AI-generated text descriptions of what binary disk images should contain, not actual binary VeraCrypt volumes. No real VeraCrypt headers exist in any file, so a correct agent would output NO for all images, failing test_veracrypt_headers_detected which requires at least one YES."
+      },
+      {
+        "task": "verit_proof_reconstruction_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes values from the 5-step toy example shown in instruction.md (total_steps=5, missing_steps=0, invalid_references=0, duplicate_steps=0), but the real deployed /workspace/proof.txt has 110 lines yielding total_steps=109, missing_steps=2, invalid_references=3, duplicate_steps=3 — a correct solution on the real data will fail every value-checking test."
+      },
+      {
+        "task": "visibility_hidden_default_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test `test_symbol_counts_reduced` enforces `3 <= count <= 6` visible symbols for every library, but libplugin.so has only 2 public API functions (`plugin_load`, `plugin_execute` per plugin.h/plugin.cpp). A correct solution that marks only the true public API as visible would report `libplugin.so=2`, failing the lower bound of 3. The instruction text also claims \"3-6 public API symbols each\" but the real source data for libplugin contradicts this — it has exactly 2 public API symbols, not 3."
+      },
+      {
+        "task": "watermark_event_time_processing_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test `test_event_time_windowing` (lines 70-140 of test_outputs.py) correctly computes the watermark-based expected counts into `finalized_windows`, but never compares them against the agent's `hourly_counts` — it only checks `total_counted <= total_events` and `total_counted > 0`. An agent that groups events by `arrival_timestamp` instead of `event_timestamp` (i.e., the broken behavior the task asks to fix) would still pass all tests, as long as it produces any non-empty, non-overcounting output."
+      },
+      {
+        "task": "wazuh_agent_centralized_management_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "Two issues found: (1) The fixture file at /home/juny116/Workspace/terminal-bench-env/environments_harbor/wazuh_agent_centralized_management_medium/environment/data/global.db is unreadable by sqlite3 (\"file is not a database\" error from Python sqlite3 module), making the task unpassable. (2) The test `test_counts_match_database` queries the DB at `/workspace/output/wazuh_agent_centralized_management_medium/files/data/global.db`, but the Dockerfile only copies the DB to `/var/ossec/queue/db/global.db` — this path mismatch would cause the verification test to fail with a file-not-found error even if the agent produces correct output."
+      },
+      {
+        "task": "weblogic_deserialization_exploit_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks structural properties (valid JSON, required fields present, non-empty strings, Java naming convention with dots) but never validates the actual extracted values against the log. An agent submitting any arbitrary Java class name (e.g., \"com.foo.Bar\") and any command string would pass all 6 tests, even though the correct answers are \"org.apache.commons.collections.functors.InvokerTransformer\" and \"bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4yMC4zMC40MC80NDQ0IDA+JjE=}|{base64,-d}|{bash,-i}\"."
+      },
+      {
+        "task": "windows_event_log_xml_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The XML data file at environment/data/windows_events.xml is truncated: it has 32 opening <Event> tags but only 31 closing </Event> tags, lacks the closing </Events> root element, and ends mid-element inside the last event. Standard XML parsers (xml.etree, lxml, etc.) will raise a ParseError on the entire file, preventing any correct agent from completing the task. The test additionally only checks internal consistency of the output (not against actual data), meaning the benchmark cannot verify correctness even if an agent uses workarounds."
+      },
+      {
+        "task": "windows_token_impersonation_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test for API_USED accepts OpenProcessToken (first Token/Impersonate/Duplicate match at 22:45:28) but the instruction asks to identify \"which API function\" was used for impersonation — the actual impersonation API is DuplicateTokenEx at 22:45:45. Additionally, the two log files are inconsistent: api_calls.json shows update.exe (pid 5892) targeting lsass.exe (pid 4567), while privilege_changes.json records payload.exe (pid 7823) gaining SYSTEM via \"Token impersonation from PID 1234\" — a completely different process pair — so a correct analyst using both sources would arrive at contradictory answers that cannot all satisfy the tests simultaneously."
+      },
+      {
+        "task": "wireshark_packet_capture_analysis_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_output_has_correct_ips hardcodes expected_ips = {'10.0.0.50', '10.0.0.52', '172.16.0.10'} (3 IPs) derived from only 5 example lines, but the real http_sessions.log has 127 lines and a correct solution yields 13 distinct servers: ['10.0.0.50', '10.0.0.51', '10.0.0.52', '10.0.0.53', '10.0.0.59', '10.0.0.61', '10.0.0.62', '10.0.0.63', '172.16.0.10', '172.16.0.15', '172.16.0.20', '172.16.0.25', '172.16.0.30']. test_output_correct_count also asserts exactly 3 IPs."
+      },
+      {
+        "task": "xcuitest_ios_automation_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "HomeTests.swift contains 4 explicit \"ISSUE\" comments (in testHomeScreenLoad, testNavigateToProfile, testLogout, testSettingsAccess), but test_outputs.py line 144-148 asserts HomeTests should NOT appear in broken_tests (\"has no ISSUE comments in its Swift file\"), and line 129 hardcodes total_issues==8 (4 LoginTests + 4 ProfileTests only). A correct solution reading the actual files finds 12 issues across 3 classes, which fails both assertions."
+      },
+      {
+        "task": "z3_constraint_solving_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The real puzzle (/environment/data/challenge.txt) has 4 variables (x, y, z, w) with constraints x+y=9, y+z=11, z+w=10, x!=z, y!=w, x<w, w>3. The test `test_solutions_have_all_variables` hardcodes required_vars={\"x\",\"y\",\"z\"} (only 3 vars) so any correct solution including \"w\" fails it. Additionally, `test_constraints_satisfied` checks wrong constraints (x+y==z, x!=y, y!=z, x!=z) — real solutions have x+y=9 (not z), so all 3 correct solutions (e.g. x=1,y=8,z=3: 1+8=9≠3) fail this test too. Only `test_exact_three_solutions_correct_values` correctly expects the 4-variable solutions."
+      },
+      {
+        "task": "zip_central_directory_corrupt_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The fixture /home/juny116/Workspace/terminal-bench-env/environments_harbor/zip_central_directory_corrupt_medium/environment/data/project_data.zip is not a binary zip file. It starts with the text \"I'll create a corrupted ZIP archive with intact local file headers but a corrupted central directory. Let me generate this file:\" — an LLM response artifact was saved as the zip instead of an actual binary. The file contains no PK\\x03\\x04 magic bytes, so no zip recovery tool can process it, making the task completely unpassable. Additionally, the embedded data.csv only has 100 rows, not the 1000 rows stated in the instruction."
+      }
+    ]
+  }
+}

@@ -1,0 +1,384 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=28 CLEAN=17 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 28,
+    "n_clean": 17,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.6222222222222222,
+    "verdicts": [
+      {
+        "task": "spark_map_side_aggregation_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "spark_pandas_udf_vectorized_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "spark_rdd_checkpoint_lineage_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "spark_salting_keys_skew_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "spark_streaming_backpressure_rate_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "spark_structured_streaming_checkpoint_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "spark_thrift_server_concurrent_sessions_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "spark_tungsten_codegen_fallback_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "spark_z_ordering_delta_lake_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "spark_z_ordering_delta_lake_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "sql_injection_prepared_statement_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "sql_injection_prepared_statement_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "sqlmap_injection_exploit_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "sqrt_decomposition_queries_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "sqrt_decomposition_queries_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "srgan_super_resolution_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "ssl_tls_poodle_attack_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "stack_protector_canary_flags_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "stalemate_pattern_recognition_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "static_analysis_coverity_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "static_analysis_cppcheck_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "strace_system_call_trace_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "stream_processing_windowing_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "stripe_balance_transaction_reconciliation_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "strongly_connected_components_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "strongly_connected_components_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "suricata_ids_rule_writing_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "survey_complex_sampling_design_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "survival_time_dependent_roc_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "svn_to_git_migration_history_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "swift_binary_reverse_engineering_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "syzygy_tablebase_probing_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "tableau_hyper_extract_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "tableau_hyper_extract_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "tcn_temporal_convolutions_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "tcpdump_capture_filter_syntax_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "tcpdump_capture_specific_traffic_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "template_instantiation_depth_exceeded_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "temporal_fusion_transformer_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "terraform_provider_version_constraint_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "terraform_state_drift_detection_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "terraform_state_json_parsing_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "thrift_deserialization_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "timescaledb_hypertable_partitioning_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "tla_plus_model_state_explosion_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "spark_map_side_aggregation_hard",
+        "bug_type": "too_weak",
+        "evidence": "The instruction describes ~1 million events for 10,000 users with severe skew requiring optimized Spark map-side aggregation, but the actual deployed data file has only 215 rows and 100 users. No test checks execution time or Spark usage — only correctness. Any trivial pandas script (or even a naive Spark job) will pass all tests on 215 rows, making the \"hard\" optimization challenge untestable and the grading effectively meaningless for the stated performance goal."
+      },
+      {
+        "task": "spark_rdd_checkpoint_lineage_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction hardcodes \"output_records\": 150 in the solution.json template, but the real data has 150 raw rows across only 10 unique sensors. The required output is aggregated statistics (avg_temperature, avg_humidity per sensor_id), which yields 10 records — not 150. The test test_output_record_count_matches_solution checks that results.csv row count equals solution.json[\"output_records\"], so an agent following the spec (writing 150) will produce a solution.json that contradicts the actual aggregated 10-row results.csv, causing the test to fail."
+      },
+      {
+        "task": "spark_salting_keys_skew_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test `test_salting_achieves_balance` only verifies that the agent-reported `max_partition_after_salting <= threshold` (164348.0) and that `max_skewed / salt_values` (using the agent's own submitted salt_values) is under threshold*1.01. It never independently verifies that `recommended_salt_values` is the MINIMUM required (correct answer: 5). An agent could submit any inflated salt_values (e.g., 1000) with max_after_salting=1 and pass all tests. Additionally, the instruction tells agents the file is at `/workspace/partition_stats.csv` but the test reads from `/workspace/data/partition_stats.csv`, creating a potential path confusion for agents."
+      },
+      {
+        "task": "spark_streaming_backpressure_rate_medium",
+        "bug_type": "too_weak",
+        "evidence": "test_configs_correctly_classified uses `setting in content` (substring check) to verify configs, but staging-incomplete.conf contains `spark.streaming.backpressure.enabled=false` — the key is present but disabled. If an agent correctly classifies staging-incomplete as invalid and lists only `spark.streaming.backpressure.enabled` as a critical setting, the test at line 116 finds the string present and asserts the config \"has all critical settings and should be valid\", causing a test failure for a semantically correct answer. The test should check for `setting=true` or key=value pairs, not bare key presence."
+      },
+      {
+        "task": "spark_tungsten_codegen_fallback_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py contains no hardcoded data-derived values and no checks that PySpark was actually run. test_performance_calculation_correctness (lines 88-105) reads original_ms and optimized_ms from the agent's own output file and re-derives the expected improvement from those same values — a purely tautological check. An agent can trivially pass all 8 tests by writing any internally-consistent JSON (e.g. {\"original_execution_ms\": 100, \"optimized_execution_ms\": 50, \"performance_improvement_percent\": 50.0}) without running any Spark code at all."
+      },
+      {
+        "task": "spark_z_ordering_delta_lake_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The instruction claims the input is \"a 1 million row CSV file\" and shows example metadata `\"total_rows_processed\": 1000000`, but the real deployed file at /workspace/data/transactions.csv has only 506 data rows (wc -l gives 507 including header). While the tests dynamically compare against the actual file rather than hardcoding 1000000, the fixture mismatch means the task premise (\"currently every query must scan 1 million rows\") is false and the optimization challenge described is entirely different in scale than what the agent actually encounters."
+      },
+      {
+        "task": "spark_z_ordering_delta_lake_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test checks only internal consistency (after < before, both in [1,100], improvement_percentage = ((before-after)/before)*100 within 0.15) with no hardcoded data-derived expected values. An agent can trivially pass by writing any integers like {\"blocks_scanned_before\": 100, \"blocks_scanned_after\": 1, \"improvement_percentage\": 99.0} without reading the parquet file at all, making the benchmark unable to distinguish a correct solution from a fabricated one."
+      },
+      {
+        "task": "sql_injection_prepared_statement_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed `orders.py` (/app/api_service/orders.py) is actually a Python setup script that defines VULNERABLE_CODE and FIXED_CODE as string-literal variables — it contains the vulnerable SQL patterns (f-strings, %-format, string concatenation with SQL keywords) inside a Python string called VULNERABLE_CODE. The test's regex in `test_no_string_concatenation_in_queries` scans raw file content and flags these patterns (confirmed: f-string match at span 564, %-formatting match at span 829, concat matches at L12 and L44), so the test will fail even after an agent correctly fixes the actual executable functions. Additionally, utils.py has dynamic table/column name injections (e.g. \"SELECT * FROM \" + table_name + \" WHERE \" + column_name) that cannot be fixed with ? placeholders per the task's own constraint (\"Use only sqlite3's ? placeholders\"), making those vulnerabilities structurally unfixable while still being flagged by the test."
+      },
+      {
+        "task": "sql_injection_prepared_statement_medium",
+        "bug_type": "too_weak",
+        "evidence": "test_vulnerability_count_accuracy checks only the agent's self-reported count in its own JSON output (total_fixed >= 5), not the actual code — an agent can write any number >= 5 to pass this test without fixing anything. Additionally, test_files_actually_fixed only accepts ? positional placeholders but SQLite3 also supports valid :name named parameters, so a correct solution using named parameters would fail; and the dangerous-pattern regexes miss vulnerabilities built before the execute() call (e.g., `query = \"...\" + var; cursor.execute(query)`)."
+      },
+      {
+        "task": "sqlmap_injection_exploit_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The file /home/juny116/Workspace/terminal-bench-env/environments_harbor/sqlmap_injection_exploit_hard/environment/opt/webapp/users.db is not a valid SQLite database. It is an ASCII text file containing an AI refusal message (\"I cannot and will not create materials that facilitate SQL injection attacks...\"). The test `test_admin_credentials_match_database` queries this DB via `sqlite3.connect`, which would raise `sqlite3.DatabaseError: file is not a database`, making the benchmark permanently unpassable."
+      },
+      {
+        "task": "sqrt_decomposition_queries_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed test_data.txt has only 2 lines: line 1 claims N=50000 but line 2 (the array) contains only 7020 integers; the Q line and all operation lines are missing entirely. The test's test_total_operations_matches_input and test_query_results_correctness both attempt to read lines[2] (Q count) which doesn't exist, causing an IndexError and making the benchmark unpassable."
+      },
+      {
+        "task": "srgan_super_resolution_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "All 5 \"PNG\" input files in /environment/data/input/ are Python scripts, not actual PNG images (their hex headers start with 0x696d706f7274 = \"import\"). PIL's Image.open() cannot open them, making the task unpassable since the agent cannot read valid input images to process, and the test's test_output_images_are_4x_upscaled function compares input/output dimensions using real PIL opens."
+      },
+      {
+        "task": "ssl_tls_poodle_attack_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks that 4 specific filenames appear and 4 secure filenames are absent, but the deployed environment contains at least 3 additional clearly-vulnerable configs the test ignores: `apache_mixed.conf` (has `SSLProtocol all` without `-SSLv3` for one VirtualHost), `nginx_missing_protocol.conf` (CBC ciphers with no ssl_protocols directive), and `web_servers/legacy_site.conf` (explicitly sets `SSLProtocol all +SSLv3`). A solution that omits these additional vulnerabilities passes all tests, while a correctly-complete solution is also accepted — the grading cannot distinguish correct from incomplete answers."
+      },
+      {
+        "task": "stalemate_pattern_recognition_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes positions 4, 5, and 6 as DANGER, but python-chess analysis proves they are SAFE: no legal White move in FEN \"8/8/8/3k4/8/3K4/8/3Q4\", \"8/8/8/8/2k5/8/1K6/1R6\", or \"8/8/8/2k5/8/2K5/8/2Q5\" immediately causes stalemate. The test's claimed stalemate moves (Qd2/Qd3, Rc1, Qc2/Qc3) do not actually produce stalemate positions. Correct answer is 1=DANGER, 2=DANGER, 3=SAFE, 4=SAFE, 5=SAFE, 6=SAFE, but the test expects positions 4-6 to be DANGER."
+      },
+      {
+        "task": "static_analysis_cppcheck_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks `total_issues > 0` (any positive integer passes) and that critical_files are a subset of the 5 known filenames — it never validates the actual cppcheck issue count. An agent could report `total_issues: 1` with a single file and pass all tests, even though cppcheck would find dozens of issues across all 5 files (which contain memory leaks, null pointer dereferences, uninitialized variables, double-frees, and use-after-free bugs)."
+      },
+      {
+        "task": "strongly_connected_components_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test `test_strongly_connected_components_validity` in test_outputs.py (lines 176-219) claims to verify that identified components are actually strongly connected, but its inner loop unconditionally executes `assert True` — it never checks reachability between services. An agent could output arbitrary node groupings and pass all tests, since no test validates that every service in a multi-node component can reach every other service."
+      },
+      {
+        "task": "strongly_connected_components_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The real topology.txt has all 50 nodes forming a single giant SCC (verified by running Kosaraju's algorithm). The test hardcodes expectations based on a tiny toy example (only edges 1->2, 2->3, 3->1, 5->6, 6->7), expecting nodes {1,2,3} to form an exclusive SCC and nodes 5,6,7 to be isolated — but the actual data has 5->6->7->8->5 cycles and cross-edges connecting everything. test_cycle_component_identified asserts `set(component) == {1, 2, 3}` and test_strongly_connected_components asserts `len(components) >= 3`, both of which fail when the correct answer is 1 component containing all 50 nodes."
+      },
+      {
+        "task": "suricata_ids_rule_writing_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes rule 5 as ERROR (\"missing closing parenthesis\"), but actual rule 5 in /environment/data/test_rules.txt is `alert udp $HOME_NET any -> $EXTERNAL_NET 53 (msg:\"DNS query detected\"; sid:1000005; rev:1;)` which is VALID. The hardcoded expected dict was written for a different/preview version of the rules file where rule 5 had missing parenthesis — in the deployed data that error is in rule 6."
+      },
+      {
+        "task": "svn_to_git_migration_history_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The SVN dump at /environment/data/project.dump has revisions 0-13 (14 total). After standard git-svn conversion with --stdlayout: trunk gets ~8 commits (r1-r8), feature-login branch adds 1 unique commit (r10), bugfix-database adds 1 unique commit (r12), and tag v1.0.0 points to trunk@r8. `git rev-list --all --count` yields approximately 10 unique commits (shared trunk history counted once), but the test hardcodes `assert reported_commits == 12` and `assert actual_commits == reported_commits`, and the instruction claims \"exactly 12 commits\" — a value inconsistent with the actual dump structure."
+      },
+      {
+        "task": "swift_binary_reverse_engineering_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes url=\"https://evil-server.badactor.net/exfiltrate\" and credential=\"sk_live_51HackerToken987XyZ\", but decoding the actual Base64 values in suspicious_app.swift yields url=\"https://data-exfil.darknetwork.com/api/v2/upload\" and credential=\"Bearer sk_live_4b7f2a8d3e1cf987\" — the test's expected values do not match the real deployed data at all."
+      },
+      {
+        "task": "syzygy_tablebase_probing_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction.md and test_positions.txt both specify 8 FEN positions, but test_results_has_correct_number_of_lines (line 22) asserts `len(lines) == 5`. A correct solution that outputs all 8 results would fail this test, while an incomplete solution with only 5 lines could pass the count check but then fail the outcome comparison (which iterates over results using zip, silently truncating to the shorter list)."
+      },
+      {
+        "task": "tcn_temporal_convolutions_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test reads `input_data['architectures']` (expecting a dict wrapper), but the real deployed file at `/environment/data/tcn_configs.json` is a plain JSON array. Subscripting a list with a string key throws `TypeError: list indices must be integers or slices, not str`, causing `test_all_configs_present` and `test_receptive_field_calculations` to crash regardless of a correct agent solution."
+      },
+      {
+        "task": "tcpdump_capture_filter_syntax_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The real data file at /environment/data/broken_filters.txt contains 15 filters (F001-F015), but test_output_format asserts exactly 5 lines and test_all_filter_ids_present only checks for F001-F005. A correct agent solution that fixes all 15 filters would fail the \"Expected 5 lines, found 15\" assertion."
+      },
+      {
+        "task": "tcpdump_capture_specific_traffic_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The file at /home/juny116/Workspace/terminal-bench-env/environments_harbor/tcpdump_capture_specific_traffic_hard/environment/data/incident_capture.pcap (deployed to /home/agent/incident_capture.pcap) is not a real PCAP binary — it is an ASCII text file containing what appears to be a fabricated LLM agent response with hardcoded values (ssh_attacker: \"10.0.0.45\", scanned_ports: 18, exfiltrated_bytes: 52834). Any agent using tcpdump/tshark/scapy to parse it as a PCAP will fail with \"Not a supported capture file\", making the intended task uncompletable."
+      },
+      {
+        "task": "template_instantiation_depth_exceeded_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The file `/environment/fibonacci_project/fibonacci.cpp` contains bash script content (confirmed via `file` command: \"Bourne-Again shell script\") instead of C++ template metaprogram code. The file starts with `#!/bin/bash` and contains `sed`/`make` commands — it appears to be a prior agent solution script that was accidentally written to `fibonacci.cpp` rather than `solution.sh`. As a result, running `make` would fail with compiler syntax errors (not template depth errors), making the task impossible to solve as specified."
+      },
+      {
+        "task": "terraform_provider_version_constraint_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test's `test_conflicts_found_reasonable` only checks `conflicts > 0` — any non-zero integer passes, even a fabricated number. No test validates the specific correct conflict count or that the provider version constraints actually satisfy all modules (e.g., it never checks that the AWS constraint resolves the clear incompatibility between root `~> 4.0`, networking `>= 5.0, < 6.0`, database `~> 3.0`, and monitoring `= 5.12.0`). A trivially wrong solution like `{\"conflicts_found\": 1, \"provider_versions\": {\"aws\": \">= 4.0\"}}` passes all tests despite being incorrect."
+      },
+      {
+        "task": "terraform_state_drift_detection_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test only validates JSON structure and format (non-empty arrays, \"resource_id: description\" pattern, exactly 4 fields) — it never verifies that any specific real drifts were identified. A fabricated answer like {\"critical_drifts\": [\"fake_resource: fake issue\"], \"policy_violations\": [\"fake: fake\"], \"recommended_imports\": [], \"revert_required\": [\"fake: fake\"]} would pass all 9 tests despite missing the real drifts present in the data (e.g., DB engine changed from mysql to postgres, storage_encrypted: false, backup_retention_period: 0, security group 443 rule removed from state)."
+      },
+      {
+        "task": "tla_plus_model_state_explosion_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks that metrics.txt exists with the correct format (keys present, non-negative integers < 10000, has_symmetry is \"yes\"/\"no\") — it never asserts any specific numeric value for unbounded_count or disjunction_count. An agent submitting unbounded_count=0, disjunction_count=0, has_symmetry=no would pass all tests even though the real TLA+ spec contains 5 CHOOSE expressions and 12 disjunctions (\\/) in the Next action definition."
+      }
+    ]
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=20 CLEAN=25 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 20,
+    "n_clean": 25,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.4444444444444444,
+    "verdicts": [
+      {
+        "task": "bellman_ford_negative_cycles_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "bert_sequence_classification_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "bin_packing_first_fit_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "blast_database_formatting_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "blast_interpolation_sequences_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "blender_python_batch_render_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "blender_python_batch_render_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "blue_green_deployment_strategy_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "boolean_satisfiability_dpll_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "boolean_satisfiability_dpll_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "borg_backup_deduplication_compression_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "bpf_performance_monitoring_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "brms_custom_prior_specification_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "buildroot_minimal_linux_system_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "burp_suite_interceptor_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "cache_friendly_data_layout_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "cadical_inprocessing_simplification_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "cadical_inprocessing_simplification_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "calibration_plot_generation_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "calico_network_policy_blocking_traffic_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "capabilities_privilege_escalation_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "capabilities_privilege_escalation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "caret_cross_validation_setup_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "catboost_gpu_training_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "category_encoders_target_encoding_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cffi_c_foreign_function_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "chaos_engineering_gremlin_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "chipqc_quality_metrics_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "chipqc_quality_metrics_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "chipseeker_peak_annotation_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "chipseeker_peak_annotation_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "chromatin_interaction_loops_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "chromhmm_chromatin_states_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "clickjacking_attack_iframe_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "clip_model_embedding_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cmake_ctest_testing_framework_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "commix_command_injection_testing_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "conditional_vae_generation_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "condor_checkpoint_restart_jobs_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "condor_docker_universe_containers_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "condor_held_job_release_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "confusion_matrix_analysis_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "consensus_algorithm_raft_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "consul_cluster_quorum_lost_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "consul_cluster_quorum_lost_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "bellman_ford_negative_cycles_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_affected_currencies_correct hardcodes expected = {\"USD\", \"EUR\", \"GBP\"} (3 currencies), but the real exchange_rates.txt has 10 currencies with 57 edges. Running Bellman-Ford on the actual data shows 9-10 currencies are affected (AUD, BRL, CAD, CHF, CNY, EUR, GBP, INR, JPY, USD) — the hardcode matches only the simple 3-node example described in the test comment, not the full deployed dataset."
+      },
+      {
+        "task": "bin_packing_first_fit_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed shipment JSON files are bare item arrays (e.g., `[{\"id\":\"A1\",\"weight\":45},...]`) missing the required `truck_capacity`, `items`, and `constraints` wrapper fields described in the instruction. Tests like `test_capacity_constraints` and `test_fragile_item_constraints` call `shipment_data[\"truck_capacity\"]` and `shipment_data[\"constraints\"]` directly, causing KeyErrors. Additionally, shipment_4.json contains a corrupted entry `{\"id\":\"- fragile_items: J2\",\"weight\":\"L1\"}` that is garbled YAML/markdown text, making the fixture unprocessable by any correct solution."
+      },
+      {
+        "task": "blast_interpolation_sequences_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks structural properties (file exists, 3 lines, key=value format, correct key names, values are non-negative integers, violations in range 0-4). An agent that writes `violations=0`, `total_interpolants=0`, `max_trace_length=0` would pass all 8 tests, despite being completely wrong. The correct values from the log data are violations=3, total_interpolants=45, max_trace_length=15, but none of these specific values are ever checked by the test."
+      },
+      {
+        "task": "boolean_satisfiability_dpll_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "test_case_2.cnf is labeled as a 5-pigeon/4-hole UNSAT formula and the test hardcodes \"UNSAT\", but the CNF file is missing 7 of the 10 \"at-most-one-pigeon-per-hole\" clauses for hole 4 (missing: -4 -20, -8 -12, -8 -16, -8 -20, -12 -16, -12 -20, -16 -20). A SAT solver on the actual file returns SAT (e.g., pigeons 2–5 all assigned to hole 4), so a correct solver produces \"SAT\" where the test expects \"UNSAT\"."
+      },
+      {
+        "task": "borg_backup_deduplication_compression_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test `test_compression_results_realistic` asserts `lz4_compression <= no_compression` and `zstd_compression <= lz4_compression`, assuming text-heavy compressible data. However, the real deployed data is ~90.1% already-compressed content (88.7% JPEG images + 1.5% .tar.gz/.zip/.bz2 archives; only 9.9% is compressible logs/configs), so LZ4/ZSTD compression on Borg repos will likely equal or exceed the no-compression size, causing this assertion to fail for a correct agent. The instruction also incorrectly describes the dataset as \"40% logs, 10% configs, 35% JPEG, 15% archives\" when actual sizes show 89% images."
+      },
+      {
+        "task": "brms_custom_prior_specification_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test `test_validation_results_correct_values` never checks the actual true/false values of any field — it only asserts that the 5 required keys are present (identical to `test_validation_results_has_all_required_fields`). Any JSON with the five boolean keys passes, even if all are wrong (e.g., all true when the correct answer is all false based on the deployed priors)."
+      },
+      {
+        "task": "burp_suite_interceptor_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The file at `/home/juny116/Workspace/terminal-bench-env/environments_harbor/burp_suite_interceptor_medium/environment/data/capture.flow` is a Python generator script (starts with `import io / from mitmproxy import http ...`), not a binary mitmproxy flow file. When the test (and any agent solution) attempts to parse it with `mitmproxy.io.FlowReader`, it throws `FlowReadException: Invalid data format`, causing the test to hit `assert False, f\"Failed to read flow file: {e}\"` — making the task unpassable."
+      },
+      {
+        "task": "cache_friendly_data_layout_hard",
+        "bug_type": "too_weak",
+        "evidence": "All performance tests (test_performance_target, test_significant_speedup, test_speedup_calculation) exclusively read from /workspace/result.txt, which the agent writes. None of them independently measure actual execution time. An agent can produce a correct output_transposed.bin (even via a slow naive transpose) and write fabricated timing values (e.g., OPTIMIZED_TIME=1.0, SPEEDUP=45.00) to result.txt to trivially pass all performance tests without implementing any cache optimization."
+      },
+      {
+        "task": "cadical_inprocessing_simplification_hard",
+        "bug_type": "too_weak",
+        "evidence": "All 9 tests only check file format, key names, and internal consistency of the submitted values (e.g., that reduction_percent == ((original-simplified)/original)*100). No test reads the actual problem.cnf to verify the reported clause counts are correct. An agent can pass every test by writing completely fabricated values such as original_clauses=100, simplified_clauses=70, reduction_percent=30.00 without ever reading or processing the real CNF file (which has 650 header-declared clauses and ~429 correctly simplified clauses)."
+      },
+      {
+        "task": "cadical_inprocessing_simplification_medium",
+        "bug_type": "too_weak",
+        "evidence": "All 9 tests check only structural/format properties (JSON validity, file existence, field presence, DIMACS header format, mathematical consistency of reduction_percent). No test enforces that any actual simplification occurred: `test_clause_counts_are_positive` explicitly allows `simplified == original`, so an agent that copies the original .cnf files unchanged and reports 0.0% reduction on all 5 formulas passes every test, despite performing no simplification whatsoever."
+      },
+      {
+        "task": "calico_network_policy_blocking_traffic_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The test hardcodes expected blocking policy names {\"production-deny-cross-namespace\", \"data-tier-strict-isolation\", \"monitoring-scrape-deny\"}, but the actual environment files are corrupted: `data-tier-strict-isolation.yaml` and `monitoring-scrape-deny.yaml` contain JSON blobs (not valid YAML NetworkPolicy manifests) with different policy names (\"strict-isolation\" and \"block-external-metrics\"), and `production-deny-cross-namespace.yaml` defines a policy actually named \"deny-cross-namespace\" — meaning no agent reading the real deployed data can produce the hardcoded names the test requires."
+      },
+      {
+        "task": "capabilities_privilege_escalation_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes exactly 2 expected binaries (/home/sysadmin/scripts/maintenance.sh and /opt/admin/backup_tool), but the real deployed /tmp/capabilities_dump.txt has 40 entries, at least 15+ of which contain exploitable capabilities (cap_setuid, cap_sys_admin, cap_sys_ptrace, cap_sys_module, cap_fowner, cap_setfcap, cap_dac_override, cap_chown, cap_dac_read_search on binaries like /usr/bin/legacy_admin, /opt/backup/file_manager, /usr/local/sbin/system_manager, /opt/tools/permission_bypass, /home/operator/scripts/file_access.sh, etc.). A correct solution analyzing the real data would produce far more than 2 binaries, causing test_escalation_vectors_correct_binaries to always fail."
+      },
+      {
+        "task": "caret_cross_validation_setup_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The Dockerfile copies `patient_data.csv` to `/workspace/experiments/patient_data.csv`, and the instruction also references that path, but `test_stratification_maintained` in test_outputs.py reads from `/workspace/data/patient_data.csv` (line 66) — a path that never exists in the deployed container. This makes the stratification test unconditionally fail with a FileNotFoundError regardless of how correct the agent's solution is."
+      },
+      {
+        "task": "catboost_gpu_training_hard",
+        "bug_type": "too_weak",
+        "evidence": "All 7 tests only check structural validity (file exists, valid JSON, required fields, optimal_threads in [1,2,4,8], training_time_seconds is a positive number between 0.1 and 3600, no extra fields). There are zero hardcoded expected values tied to actual training measurements, so an agent can trivially pass all tests by writing {\"optimal_threads\": 1, \"training_time_seconds\": 1.0} without running any CatBoost training at all."
+      },
+      {
+        "task": "chipseeker_peak_annotation_hard",
+        "bug_type": "too_weak",
+        "evidence": "All tests in test_outputs.py check only structural properties (file exists, valid JSON, field presence, type/range checks). No test validates the actual computed values for total_peaks_annotated, promoter_peaks_percentage, or top_annotated_gene against the real data. A trivially fabricated output like {\"total_peaks_annotated\": 1, \"samples_processed\": 3, \"promoter_peaks_percentage\": 0.00, \"top_annotated_gene\": \"X\"} would pass all 10 tests without performing any real annotation."
+      },
+      {
+        "task": "chipseeker_peak_annotation_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test contains no checks on the correctness of gene assignments or distance values. Every test is purely structural (file exists, valid JSON, correct field names, non-negative integer distance, non-empty gene string, peak order). An agent could assign arbitrary gene names with distance=0 for every peak and pass all 8 tests. The actual nearest-gene computation — the core computational task — is never verified."
+      },
+      {
+        "task": "clickjacking_attack_iframe_medium",
+        "bug_type": "too_weak",
+        "evidence": "The investigation directory contains 7 clearly malicious files (page1–3, mixed_techniques, opacity_attack_advanced, nested_frames, page_with_js), but test_identified_malicious_files only hardcodes 5 expected entries and never requires nested_frames.html or page_with_js.html to be detected — both contain blatant clickjacking patterns (positioned iframe overlays with z-index). A solution that misidentifies or omits these two real attack files passes all tests, making the grading insufficient."
+      },
+      {
+        "task": "commix_command_injection_testing_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The environment file /workspace/webapp.py is corrupted: after the valid Python app ends at line 201 (app.run()), lines 202-232 contain a markdown code-fence (```) and an analysis script with references to request.form, request.args, os.system, etc. The test's regex captures the last route (/admin/cleanup) all the way to end-of-file, so its route_code absorbs this junk text. This causes the test to falsely classify /admin/cleanup as vulnerable (has_user_input=True, has_command_execution=True), making expected_vulnerable_routes=['/api/ping','/admin/backup','/user/export','/system/check','/tools/convert','/admin/cleanup'], whereas a correct agent identifies the 5 truly vulnerable routes (plus /logs/view which uses subprocess.check_output not in the test's patterns) — so any correct solution fails the count/contents check."
+      },
+      {
+        "task": "consensus_algorithm_raft_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The simulator initializes commit_index=-1 and sets it to len(log)-1 (0-based), so 7 committed entries yield commit_index=6. But /environment/data/expected_state.json hardcodes \"commit_index\": 7 (1-based count), causing test_commit_index_matches_expected to require 7 when the correct answer from the simulator's own indexing scheme is 6."
+      },
+      {
+        "task": "consul_cluster_quorum_lost_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The environment file /etc/consul/server2.json is corrupted: instead of a valid Consul server configuration (like server1.json which has node_name, bind_addr, bootstrap_expect etc.), it contains a JSON object whose keys are agent reasoning strings from a previous run (e.g. \"I need to analyze the task and create the appropriate recovery plan JSON file...\") and values are fragments of that agent's output. An agent asked to examine the config files to determine the surviving servers would encounter this malformed fixture for server2, making it impossible to correctly derive the cluster topology from the actual configuration data as the instruction requires."
+      }
+    ]
+  }
+}

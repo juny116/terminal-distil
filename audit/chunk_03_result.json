@@ -1,0 +1,394 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=30 CLEAN=14 UNCERTAIN=1"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 30,
+    "n_clean": 14,
+    "n_uncertain": 1,
+    "bug_rate_excl_uncertain": 0.6818181818181818,
+    "verdicts": [
+      {
+        "task": "disown_job_not_in_table_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "distributed_lock_redlock_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "distributed_training_hang_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "dkms_dynamic_kernel_modules_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "dns_zone_transfer_enumeration_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "docker_compose_override_environment_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "docker_escape_privileged_container_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "docker_healthcheck_interval_tuning_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "docker_inspect_json_extraction_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "doubly_robust_estimation_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "doubly_robust_estimation_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "dpkg_divert_conflict_resolution_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "druid_ingestion_spec_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "dtrace_probe_scripting_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "duplicate_record_deduplication_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "dvc_large_file_tracking_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "dvc_large_file_tracking_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "edit_distance_levenshtein_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "edit_distance_levenshtein_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "email_header_analysis_phishing_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "email_header_analysis_phishing_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "enas_efficient_nas_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "envoy_listener_drain_timeout_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "eprover_saturation_strategy_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "evaluation_function_tuning_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "exif_metadata_extraction_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "exif_metadata_extraction_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "expectation_maximization_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "expression_evaluation_shunting_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "extern_template_explicit_instantiation_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "feast_feature_retrieval_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "feature_drift_detection_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "fenwick_tree_prefix_sums_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "fenwick_tree_prefix_sums_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "few_shot_learning_setup_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "ffuf_web_fuzzing_attack_medium",
+        "verdict": "UNCERTAIN",
+        "bug_type": "unknown"
+      },
+      {
+        "task": "firestore_realtime_listener_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "fixed_width_file_parsing_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "flame_graph_generation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "flamegraph_generation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "flannel_vxlan_mtu_issues_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "flyway_migration_versioning_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "fork_pattern_recognition_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "freesurfer_skull_strip_failure_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "gatk_vqsr_training_sets_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "disown_job_not_in_table_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test's `valid_process_pids` is hardcoded as `{'10234', '10456', '10789', '11023'}` (only 4 PIDs) and `job_table_pids` as 5 PIDs, but the real `processes_snapshot.txt` has ~30 process PIDs and `jobs_snapshot.txt` has 10 job PIDs. A correct solution would report all process PIDs not in the job table (roughly 28+ PIDs), but `test_correct_orphaned_pids` rejects any PID not in those 4 hardcoded values, making a correct answer impossible to pass."
+      },
+      {
+        "task": "distributed_lock_redlock_hard",
+        "bug_type": "too_weak",
+        "evidence": "The grader in test_outputs.py never independently runs the lock manager; it only reads agent-written /workspace/result.txt and checks that it contains \"PASS\" lines. An agent can trivially write all three PASS lines with a broken or empty lock implementation (the structural checks only verify that LockManager class and acquire/release methods exist, not that they work). The critical concurrent_test requirement — that only 1 of 5 simultaneous clients succeeds — is never verified by the grader itself."
+      },
+      {
+        "task": "dns_zone_transfer_enumeration_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test checks only structural properties (file exists, valid JSON, fields present, integer types, non-negative, mail_servers <= total_records) — it never validates the actual counts against the real data. The real zone_transfer.txt yields total_records=27, unique_hosts=24, mail_servers=2, but any trivially non-negative integers (e.g. {1, 1, 0}) would pass all tests."
+      },
+      {
+        "task": "docker_compose_override_environment_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test checks memory limits via `service_config.get('mem_limit')` (a top-level Docker Compose v2 shorthand key), but all three fixture YAML files store memory under `deploy.resources.limits.memory`. Running the test's own logic against the real fixtures, `mem_limit` is always `None` for every service in every environment, so the test always computes `is_valid=False` and expects `FAIL` for all three environments — even though all three YAML files fully satisfy the stated requirements (confirmed by parsing). A correct agent answer of `dev=PASS\\nstaging=PASS\\nproduction=PASS` would be rejected by the grader."
+      },
+      {
+        "task": "docker_healthcheck_interval_tuning_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test's hardcoded expected_services set in test_all_services_present() is {\"api-gateway\", \"user-service\", \"order-service\", \"payment-service\", \"notification-service\", \"inventory-service\", \"analytics-service\", \"cache-service\"}, but the actual service_metrics.json deployed in the environment contains entirely different services: {\"api-gateway\", \"database\", \"cache\", \"auth-service\", \"payment-service\", \"notification-service\", \"order-processor\", \"web-frontend\"}. Only 3 services overlap; the test expects \"analytics-service\", \"user-service\", \"order-service\", \"inventory-service\", \"cache-service\" which do not exist in the real data, while the real data has \"database\", \"cache\", \"auth-service\", \"order-processor\", \"web-frontend\" which are not in the test's expected set. Any correct solution derived from the real data will fail this assertion."
+      },
+      {
+        "task": "docker_inspect_json_extraction_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The 6 fixture files in /environment/data/docker_data/ have 3 incompatible schemas: container_cache/database/worker.json have proper docker inspect format (Name, HostConfig, NetworkSettings as nested objects); container_api/webserver.json are flat network-endpoint lists with no Name/HostConfig/NetworkSettings; container_monitor.json uses dot-notation flattened keys (HostConfig.NetworkMode, NetworkSettings.Networks) where Networks is a double-encoded JSON string. No single parsing approach can correctly extract network_mode and networks from all 6 files, making the task unpassable."
+      },
+      {
+        "task": "doubly_robust_estimation_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test requires abs(ate_estimate - (-8.0)) <= 1.5 (range: [-9.5, -6.5]), but the real deployed data at /environment/data/hypertension_study.csv yields a positive OLS ATE of ~+4.92 (Frisch-Waugh, controlling for all covariates) and naive ATE of +12.28 — treated patients have mean bp_reduction of 16.37 vs 4.09 for controls. A correct doubly robust estimator on this data will produce a positive estimate far outside [-9.5, -6.5], making the task unpassable."
+      },
+      {
+        "task": "doubly_robust_estimation_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test `test_doubly_robust_implementation` is supposed to verify the agent actually applied doubly robust estimation (not naive difference-in-means), but it ends with `assert True` — so it always passes unconditionally. No hardcoded expected values exist anywhere; any output with treatment_mean>=0, control_mean>=0, abs(ate)<10000, and ate=treatment_mean-control_mean passes, meaning a trivially wrong naive estimator (naive ATE≈171.66 vs correct DR ATE≈104.65) passes the full test suite."
+      },
+      {
+        "task": "dtrace_probe_scripting_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test checks only structural properties (JSON validity, field names present, values are strings from the valid service set, determinism) but never verifies correctness. From the real strace data: db_connector is clearly the slowest service (total IO time 4.39s vs web_frontend 0.30s vs cache_service 0.0006s), has the most failed calls (33 vs web_frontend 11 vs cache_service 3), and highest avg latency (0.0549s vs 0.0019s vs 0.000005s). An agent could output any valid service name for each field and pass all 9 tests without correctly analyzing the data."
+      },
+      {
+        "task": "duplicate_record_deduplication_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The test (test_outputs.py lines 49 and 99) reads input data from `/workspace/output/duplicate_record_deduplication_medium/files/data/customers.csv`, but the Dockerfile only copies the data to `/workspace/data/customers.csv`. The path referenced in the test is never created, causing `test_deduplication_rules` and `test_output_record_count` to raise FileNotFoundError and always fail regardless of a correct agent solution."
+      },
+      {
+        "task": "dvc_large_file_tracking_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The Dockerfile contains `COPY models/trained_model.pkl /workspace/ml_project/models/trained_model.pkl` and `COPY models/model_v2.h5 /workspace/ml_project/models/model_v2.h5`, but the `models/` directory does not exist in the environment directory at all. The Docker build would fail at these COPY commands, making the task completely unpassable. Additionally, all existing data files are well under 1MB (largest is `preprocessed_data.csv` at 36KB), contradicting the task's premise of \"large file tracking\"."
+      },
+      {
+        "task": "edit_distance_levenshtein_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_corrections_count hardcodes `assert len(corrections) == 5`, but the deployed /workspace/queries.txt has 62 queries. test_query_order_preserved also only lists the first 5 query words. A correct solution processing all 62 queries would fail the count check immediately."
+      },
+      {
+        "task": "edit_distance_levenshtein_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The deployed data file /workspace/product_pairs.txt contains 20 pairs, but test_summary_fields asserts `summary[\"total_pairs\"] == 5` and test_all_pairs_processed asserts `len(results) == 5`. A correct solution processing all 20 pairs would fail both assertions."
+      },
+      {
+        "task": "email_header_analysis_phishing_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test only verifies 4 of 7 actual phishing emails (003, 007, 009, 015) and 4 of 8 legitimate emails (001, 002, 004, 008). Emails 005, 011, and 013 (confirmed phishing by SPF/DKIM/DMARC failures in the real data) and emails 006, 010, 012, and 014 (confirmed legitimate) are never checked, meaning an agent can misclassify 7 of 15 emails and still pass all tests."
+      },
+      {
+        "task": "email_header_analysis_phishing_medium",
+        "bug_type": "too_weak",
+        "evidence": "The critical test `test_phishing_detection_accuracy` only checks that phishing count is between 2 and 6 (and both lists are non-empty). The real data clearly shows email2, email4, email5, email7 are phishing (SPF/DKIM/DMARC all fail, suspicious domains, Reply-To mismatches) while email1, email3, email6, email8 are legitimate (all auth checks pass). The test comment even misidentifies the phishing set (says odd-numbered emails, but real data shows even-numbered phishing email4 and legitimate odd-numbered email1/email3). Any answer with 2-6 emails in phishing passes, meaning a mostly-wrong answer (e.g., 2 correct + 0 correct) would also pass the accuracy test."
+      },
+      {
+        "task": "enas_efficient_nas_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed performance_scores.json is a list of {architecture: int(0-3), score} objects, not the dict of {\"0,1,2,3,0,1\": score} six-position architecture strings described in the instruction. A correct agent following the spec samples 50 six-position architecture strings, finds 0/50 matches in the lookup (only int keys 0-3 exist), gets all default scores of 50.0, average=50.0, and fails the >= 75.0 threshold test. Similarly, controller_weights.json is a list instead of the specified dict format."
+      },
+      {
+        "task": "envoy_listener_drain_timeout_hard",
+        "bug_type": "too_weak",
+        "evidence": "The operational_requirements.txt explicitly mandates prestop_delay=20, envoy_drain_timeout=100, k8s_grace_period=125, but the tests only check loose inequalities (e.g., envoy_drain_timeout>=90, prestop_delay in [5,30]). A wrong answer like envoy_drain_timeout=90, prestop_delay=5, k8s_grace_period=126 passes all tests despite violating the spec's fixed 10-second safety buffer and 20-second preStop requirement."
+      },
+      {
+        "task": "evaluation_function_tuning_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test requires MAE < 100 centipawns, but the deployed positions.csv (186 rows, not 200 as stated) contains true_score values with high positional/tactical noise that cannot be explained by material imbalance alone. Unconstrained least-squares regression yields an optimal MAE of 139.24, and an exhaustive grid search over all valid integer piece values satisfying the stated constraints finds a best achievable MAE of 134.84 — both far above the 100 centipawns threshold. No valid solution can pass the test."
+      },
+      {
+        "task": "exif_metadata_extraction_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test hardcodes exactly 2 tampered images (image_003.txt, image_008.txt — both pre-2000 timestamps), but the real deployed data has at least 3 additional definitive anomalies the instruction explicitly lists as red flags: image_002.txt has GPS latitude 95.43 (> 90 limit), image_006.txt has GPS longitude -185.79 (< -180 limit), and image_005.txt has ModifyDate 2022:09:15 before DateTimeOriginal 2022:09:18. A correct solution following the spec would identify at minimum 5 tampered images, causing test_correct_number_of_tampered_images and test_no_false_positives to fail."
+      },
+      {
+        "task": "exif_metadata_extraction_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "All 8 `.jpg` files in `/environment/data/photos/` are invalid/corrupted: `image001.jpg` is a plain-text Python script, `image005.jpg` contains escaped binary literals as text, and the rest have malformed/truncated JPEG data that Pillow cannot parse. Since `test_gps_findings_validates_against_source_images` reads these same files at test time to build the expected GPS set, Pillow returns None for all images and `expected = {}`, meaning an agent that creates an empty `gps_findings.txt` passes every test — making the benchmark trivially passable without any real EXIF extraction."
+      },
+      {
+        "task": "expectation_maximization_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed `/workspace/config/model_config.json` is a JSON array of 452 transaction records (amount/frequency/recency/diversity fields) — identical in format to transactions.csv — instead of the model configuration (n_clusters, convergence_threshold, max_iter, initialization settings) described in the instruction. The test hardcodes `stable: no` and requires keywords like 'random'/'seed'/'initialization', but since no actual model config exists, an agent cannot perform the config analysis the task requires."
+      },
+      {
+        "task": "extern_template_explicit_instantiation_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The Makefile in the environment builds an executable named `program` (line 10: `program: $(OBJECTS)`), but test_program_runs checks for the executable at `.../files/main` (test line 42: `executable_path = Path(\".../files/main\")`). A correct solution following the provided Makefile would produce `program`, causing test_program_runs to fail with \"Executable 'main' does not exist after compilation\"."
+      },
+      {
+        "task": "feast_feature_retrieval_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_expected_customer_count hardcodes exactly 5 customers (`assert len(features) == 5`), but the real customer_batch.txt at /home/juny116/Workspace/terminal-bench-env/environments_harbor/feast_feature_retrieval_medium/environment/data/customer_batch.txt contains 10 customers (customer_001 through customer_010). A correct solution retrieving all batch customers would yield 10 entries and fail this test, while a solution returning only 5 would fail test_all_customers_present."
+      },
+      {
+        "task": "feature_drift_detection_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test suite (test_outputs.py) contains zero checks on which features are classified as critical/drifted/stable — it only validates structure (file exists, valid JSON, 3 fields, arrays, exactly 6 features, no duplicates, feature names in schema). A trivially wrong answer like {\"critical\":[],\"drifted\":[],\"stable\":[\"transaction_amount\",\"account_age_days\",\"transaction_frequency\",\"merchant_category\",\"payment_method\",\"device_type\"]} passes all 9 tests regardless of the actual statistical drift in the data."
+      },
+      {
+        "task": "fenwick_tree_prefix_sums_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test's `test_query_results_match_brute_force` reads timeseries.dat expecting \"index value\" pairs (requiring `len(parts) >= 2`), but the real data has only one integer per line after the header. This causes the brute-force to load 0 initial data points. A correct solution loads N=50000 data points, so the first query (Q 1 5000) yields 102435 from a correct implementation but 0 from the test's brute-force — out of 394 total queries, only 353 match, meaning correct Fenwick Tree solutions fail the grading test."
+      },
+      {
+        "task": "fenwick_tree_prefix_sums_medium",
+        "bug_type": "too_weak",
+        "evidence": "The deployed operations.txt has only N=50 elements and Q=30 operations (18 queries, 13 updates), while the task requires handling up to 100,000 operations efficiently. A completely naive O(N) solution per query trivially satisfies the 5-second time limit with this tiny dataset, making it impossible to verify that the agent actually implemented a Fenwick tree or any efficient data structure. The test has no hardcoded values but fails to enforce the performance requirement it was designed to test."
+      },
+      {
+        "task": "few_shot_learning_setup_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed CSV fixtures have inconsistent row dimensions: class_0/support.csv has rows with 120-126 values, class_2/support.csv has 126-value rows while its query.csv has 131-value rows, class_3/query.csv has 144-value rows, class_4/support.csv has 126 vs query.csv with 129, class_5/query.csv has 127. Only class_1 and class_3/5 support files have consistent 128-dimensional data. A correct prototypical network implementation yields 0.0% accuracy (computed with both truncation and zero-padding approaches), making the test_accuracy_meets_threshold test (>= 0.60) unpassable."
+      },
+      {
+        "task": "firestore_realtime_listener_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed /workspace/game_state.json fixture is corrupted: it contains a JSON array of {\"#!\\/usr\\/bin\\/env python3\": \"...\"} objects (a Python script encoded as malformed JSON key-value pairs) instead of the expected {\"lobby_id\": ..., \"players\": [...]} format described in the instruction. This means any monitor.py that reads the initial file state (as the instruction directs: \"Begin monitoring immediately when the script runs\") will encounter a JSON parse error or invalid structure, potentially failing test_monitor_creates_log_file or test_player_counts_are_accurate which depends on correct initialization."
+      },
+      {
+        "task": "fixed_width_file_parsing_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes exactly 5 payment mismatches (E1001-E1005) and 0 missing records, but the real deployed data (20 employees in hr_records, 18 in finance, 18 in timekeeping) produces 17 payment mismatches (E1001-E1005 plus E1007, E1009-E1016, E1018-E1019) and 4 missing records (E1006 absent from finance and timekeeping, E1017 from timekeeping, E1020 from finance). The test was written against the first 5 employees only."
+      },
+      {
+        "task": "fork_pattern_recognition_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes total_forks=2, total_damage=23, positions=[1,2], but the real 20-position data file yields total_forks=3, total_damage=27, positions=[7,9,17]. The hardcoded values are wrong in two ways: (1) the test's inline comments mis-analyze chess moves (Knight on e4 cannot reach c6; Queen on d5 is blocked by pb7 before reaching ra8), so positions 1 and 2 have no valid forks; (2) the test only manually inspects positions 1-5 and ignores positions 6-20 entirely, where the actual forks occur (lines 7, 9, 17)."
+      }
+    ]
+  }
+}

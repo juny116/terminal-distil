@@ -1,0 +1,364 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=24 CLEAN=21 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 24,
+    "n_clean": 21,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.5333333333333333,
+    "verdicts": [
+      {
+        "task": "intrinsics_simd_vectorization_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "ios_ipa_decryption_clutch_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "ios_xcode_build_archive_failed_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "ip_address_geolocation_enrichment_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "ip_address_geolocation_enrichment_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "jaeger_trace_sampling_missing_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "java_outofmemoryerror_heap_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "jest_async_test_timeout_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "jmeter_load_testing_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "join_unsorted_input_error_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "joseki_pattern_matching_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "jpf_listener_custom_analysis_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "jq_parsing_malformed_json_recovery_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "json_streaming_large_files_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "jupyter_kernel_connection_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "jwt_token_validation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "kafka_avro_schema_registry_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "kafka_consumer_group_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "kallisto_index_kmer_length_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "kill_process_not_dying_sigkill_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "kinesis_stream_checkpointing_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "kissat_bounded_variable_elimination_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "klee_constraint_solver_backend_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "knapsack_dynamic_programming_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "knime_workflow_execution_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "kubectl_configmap_mount_permission_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "kubectl_liveness_probe_syntax_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "kubeflow_pipeline_data_passing_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "kubernetes_hpa_unable_fetch_metrics_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "ladder_capturing_go_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "ldd_shared_library_dependencies_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "letsencrypt_rate_limit_hit_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "levenshtein_distance_deduplication_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "life_death_go_problems_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "life_death_go_problems_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "line_intersection_sweep_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "litmus_chaos_kubernetes_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "llvm_bitcode_generation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "ln_force_overwrite_directory_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "lock_free_data_structures_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "locust_distributed_load_testing_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "longformer_long_documents_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "lsf_fairshare_scheduling_policy_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "luks_encrypted_volume_cracking_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "lvm_extend_logical_volume_online_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "ios_ipa_decryption_clutch_medium",
+        "bug_type": "too_weak",
+        "evidence": "The deployed \"binaries\" in /environment/data/ios_binaries/ are text files (Unicode/ASCII text, not real Mach-O binaries), so `otool -l` in test_encryption_detection_accuracy will fail or produce no output matching the regex `r'cryptid\\s+(\\d+)'`. This causes cryptid_match to be None for every file, the test falls through to the except branch which only checks format validity (already covered by test_status_values), making the accuracy test a complete no-op that passes even if every binary is classified incorrectly."
+      },
+      {
+        "task": "ios_xcode_build_archive_failed_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes expected_frameworks = {'NetworkKit', 'ModernUI', 'AnalyticsSDK', 'CoreAnalytics'} (4 frameworks), but the real dependencies.txt has 22 frameworks that would fail validation: every framework with enabled/disabled bitstream is flagged for bitstream_mismatch (since the project mixes enabled and disabled), plus VideoProcessor, SocialShare with no_bitstream; PaymentGateway, ChatFramework, AudioEngine, GraphicsEngine, ImageOptimizer with target_too_high; SocialShare, PaymentGateway, DataSync, ChatFramework with not_signed. An agent correctly applying all four validation rules would produce 22 problem entries and fail test_all_problematic_frameworks_identified."
+      },
+      {
+        "task": "jaeger_trace_sampling_missing_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test's `test_service_name_is_correct` searches for lines containing lowercase `service_name` to extract the service name, but the actual deployed code at `/app/payment_service.py` defines the name as `SERVICE_NAME = 'payment-processing-service'` (line 20, uppercase). The only lowercase match is `service_name=SERVICE_NAME,` (line 31 in Config call), which has no quotes, so the extraction returns `None` and the assertion `assert service_name is not None` always fails — making this test unpassable even with a perfectly correct solution file containing `\"service_name\": \"payment-processing-service\"`."
+      },
+      {
+        "task": "java_outofmemoryerror_heap_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test hardcodes peak heap values (genomics-parser=1789, sequence-aligner=3598, variant-caller=2689) that are lower than the actual peaks in the deployed log files (genomics-parser=1823, sequence-aligner=3687, variant-caller=2712). This means the minimum thresholds checked by the tests (e.g., sequence-aligner requires >=4317MB instead of the correct >=4424MB) are too low, allowing solutions with insufficient heap sizes to pass."
+      },
+      {
+        "task": "joseki_pattern_matching_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The Dockerfile only copies `data/test_positions.json` and `matcher.py` into the container; `joseki_db.json` (the database of 15 joseki patterns required by the instruction, matcher.py, and the test at lines 68-70 and 122-124) is absent from `environment/data/` and never provisioned. Both the agent and the verifier tests will fail trying to open `/home/user/joseki_db.json`."
+      },
+      {
+        "task": "jpf_listener_custom_analysis_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "SampleClass.class is not a valid Java class file. Its content starts with \"I'll generate a valid Java class file in binary format.\" (ASCII text, not the 0xCAFEBABE magic bytes). Running `javap -c -p` on it fails with \"unexpected tag at #1: 97\", causing `test_instruction_counts_are_correct` to hit `assert result.returncode == 0` and fail, making the task unpassable."
+      },
+      {
+        "task": "jq_parsing_malformed_json_recovery_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py contains zero hardcoded expected values for total_events, users_with_errors, or avg_session_duration. All tests only check structural properties (file exists, valid JSON, correct field names, non-negative types, and total_events > 0). An agent could submit {\"total_events\": 1, \"users_with_errors\": 0, \"avg_session_duration\": 0.00} and pass every test, even though the real recoverable data yields approximately 39+ events across the three log files."
+      },
+      {
+        "task": "kafka_avro_schema_registry_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The deployed schema_mapping.txt at /environment/data/schema_mapping.txt contains 8 file mappings (user_events, order_data, product_catalog, inventory_updates, payment_transactions, customer_profiles, shipping_notifications, analytics_events), but test_total_validated_is_five hardcodes `assert data[\"total_validated\"] == 5` and test_correct_validation_results only expects 4 valid + 1 invalid files. Additionally, test_all_mapped_files_are_validated dynamically reads all 8 entries from schema_mapping.txt and would require all 8 to be present — directly contradicting the hardcoded count of 5, making it impossible to pass both tests simultaneously."
+      },
+      {
+        "task": "kinesis_stream_checkpointing_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The processing log's last-processed sequences (e.g., shard-0: 49624586574839201847362848773, shard-1: 49624586574839201847362851635, shard-2: 49624586574839201847362856968) do not exist in the JSONL shard data files (shard_0.jsonl records range from ...847261 to ...849132 for shard-0). test_checkpoint_matches_stream_data requires the checkpoint sequences to be present in the stream files, but the instruction says to derive them from the processing log — making it impossible to satisfy both simultaneously with a correct solution."
+      },
+      {
+        "task": "kissat_bounded_variable_elimination_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_bve_skipped_correct_value() hardcodes skipped=23, but the deployed log file /environment/data/kissat_verbose.log contains exactly 19 \"c skipped ...\" lines (grep -c confirms 19). The other two hardcodes are correct: eliminated=73 and max_added=14 both match computed values."
+      },
+      {
+        "task": "klee_constraint_solver_backend_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py only validates structure (JSON validity, required fields, list types, alphabetical sorting, valid performance_factor string, total count=8) but never verifies which workloads are classified as slow vs fast. An agent can pass all tests by placing all 8 workloads in fast_workloads and leaving slow_workloads empty — the \"at_least_one_workload_in_each_category\" test only checks total==8, not that both lists are non-empty or that slow workloads (03, 07 with nonlinear arithmetic) are correctly identified."
+      },
+      {
+        "task": "knapsack_dynamic_programming_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "Tests hardcode expected values based on 5-package toy examples (e.g., north expects 535 from PKG001-PKG005), but each real data file contains 20 packages. Running the correct 0/1 knapsack on the actual data yields: north=1395 (expected 535), south=1290 (expected 573), east=1378 (expected 553), west=1260 (expected 555), central=1452 (expected 567). No correct solution can pass these tests."
+      },
+      {
+        "task": "knime_workflow_execution_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test at test_outputs.py:68 hardcodes `total_processed == 1000`, but the actual CSV at environment/data/transactions.csv (copied to /data/transactions.csv in the Dockerfile) has only 845 rows. A correct pipeline reading the real data would produce total_processed=845, which cannot pass the test. The instruction incorrectly states \"1000 transaction records\"."
+      },
+      {
+        "task": "kubectl_configmap_mount_permission_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test `test_fix_summary_values_reasonable` only requires TOTAL_ISSUES_FIXED to be between 1 and 50, and each per-deployment count to be >= 0. An agent can write arbitrary numbers (e.g., TOTAL_ISSUES_FIXED=1, all per-service counts=0) and pass. No test verifies the correct count against the actual issues in the deployment files (frontend: missing `shared-config` volume; backend: duplicate mount name `app-config` and non-existent ConfigMaps `database-settings`/`api-secrets`; worker: undefined `queue-settings`/`tasks-config` volumes). The structural checks (volume name references, ConfigMap existence) do catch some real issues, but WORKER_MOUNTS_CORRECTED/BACKEND_MOUNTS_CORRECTED/FRONTEND_MOUNTS_CORRECTED are completely unverified count fields that accept any non-negative integer."
+      },
+      {
+        "task": "ladder_capturing_go_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test `test_all_board_verdicts_correct` hardcodes that all 8 boards must be marked \"correct,\" but board_2's file labels O-chain at (2,3)+(3,3) with 5 liberties as \"capturable\" — a chain with 5 liberties cannot satisfy the instruction's requirement that every forcing move must threaten immediate capture, so the correct label is \"escapes\" and a correct solver would output \"board_2.txt: incorrect,\" not \"correct.\" Additionally, the test comment for board_6 describes a different position (TARGET: 2,2, NEXT: O) than what the actual fixture file contains (TARGET: 1,2, NEXT: X), confirming the test was written against different fixture data."
+      },
+      {
+        "task": "ldd_shared_library_dependencies_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes expected_apps={\"database_client\",\"api_gateway\",\"cache_service\"}, expected_libs={\"libgssapi_krb5.so.2\",\"libjson-c.so.4\",\"libjemalloc.so.2\"}, and expected_total=3, but the real deployed data yields 4 affected apps (web_server also has 3 missing: libpcre.so.3, libhttp-parser.so.2, libwebsockets.so.8; and database_client has 2 missing including libmysqlclient.so.21), 8 unique missing libs, and TOTAL_MISSING=10. The test comments explicitly say \"Based on the preview data\", confirming it was written against a partial dataset."
+      },
+      {
+        "task": "letsencrypt_rate_limit_hit_medium",
+        "bug_type": "too_weak",
+        "evidence": "All 9 tests are purely structural: they check JSON validity, required field types, list lengths (1-10 domains), and that at least one priority domain appears anywhere in certificate_status.json. No test verifies correct prioritization order (expired before expiring_soon), correct identification of the most critical domains (api.company.com, www.mainsite.com with days_until_expiry of -29/-24), or correct root cause from log analysis. An agent can pass all tests by writing a one-domain list with any domain from the cert file, a schedule of [0,3], and any 11-character strings for root_cause and recommended_fix — without actually solving the problem."
+      },
+      {
+        "task": "levenshtein_distance_deduplication_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The real customers.csv has only 550 valid records (not 1,500 as stated), yielding ~285 deduplicated records — far outside the test's hardcoded range [1000, 1200]. Additionally, known_duplicates.txt contains a Python script instead of `id1,id2` pairs, making it a corrupted fixture that cannot satisfy the validation logic."
+      },
+      {
+        "task": "life_death_go_problems_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test file (/home/juny116/Workspace/terminal-bench-env/environments_harbor/life_death_go_problems_hard/tests/test_outputs.py) contains zero hardcoded expected values. All 7 test functions check only format (regex pattern), board ordering, valid coordinate ranges (A-J, 1-9), and loose numeric bounds (group count: 1-81, liberty count: 0-81). A trivially wrong but formatted line like \"board_01.txt: 1 groups, minimum at A1, 1 liberties\" passes every single test, meaning the grading cannot distinguish a correct Go liberty analysis from a completely fabricated one."
+      },
+      {
+        "task": "life_death_go_problems_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test hardcodes ground_truth[\"problem_03\"] = \"ALIVE\" but problem_03's board (/environment/data/problems/problem_03.txt) has a straight-three nakade interior (3 empty cells in a line). White plays the vital center point (2,3), leaving (2,2) and (2,4) each adjacent to the White stone — neither becomes a true eye — and then captures both disconnected Black groups. Standard Go theory classifies the straight-three as definitively DEAD; the hardcoded \"ALIVE\" is incorrect."
+      },
+      {
+        "task": "line_intersection_sweep_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_expected_intersections hardcodes count=3 and points [(2,2),(3,1),(4,1)] computed from only the first 5 segments of the file, but the real deployed trajectories.txt contains 79 segments that yield 104 unique intersection points, making the hardcoded assertion impossible to pass with a correct solution."
+      },
+      {
+        "task": "lock_free_data_structures_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py contains zero hardcoded expected values derived from the actual stack_trace.log data. All 9 tests only validate output format and internal field consistency (e.g., if RACE_DETECTED=YES then VIOLATION_TYPE != NONE). An agent can output any internally consistent answer — including \"RACE_DETECTED=NO, VIOLATION_TYPE=NONE, VIOLATION_COUNT=0, FIRST_VIOLATION_LINE=0\" — and pass all tests regardless of what violations (if any) actually exist in the 1,294-line trace file."
+      },
+      {
+        "task": "longformer_long_documents_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The file at /home/juny116/Workspace/terminal-bench-env/environments_harbor/longformer_long_documents_medium/environment/tokenizer.py is actually a solution script, not a tokenizer — it defines analyze_documents/main() and imports `from tokenizer import count_tokens`, but never defines count_tokens itself. The Dockerfile copies this file to /workspace/tokenizer.py; when the test does `from tokenizer import count_tokens` it gets an ImportError because count_tokens is not defined anywhere, making the task completely unpassable."
+      },
+      {
+        "task": "luks_encrypted_volume_cracking_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The hash file at /home/juny116/Workspace/terminal-bench-env/environments_harbor/luks_encrypted_volume_cracking_hard/environment/data/recovered_hashes.txt contains malformed bcrypt hashes: user1's hash is 60 characters (valid), but users 2-5 each have 61-character hashes. Standard bcrypt hashes are exactly 60 characters; bcrypt.checkpw() returns False for any password tested against these 61-char hashes, confirmed experimentally by appending one char to a known-valid hash and verifying it always returns False. This makes the test_passwords_match_hashes test permanently unpassable for 4 of the 5 required users."
+      }
+    ]
+  }
+}

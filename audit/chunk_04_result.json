@@ -1,0 +1,344 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=20 CLEAN=25 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 20,
+    "n_clean": 25,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.4444444444444444,
+    "verdicts": [
+      {
+        "task": "gatling_stress_simulation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "gaussian_convergence_scf_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "gcc_march_native_optimization_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "gcp_gcloud_authentication_service_account_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "gemma_kinship_matrix_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "geospatial_index_postgis_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "ghidra_decompiler_script_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "git_lfs_pointer_instead_file_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "git_merge_conflict_binary_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "glmer_convergence_warnings_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "glucose_incremental_solving_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "go_cross_compile_goos_goarch_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "google_analytics_api_pagination_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "google_sheets_api_batch_update_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "gpaw_projector_augmented_wave_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "gpaw_projector_augmented_wave_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "gradient_accumulation_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "grafana_dashboard_variable_cascade_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "grafana_datasource_query_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "graphql_schema_stitching_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "great_expectations_validation_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "gromacs_topology_atom_mismatch_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "group_connection_analysis_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "grpc_protobuf_message_parsing_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "grpc_reflection_enumeration_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "hadoop_balancer_bandwidth_throttle_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "hadoop_balancer_bandwidth_throttle_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "hadoop_datanode_volume_failure_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "hamiltonian_cycle_detection_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "haproxy_backend_servers_down_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "hashcat_gpu_cracking_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "hdf5_hierarchical_export_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "health_check_endpoint_kubernetes_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "heavy_hitters_frequent_items_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "hicexplorer_contact_matrices_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "hicexplorer_contact_matrices_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "homer_motif_enrichment_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "html_table_scraping_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "hudi_merge_on_read_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "huge_pages_allocation_configuration_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "imbalanced_learn_sampling_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "influxdb_line_protocol_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "inla_spatial_modeling_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "inspec_compliance_testing_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "interactive_debugger_gdb_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "gemma_kinship_matrix_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed genotypes.txt at /environment/data/genotypes.txt has only 38 lines (1 header + 37 individuals, IND_001–IND_038), but the instruction specifies 50 individuals and test_kinship_matrix_has_correct_dimensions() asserts exactly 51 lines (header + 50 rows) and test_kinship_matrix_has_correct_individual_ids() expects IND_001 through IND_050. A correct solution from the real data would produce a 37x37 matrix and fail both tests."
+      },
+      {
+        "task": "ghidra_decompiler_script_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The Dockerfile at environment/Dockerfile contains `COPY app.pyc /workspace/app.pyc`, but the file `app.pyc` is not present in the environment directory (only the Dockerfile itself exists there). The Docker image cannot be built and the task is unpassable due to this missing fixture file."
+      },
+      {
+        "task": "git_lfs_pointer_instead_file_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "4 files in the deployed environment (videos/intro.mp4, audio/sound.wav, data/model.bin, assets/font.ttf) are genuine LFS pointer files (~130 bytes each) with no backing LFS server to fetch real content from, making `test_no_lfs_pointer_files_remain` permanently unpassable. Additionally, the 5 \"non-pointer\" files (logo.png, banner.jpg, icon.svg, readme.txt, dataset.parquet) contain AI-generated reasoning text from prior agent runs rather than real binary content, indicating the fixture was corrupted by previous agents writing fabricated content to pass the size check."
+      },
+      {
+        "task": "git_merge_conflict_binary_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The git index file at environment/repo/dot_git/index is corrupted: binary bytes have been replaced with UTF-8 replacement character sequences (0xEFBFBD), confirmed by `xxd` showing `DIRC` magic followed by garbage. The version field reads 0x20202020 (spaces) instead of a valid version number. This corrupted index is COPY'd directly into the Docker container, making `git status` and any git operations fail with a \"not a git repository\" or similar error, rendering the task unpassable."
+      },
+      {
+        "task": "glucose_incremental_solving_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction.md hardcodes the expected answer as \"STEP3: UNSAT\", but running the actual SAT solver (Glucose3) on the real deployed data (base_circuit.cnf + new_constraints.cnf) produces \"BASE: SAT, STEP1: SAT, STEP2: SAT, STEP3: SAT\" — the circuit remains satisfiable after all 3 new constraints. The grading tests only check format, base=SAT, and monotonicity (never directly assert STEP3=UNSAT), so the spec's hardcoded example contradicts the real data and the tests are too weak to catch whether an agent outputs the wrong answer based on the misleading instruction."
+      },
+      {
+        "task": "google_sheets_api_batch_update_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction tells the agent to produce a summary JSON with exactly `records_processed: 1247, records_rejected: 23`, but the real deployed data (146 total records across 3 JSON files) yields approximately 73 valid and 70 rejected records. An agent following the instruction literally will hardcode 1247/23, causing `test_processing_summary_consistency` to fail because it asserts `summary[\"records_processed\"] == len(df_transactions)` (which would be ~73, not 1247)."
+      },
+      {
+        "task": "gradient_accumulation_hard",
+        "bug_type": "too_weak",
+        "evidence": "All tests in test_outputs.py only verify self-reported values in /workspace/results.txt (peak_memory_mb, training_completed, epochs_finished), which the agent writes itself. There is no actual measurement of RAM usage — an agent can trivially pass by writing \"peak_memory_mb=750\\ntraining_completed=true\\nepochs_finished=10\" without implementing gradient accumulation at all, making the grading unable to distinguish a real solution from a no-op that just creates the output files."
+      },
+      {
+        "task": "graphql_schema_stitching_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The Dockerfile only copies two files to /workspace/services/ (product-service.json and order-service.json); user-service.json is entirely absent from environment/data/ and has no COPY command. The instruction says \"the /workspace/services/ directory contains three JSON files\" including user-service.json, and test_services_field_correct() hardcodes checking for \"user-service\" in the services array, but the agent has no user-service.json to discover or analyze in the services directory."
+      },
+      {
+        "task": "group_connection_analysis_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "Running a correct BFS connectivity analysis on the actual deployed grid files produces values that differ from the test's hardcodes in 24 out of 32 fields (all 8 grids have at least one mismatch). Example: grid_01.txt test expects black_groups=1/max_white=4 but real data yields black_groups=2/max_white=5; grid_07.txt test expects black_groups=3/max_white=9 but real data yields black_groups=2/max_white=8. The hardcoded expected values appear to have been written for a different set of grid files than those actually deployed."
+      },
+      {
+        "task": "hadoop_balancer_bandwidth_throttle_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks structural properties (field presence, types, and logical consistency between `valid` and `errors`), but never verifies the actual bandwidth values. An agent could output any non-negative integers for `bandwidth_peak` and `bandwidth_offpeak` (even `1` and `2`) and pass all tests, despite the real config having 52428800 and 157286400. No test checks whether `valid` is true/false, nor that the extracted bandwidth values match those in the deployed config files."
+      },
+      {
+        "task": "hadoop_datanode_volume_failure_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The real volume_status.log shows 3 OPERATIONAL volumes (/data/volume1, /data/volume3, /data/volume5), but test_solution_exact_format hardcodes expected_set = {\"/data/volume1\", \"/data/volume3\"} (only 2 volumes) and asserts len(volumes) == 2, causing any correct solution that includes the healthy /data/volume5 to fail."
+      },
+      {
+        "task": "hashcat_gpu_cracking_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test `test_weak_password_detection` computes `expected_weak_usernames` (63 accounts from real data) but never asserts it against the report's `vulnerable_usernames`. The only actual assertion is that 3 specific accounts (alice, bob, charlie) appear in the vulnerable set. An agent that flags all 75 accounts as vulnerable would pass every test, making the grading trivially bypassable."
+      },
+      {
+        "task": "hdf5_hierarchical_export_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The fixture file at /home/juny116/Workspace/terminal-bench-env/environments_harbor/hdf5_hierarchical_export_medium/environment/data/experiments.h5 is actually a Python generator script (ASCII text, starts with \"import h5py\"), not a real HDF5 binary file. Opening it with h5py raises \"OSError: Unable to synchronously open file (file signature not found)\". The Dockerfile copies this Python script to both /workspace/data/experiments.h5 (where the agent must read it) and /workspace/output/hdf5_hierarchical_export_medium/files/data/experiments.h5 (where test_extracted_all_experiments reads it), making the task unpassable in its current state."
+      },
+      {
+        "task": "health_check_endpoint_kubernetes_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test checks only structural properties (valid JSON, correct keys, positive integers, liveness_delay >= readiness_delay) and never validates specific values against service specifications. A trivially incorrect solution with all delays set to 1 passes every test. Additionally, the instruction references `/workspace/service-specs.json` as the source of truth for correct values, but this file is never provisioned by the Dockerfile — only the deployment YAML files are copied — so agents cannot derive the \"correct\" answer as intended."
+      },
+      {
+        "task": "homer_motif_enrichment_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test has zero hardcoded expected values derived from the actual data; it only checks format/structure (file exists, 3 lines, MOTIF is 8-12 valid IUPAC chars, SCORE is a float > 10, LOCATIONS is an int 1-150). An agent can trivially pass all tests with a completely fabricated output like MOTIF=ACGTACGT / SCORE=11 / LOCATIONS=1, without performing any real motif enrichment analysis on peaks.bed and genome.fa."
+      },
+      {
+        "task": "html_table_scraping_hard",
+        "bug_type": "too_weak",
+        "evidence": "test_profit_margin_format claims to verify profit_margin is in percentage format (e.g. 30.0, not 0.30), but its assertion only checks `isinstance(profit_margin, (int, float))` — a solution storing decimal values like 0.30 instead of 30.0 passes the test, directly contradicting the instruction requirement \"profit_margin should be a percentage value (e.g., 30.0 for 30%)\"."
+      },
+      {
+        "task": "hudi_merge_on_read_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test never checks exact computed values: total_balance is only tested to be > 0 (not the correct 18119.39), total_customers is only tested to be > 0 (not the correct 8), and snapshot_count is the only exact check (== 6). An agent could output {\"total_customers\": 1, \"total_balance\": 0.01, \"snapshot_count\": 6} and pass all tests without doing any real computation, making the benchmark unable to distinguish correct from trivially wrong solutions."
+      },
+      {
+        "task": "huge_pages_allocation_configuration_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction's example JSON shows `nr_hugepages: 4505`, but the test computes `math.ceil(8192 * 1.1 / 2) = math.ceil(4505.6) = 4506` and asserts `nr_hugepages >= 4506`. An agent that follows the instruction's example exactly will submit 4505 and fail `test_nr_hugepages_calculation`. Additionally, `memlock_kb: 9226240` in the example equals `4505 * 2048`, which would also fail if the agent correctly uses 4506 pages (requires 9228288 KB)."
+      },
+      {
+        "task": "inla_spatial_modeling_medium",
+        "bug_type": "too_weak",
+        "evidence": "A trivial output with all district risks = 1.0 and empty elevated_risk_districts[] passes all 11 tests, including test_spatial_smoothing_applied (which requires 15/30 districts to differ from raw ratios by >0.01 — a constant 1.0 output differs from raw ratios for all 30 districts). No test checks specific expected risk values or which districts should be elevated, so meaningless output is indistinguishable from a correct INLA spatial model."
+      },
+      {
+        "task": "interactive_debugger_gdb_hard",
+        "bug_type": "too_weak",
+        "evidence": "All 7 tests only validate file structure and format (key names, integer type, hex address regex) — none check that line_number==58, variable_name==\"processing_ptr\", or that invalid_value matches the actual runtime garbage pointer. Any output with a positive integer, a valid C identifier, and any 16-hex-digit address (e.g. \"line_number=1\\nvariable_name=a\\ninvalid_value=0x0000000000000000\") passes all tests, making the grading trivially bypassable with a wrong answer."
+      }
+    ]
+  }
+}

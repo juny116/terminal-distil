@@ -1,0 +1,344 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=20 CLEAN=25 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 20,
+    "n_clean": 25,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.4444444444444444,
+    "verdicts": [
+      {
+        "task": "lxd_profile_device_configuration_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "lynis_system_hardening_audit_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "macs2_broad_peak_calling_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "makefile_phony_targets_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "materialized_view_refresh_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "matrix_chain_multiplication_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "mdadm_raid_array_recovery_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "memory_profiler_heap_dump_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "metafor_meta_analysis_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "metal_indirect_command_buffer_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "metal_memoryless_render_targets_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "metasploit_exploit_session_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "metasploit_exploit_session_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "mft_master_file_table_analysis_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "mgcv_smooth_term_specification_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "mgcv_varying_coefficient_models_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "minisat_cnf_format_invalid_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "mitsuba_xml_schema_validation_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "mlflow_artifact_logging_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "model_distillation_compression_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "mongodb_change_streams_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "mongodb_change_streams_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "mongodb_replica_set_reconfiguration_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "monocle3_trajectory_inference_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "mpi_scan_prefix_sum_parallel_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "mpi_scan_prefix_sum_parallel_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "mqtt_broker_connection_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "mqtt_broker_connection_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "mtr_network_path_diagnosis_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "mv_cross_filesystem_rename_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "nats_streaming_queue_group_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "nc_connection_timeout_firewall_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "nearest_neighbor_kdtree_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "nested_json_flattening_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "nested_json_flattening_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "netcdf_climate_data_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "netstat_time_wait_exhaustion_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "newlib_embedded_c_library_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "nexus_repository_storage_cleanup_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "nexus_repository_storage_cleanup_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "nginx_upstream_keepalive_connections_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "nmap_service_version_detection_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "notion_database_export_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "npm_package_supply_chain_attack_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "ntlm_relay_attack_smb_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "matrix_chain_multiplication_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_result_3_correct() hardcodes expected min_cost=88000 for chain 3 (dims [10,20,30,40,30,50]), but the correct optimal cost computed by standard matrix-chain DP is 45000 (achieved by (((A×B)×C)×D)×E). The value 88000 corresponds to the non-optimal parenthesization A×(((B×C)×D)×E), which is not the minimum."
+      },
+      {
+        "task": "mdadm_raid_array_recovery_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks structural properties (JSON format, device list completeness, command format) and never verifies which specific devices are healthy vs failed. A trivial solution listing all 4 devices as healthy (healthy_devices=[sda,sdb,sdc,sdd], failed_devices=[]) with a correctly formatted mdadm command would pass every test — even though the real data shows sdd has a stale event count (4980 vs 5420 for the others) and all four devices have different Array UUIDs indicating they are not from the same array. No test checks for the correct identification of the failed device."
+      },
+      {
+        "task": "metafor_meta_analysis_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py contains zero hardcoded expected values for the computed statistical results. Every test checks only format: pooled_effect is any float in [-1.0, 3.0] with 3 decimals, and age_significant/dosage_significant/treatment_effective accept any \"yes\" or \"no\". An agent can output mathematically wrong answers (e.g., wrong pooled_effect, incorrect significance determinations) and pass all 9 tests, making the grading unable to distinguish correct meta-analysis from a trivially fabricated output."
+      },
+      {
+        "task": "metal_memoryless_render_targets_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The Dockerfile deploys the config to /workspace/render_config/pipeline_config.json, but test_outputs.py reads from /workspace/config/pipeline_config.json — a path that never exists in the container. Both test_correct_attachments_identified and test_total_savings_correct will always raise FileNotFoundError, making the benchmark unpassable for any correct agent solution."
+      },
+      {
+        "task": "mgcv_smooth_term_specification_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The deployed `model_specs.txt` has 8 lines (including lines 6-8 with bs='cc', bs='bs', bs='cc'), but `test_solution_accounts_for_all_specs` checks `expected_specs = [1, 2, 3, 4, 5]` and `test_solution_correct_cyclic_identification` expects `valid_specs=[2,4]` and `invalid_specs=[1,3,5]` — written for a 5-line file. A correct agent answer covering all 8 specs (valid=[2,4,6,8], invalid=[1,3,5,7]) would fail the test that demands exactly 5 specs summing to [1,2,3,4,5]."
+      },
+      {
+        "task": "mitsuba_xml_schema_validation_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The task instruction says to validate against ALL 8 rules in validation_rules.txt, but test_validation_logic_correctness only enforces Rules 1-3. Under the full 8-rule check, 4 files are invalid (scene_broken_01 through scene_broken_04), but the test expects only 2 invalid files (scene_broken_01.xml and scene_broken_03.xml). A correct solution applying Rules 4-8 would also flag scene_broken_02.xml (sensor missing 'type') and scene_broken_04.xml (no shapes, no bsdf), causing the test to incorrectly reject the right answer."
+      },
+      {
+        "task": "model_distillation_compression_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py only validates the format and relational constraints of `/workspace/compression_report.txt` (compression_ratio < 0.40 and performance_retention >= 0.90), but never loads or inspects the actual model files. An agent can trivially pass all 5 tests by writing arbitrary numbers satisfying those ratios (e.g., original_parameters=1000, compressed_parameters=100, original_accuracy=0.80, compressed_accuracy=0.72) without ever training a compressed model. No test cross-references the reported values against the actual `/workspace/models/original_model.pth` or dataset."
+      },
+      {
+        "task": "mongodb_change_streams_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test file (test_outputs.py) contains zero hardcoded expected values - it only checks structural properties: file existence, valid JSON, required field names, correct types (int/str), non-negative values, and non-empty top_warehouse. Any agent output with valid structure and non-negative integers passes all tests regardless of correctness, meaning a trivially wrong answer like {\"low_stock_count\": 1, \"total_quantity_change\": 1, \"top_warehouse\": \"X\"} would receive full reward even if the real data yields completely different values."
+      },
+      {
+        "task": "mongodb_change_streams_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test's `test_identifies_suspicious_operations` function fails to detect update operations correctly: for update events it tries `update_desc.get('updatedFields', {}).get('status')` but the real data uses flat key `updateDescription_updatedFields` (a JSON string), so `updated_fields` is always falsy and the condition `updated_fields == 'deleted'` is never True. The test computes only 4 expected IDs (replace-op temp users only), while a correct solution reading the actual data produces 11 IDs (7 additional update-op temp users). A correct solution would be rejected with \"Extra document IDs that shouldn't be flagged.\""
+      },
+      {
+        "task": "mongodb_replica_set_reconfiguration_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed input file at /environment/data/replica_set_diagnostics.json (copied to /workspace/replica_set_diagnostics.json) contains only {\"priority\": 1} instead of the full diagnostic structure with replica_set_name, members array, and host/state/reachable fields shown in the instruction. The tests hardcode expected values derived from that full structure (replica set name \"rs0\", hosts \"mongodb-primary:27017\" and \"mongodb-secondary1:27018\", 2 reachable members), but those values cannot be derived from the actual deployed file, making the task unpassable."
+      },
+      {
+        "task": "mpi_scan_prefix_sum_parallel_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed sensor_data.txt has 1173 lines, but test_output_file_line_count asserts exactly 1000 output lines and the instruction says \"1000 integer readings.\" This creates an unresolvable conflict: if the agent outputs 1000 lines (per instruction), test_prefix_sum_correctness (which dynamically computes expected prefix sum from the 1173-line input) will fail at position 1000; if the agent outputs 1173 lines, test_output_file_line_count fails. No correct solution can pass both tests."
+      },
+      {
+        "task": "nearest_neighbor_kdtree_hard",
+        "bug_type": "too_weak",
+        "evidence": "The instruction requires handling 100,000 sightings / 10,000 stations with avg query time under 1ms (necessitating a k-d tree), but the deployed data at /data/stations.csv and /data/sightings.csv has only 175 stations and 200 sightings. A naive brute-force linear scan completes in 0.069ms average per query (measured), trivially passing the 1ms threshold without any spatial indexing — rendering the k-d tree requirement completely unenforced."
+      },
+      {
+        "task": "nested_json_flattening_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction describes \"deeply nested JSON format\" with \"nested structures for customer info, items, shipping, and payments\", but the actual /workspace/data/orders.json is already a flat array of 28 objects with top-level keys matching the required output columns exactly. The test's own comment at line 64 says \"each order is one item in this data\", and test_order_data_preserved directly accesses first_order['item_name'] as a top-level key (line 132) — which only works on the pre-flattened data, not on a truly nested structure. An agent that implements real JSON flattening (e.g., unnesting an items sub-array) would produce different output than what the test expects."
+      },
+      {
+        "task": "netcdf_climate_data_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The three \"NetCDF\" data files (temp_2021.nc, temp_2022.nc, temp_2023.nc) are Python scripts (plain text starting with \"I'll generate the NetCDF file...\"), not real NetCDF binaries. The Dockerfile COPYs them directly; any attempt to open them with netCDF4/scipy/h5py fails with \"not a valid NetCDF file\" / \"file signature not found\". The task is unpassable as deployed because agents cannot read the required input data."
+      },
+      {
+        "task": "nexus_repository_storage_cleanup_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test_retention_logic_correctness function only enforces criteria c1 (downloaded within 90 days) and c2 (published within 180 days), computing max_deletable=82, but completely omits c3 (production releases) and c4 (top 3 versions per group). A correct solution per the spec should delete only 44 artifacts, but any solution deleting up to 82 artifacts with reclaim_percentage >= 35% passes all tests — meaning an agent can ignore the production-release and top-3-versions retention rules entirely and still pass."
+      },
+      {
+        "task": "nexus_repository_storage_cleanup_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test_storage_reclamation_target check only verifies that the agent's self-reported estimated_cleanup_gb values sum to >= 40% of total storage (44.57 GB of 111.43 GB total), but never validates those estimates against actual artifact metadata. An agent can trivially pass all tests by fabricating any sufficiently large cleanup_gb numbers (e.g., 100 GB per store) without analyzing last_access dates or download counts at all. No test cross-checks the estimated_cleanup_gb against artifacts that actually meet the retention criteria in the metadata files."
+      },
+      {
+        "task": "nginx_upstream_keepalive_connections_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test never validates which files are actually compliant vs non-compliant. It only checks structural properties: file exists, valid JSON, required fields, total_analyzed==10, all service1-10.conf are present, no duplicates, .conf extension. An agent could put all 10 files in non_compliant_configs (or all in compliant_configs) and pass every test. The correct answer (service1.conf, service3.conf, service8.conf are compliant; 7 are non-compliant) is never verified, making the grading trivially bypassable."
+      },
+      {
+        "task": "notion_database_export_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test checks only structural properties (file exists, valid JSON, array of 8 items, field types, no extra fields, non-empty names, budget > 0 or null). There is no test that verifies campaign names, budget values, or status strings match the actual HTML fixture data. An agent could produce 8 fabricated campaign objects with arbitrary valid structure and pass all tests without parsing a single HTML file. The `test_status_values_valid` function even explicitly comments \"We don't strictly enforce valid_statuses\" and performs no assertion against the expected set."
+      },
+      {
+        "task": "npm_package_supply_chain_attack_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "Two hardcoded expected values contradict the actual deployed data: (1) test_malicious_version_identified expects \"2.3.5\" but the environment only contains v2.3.4 (package-versions/v2.3.4/) and index.js labeled v2.1.0 — version \"2.3.5\" does not exist anywhere; (2) test_exfiltration_target_correct expects domain \"evil-collector.com\" but all malicious code in the environment (install.js, index.js base64 payload, crypto-utils.js) exfiltrates to \"collector.suspicious-domain.com\" and \"c2.suspicious-domain.com\"."
+      },
+      {
+        "task": "ntlm_relay_attack_smb_medium",
+        "bug_type": "too_weak",
+        "evidence": "All 8 tests in test_outputs.py check only structural properties (file exists, valid JSON, required fields present, valid IPv4 format, fields are different, no extra fields) — none verify the actual IP values. The log data clearly shows relay_source=192.168.1.100 and relay_target=192.168.1.50 (10 NTLM_RELAY_AUTH entries), but an agent submitting any two different valid IPv4 addresses (e.g., \"1.1.1.1\" and \"2.2.2.2\") would pass all tests."
+      }
+    ]
+  }
+}

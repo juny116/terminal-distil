@@ -1,0 +1,204 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 24,
+  "logs": [
+    "audited 23/23: BUG=14 CLEAN=9 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 23,
+    "n_tasks": 23,
+    "n_bug": 14,
+    "n_clean": 9,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.6086956521739131,
+    "verdicts": [
+      {
+        "task": "schema_validation_pandera_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "sed_in_place_corrupted_backup_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "seki_mutual_life_go_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "shodan_internet_scanning_recon_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "shortest_path_dijkstra_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "slurm_accounting_tres_limits_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "slurm_accounting_tres_limits_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "slurm_gang_scheduling_timeslice_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "slurm_spank_plugin_development_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "slurm_spank_plugin_development_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "smartctl_disk_health_monitoring_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "smb_null_session_enumeration_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "smote_oversampling_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "snakemake_workflow_run_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "sort_temporary_directory_full_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "spark_bloom_filter_join_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "spark_catalog_plugin_custom_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "spark_coalesce_repartition_difference_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "spark_columnar_batch_processing_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "spark_data_skew_partition_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "spark_dataframe_schema_inference_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "spark_dynamic_partition_overwrite_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "spark_incremental_view_maintenance_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "schema_validation_pandera_medium",
+        "bug_type": "too_weak",
+        "evidence": "The grading tests never verify the exact invalid_record_count (computed as 29 from actual data). test_invalid_record_count_reasonable only checks count > 0 AND count < 115, so an agent reporting count=1 with a trivially permissive schema and minimal cleaned CSV passes all tests. test_cleaned_data_passes_schema_validation lets the agent validate against its own schema, meaning a schema with no real constraints would pass. No test enforces the specific constraints enumerated in the instruction (customer_id > 0, age 18-85, valid email, valid amount range)."
+      },
+      {
+        "task": "sed_in_place_corrupted_backup_medium",
+        "bug_type": "too_weak",
+        "evidence": "All 7 test functions check only format, enum membership, alphabetical order, and logical consistency (STATUS=corrupted ↔ SOURCE=none). A trivially wrong report claiming all 8 files as \"STATUS=recovered|SOURCE=original\" passes every test, even though the real data shows at minimum 3 files that must be STATUS=corrupted|SOURCE=none (database.conf — both versions have binary/garbage chars; security.conf — both versions have invalid keys; storage.conf — original has empty values and no .bak exists). The tests never read the actual config files or validate any specific STATUS/SOURCE assignment."
+      },
+      {
+        "task": "seki_mutual_life_go_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "For boards 01, 03, 05, 06 the test hardcodes YES, claiming \"Adjacent B and W groups sharing liberties.\" However, computing liberties from the actual board files shows none of these boards have any shared empty intersections between the B and W groups (e.g. board_03: Black libs={(2,0)}, White libs={(0,2),(1,2),(2,1)}, intersection=empty). A correct implementation of the instruction's rules (shared empty liberty adjacent to both groups) yields NO for all six boards, matching only the two NO boards (02, 04) and contradicting the four expected YES boards."
+      },
+      {
+        "task": "shodan_internet_scanning_recon_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The Dockerfile at /home/juny116/Workspace/terminal-bench-env/environments_harbor/shodan_internet_scanning_recon_hard/environment/Dockerfile only copies `internal_assets.txt` into the container but never provisions `shodan_scan_data.json`, which the instruction says will be at `/home/agent/shodan_scan_data.json`. The test `test_shodan_data_file_was_read` asserts that `/home/agent/shodan_scan_data.json` exists and would always fail since the file is never placed in the container, making the task unpassable."
+      },
+      {
+        "task": "slurm_accounting_tres_limits_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes expected_accounts = {'astronomy', 'chemistry', 'datascience', 'engineering', 'physics'} (5 accounts), but the real deployed config files contain at least 23 accounts with valid, active GPU TRES limits: e.g. machinelearning, robotics, deepvision, materials, visualization, graphics (from qos_policies.conf); climatology, genomics (from slurm_accounts.conf); biochemistry, simulation (from tres_limits.yaml); ceramics, neuroscience, photonics, polymer, forensics (from legacy_associations.dat). The test comment itself admits it only checked \"file previews,\" producing an incomplete expected set that any correct full-parse solution would fail."
+      },
+      {
+        "task": "slurm_gang_scheduling_timeslice_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "test_scheduler_type_parameter() hardcodes `sched/builtin` (line 38), but SLURM gang scheduling with timeslicing uses `SchedulerType=sched/backfill` combined with `PreemptMode=GANG`; `sched/builtin` is a simple round-robin scheduler that does not use `SchedulerTimeSlice`. The instruction's own example shows `sched/backfill`, and the task requirement (\"enable gang scheduling with timeslicing\") contradicts the test's expected value of `sched/builtin`."
+      },
+      {
+        "task": "slurm_spank_plugin_development_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The `.so` files in `/environment/plugins/` are not compiled ELF shared libraries — `file` reports them as C source, ASCII text, or Unicode text. `valid_plugin1.so` actually contains a bash/shell agent solution script. `nm -D` returns \"file format not recognized\" on all of them. Since `test_valid_plugins_have_required_symbols` runs `nm -D` to verify symbols in the \"valid\" plugins, it will always fail even if the agent produces the correct JSON output, making the task unpassable."
+      },
+      {
+        "task": "slurm_spank_plugin_development_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction's example JSON shows `\"env_validator\": \"valid\"`, but the real `env_validator.c` file lacks `#include <slurm/spank.h>` (only includes stdio/stdlib/string/unistd/sys/types), making it invalid per the stated criteria. The test dynamically computes the correct answer from real files (env_validator=invalid), so agents following the example output will fail the grading test even though the test logic is correct."
+      },
+      {
+        "task": "smartctl_disk_health_monitoring_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test never checks which specific drives are categorized as \"failed\" vs \"passed\". Real data shows sda and sdc should be FAILED, sdb/sdd/sde PASSED, but a trivially wrong answer (e.g., all 5 drives in \"passed\", zero in \"failed\") passes every test in test_outputs.py since no test validates the actual categorization — only structure, completeness, sorting, and key format are verified."
+      },
+      {
+        "task": "sort_temporary_directory_full_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The pipeline script uses `sort -t',' -k2` which sorts all lines including the header; with the real 100-line CSV, the header \"transaction_id,timestamp,...\" ends up at line 101 (last) in sorted output, not line 1. Yet test_sorted_output_has_csv_structure checks that the FIRST line contains expected column names (\"transaction_id\", \"timestamp\", etc.), which will always fail. The instruction only asks agents to redirect the temp directory to /data/workspace, not to change the sort logic to preserve the header."
+      },
+      {
+        "task": "spark_coalesce_repartition_difference_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test `test_expected_part_files_exist` hardcodes exact filenames `part-00000.csv` through `part-00003.csv`, but PySpark's CSV DataFrameWriter produces files with UUID suffixes (e.g. `part-00000-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-c000.csv`), so a correct `.coalesce(4).write.csv(...)` or `.repartition(4).write.csv(...)` solution can never produce those exact filenames and will always fail this test."
+      },
+      {
+        "task": "spark_columnar_batch_processing_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "All three hardcoded expected values in the test are wrong relative to the deployed config: test expects batch_size=4096/vectorized=true/arrow=false, but the actual effective config (application.properties sets batchSize=8192; spark.conf sets vectorizedReader=false; spark-defaults.conf sets arrow.pyspark.enabled=true) yields batch_size=8192/vectorized=false/arrow=true. The test comments reveal it was written assuming \"typical Spark defaults\" rather than the actual configured environment values."
+      },
+      {
+        "task": "spark_dataframe_schema_inference_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes per-region counts as north=45, south=40, east=50, west=35, central=40 (total=210), but the actual CSV files have exactly one fewer data row each: north.csv has 44 data rows (45 lines incl. header), south.csv 39, east.csv 49, west.csv 34, central.csv 39 — for a real total of 209. The test author mistakenly counted the header line as a data row in every file, so a correct solution will always fail test_all_records_present and all per-region tests."
+      },
+      {
+        "task": "spark_incremental_view_maintenance_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The fixture data has an irreconcilable schema mismatch: transactions.csv and current_views.csv use numeric customer IDs (101–130), but changelog.csv uses C-prefixed string customer IDs (C001–C026) with no overlap. The test's recomputation logic in test_incremental_update_correctness applies the changelog to transactions and expects a mixed-namespace result (numeric IDs 101–121 from historical data plus C001–C026 from INSERTs), but a correct incremental update using current_views as the base would produce only C-prefixed updates — making it impossible for any correct implementation to satisfy both the incremental task requirement and the test's expected output."
+      }
+    ]
+  }
+}

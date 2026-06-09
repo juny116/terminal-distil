@@ -1,0 +1,364 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=24 CLEAN=21 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 24,
+    "n_clean": 21,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.5333333333333333,
+    "verdicts": [
+      {
+        "task": "context_free_grammar_parsing_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "continual_learning_ewc_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "convex_hull_graham_scan_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "couchdb_changes_feed_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "count_min_sketch_frequency_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "coverage_llvm_source_based_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "coverage_llvm_source_based_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cox_proportional_hazards_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "cpachecker_cpa_composition_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "cpptraj_hydrogen_bond_analysis_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "crossencoder_reranking_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cryptominisat_assumptions_handling_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cuda_graph_capture_limitations_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "cuda_host_device_lambda_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cuda_multi_gpu_peer_memory_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cuda_multi_process_service_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cuda_occupancy_calculator_api_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "cuda_pinned_memory_write_combining_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cuda_unified_memory_thrashing_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "cufflinks_gtf_parsing_error_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "crossencoder_reranking_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "cryptominisat_assumptions_handling_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cvc4_unsat_core_extraction_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "cvc4_unsat_core_extraction_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "cypress_flaky_test_stabilization_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "dask_client_fire_and_forget_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "dask_futures_as_completed_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "dask_out_of_memory_chunking_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "dask_out_of_memory_chunking_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "dask_profiling_performance_report_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "dask_profiling_performance_report_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "dask_ucx_infiniband_communication_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "databricks_autoloader_schema_hints_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "datadog_custom_metric_submission_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "datetime_timezone_normalization_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "datetime_timezone_normalization_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "delimited_file_inconsistent_columns_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "delta_lake_time_travel_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "deseq2_size_factor_error_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "deseq2_size_factor_error_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "dfa_minimization_hopcroft_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "dig_dns_query_troubleshooting_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "directx_constant_buffer_alignment_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "directx_constant_buffer_alignment_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "discovered_attack_detection_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "context_free_grammar_parsing_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_correct_grammar_parsing hardcodes expected_valid=[\"5\",\"1+2\",\"3*4\",\"1+2*3\"] and expected_invalid=[\"+1\"] (5 total), but the deployed /task/expressions.txt has 15 expressions. Any correct solution must classify all 15, producing a valid set containing additional entries like \"9\",\"5*6+7\",\"1*2+3\",\"6*8\",\"2+3*4\", so set(result[\"valid\"]) can never equal the 4-item hardcoded set, making the grading test unpassable."
+      },
+      {
+        "task": "convex_hull_graham_scan_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "Multiple tests hardcode totals that contradict the real data files: test_sheet_1_classification hardcodes total=5 (\"4 corners + 1 center point\") but sheet_1.txt has 10 valid points; test_sheet_4_malformed_lines hardcodes total=3 (\"valid points: 2.5,3.7  5.1,8.2  7.3,4.9\") but sheet_4.txt has 7 valid points (also includes 1.2,1.5 / 9.0,7.1 / 3.4,2.8 / 6.8,9.3); test_sheet_5_collinear hardcodes total=5 (\"5 collinear points\") but sheet_5.txt has 6 collinear points."
+      },
+      {
+        "task": "count_min_sketch_frequency_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The access_logs.txt contains only 607 lines with 4 unique IPs, while ground_truth.json has counts for 276 IPs. For the three target IPs, the log yields counts of 243/122/121, but ground_truth.json has 1342/678/145 — all wildly outside the 10% tolerance the test enforces. The instruction also claims 50,000 log entries, confirming the log file is severely truncated and mismatched with the pre-generated ground truth."
+      },
+      {
+        "task": "cox_proportional_hazards_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed /data/reference_results.json is a JSON array of 50 survival records (time/event/treatment/age/stage rows), not the required dict {\"treatment_pvalue\": 0.023, \"age_pvalue\": 0.412, \"stage_pvalue\": 0.089}. Both test_validation_correctness (which calls reference['treatment_pvalue'] on a list, causing TypeError) and the agent (who must read p-values from this file to produce correct output) will fail unconditionally."
+      },
+      {
+        "task": "cpachecker_cpa_composition_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "valid4.properties references `specification=/workspace/specs/reachability.spc`, but the Dockerfile copies reachability.spc to `/workspace/data/reachability.spc` — the path in the config does not exist. Rule 3 says specification paths must exist, so a correct validator marks valid4.properties as INVALID; but the test hardcodes it in `expected_valid`, requiring it to be classified as valid."
+      },
+      {
+        "task": "cuda_graph_capture_limitations_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "Six of the eight deployed pattern files (pattern_01.txt through pattern_03.txt, pattern_05.txt, pattern_07.txt) contain previous agent execution transcripts instead of actual CUDA pattern descriptions. For example, pattern_04.txt contains a full agent session transcript that shows only pattern_04.txt existed at runtime and the agent invented the missing patterns, and pattern_05.txt contains a transcript of another agent doing the same. Only pattern_06.txt contains a real CUDA pattern description. Additionally, the test's correctness check (test_analysis_correctness) only validates one pattern (pattern_06 must be CAPTURABLE if it contains \"cudaEventRecord\" and \"cudaStreamWaitEvent\"), so an agent could answer 7 of 8 patterns incorrectly and still pass."
+      },
+      {
+        "task": "cuda_occupancy_calculator_api_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction shows a 2-config example with hardcoded expected output (config_a=66.7%, config_b=75.0%, recommended_config=B), but the real deployed data at /workspace/data/kernel_specs.json has 5 configs (A-E) in a flat list. Running the test's own computation logic yields A=100.0%, B=100.0%, C=93.8%, D=93.8%, E=100.0% with recommended_config=A (first max). An agent following the instruction's example values (66.7/75.0/B) would fail test_occupancy_calculations and test_all_configs_processed (expects 5 occupancy lines, not 2)."
+      },
+      {
+        "task": "cuda_unified_memory_thrashing_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks that total_issues > 0 and critical_patterns <= total_issues, with no hardcoded expected counts. An agent can trivially pass by writing {\"total_issues\": 1, \"critical_patterns\": 0, \"file_analyzed\": \"/workspace/gpu_kernel.cu\"} without performing any real analysis, even though the real gpu_kernel.cu contains at least 7 kernel-level issues and multiple host-side CPU/GPU synchronization problems (identifiable as 5+ total, 2+ critical per the instruction example)."
+      },
+      {
+        "task": "cufflinks_gtf_parsing_error_medium",
+        "bug_type": "too_weak",
+        "evidence": "The tests only enforce completeness for coordinate violations (7 lines), not for all 27 actual violations (invalid strand: 6, invalid frame: 6, wrong column count: 4, invalid coords: 11). An agent that reports only the 7 coordinate violations passes all tests, even though it misses 20 other format errors. Additionally, the instruction falsely claims the file is \"over 50,000 lines long\" when the actual deployed GTF has only 122 lines, which misleads agents about the nature of the task."
+      },
+      {
+        "task": "crossencoder_reranking_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test suite never verifies that avg_position_change is actually computed from real reranking of the input data; it only checks that the output JSON contains a positive numeric value between 0 and 4. An agent can trivially pass all 11 tests by writing {\"queries_processed\": 30, \"avg_position_change\": 1.0} with no actual processing, since test_input_file_was_read only checks the file exists (not that it was read), and no test cross-validates the reported metric against the actual document positions in search_results.jsonl."
+      },
+      {
+        "task": "cvc4_unsat_core_extraction_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The deployed triangle.smt2 asserts `invalid: (s1+s2 < s3)` alongside `side1: s1=10`, `side2: s2=5`, `side3: s3=20`. All four assertions are simultaneously satisfiable (10+5=15 < 20 is true), so CVC4 returns `sat` — not `unsat` — making it impossible to extract any unsat core. The test hardcodes `\"triangle.smt2: invalid, side1, side2, side3\"` as the expected answer, which no correct solution can produce from the real deployed data."
+      },
+      {
+        "task": "cypress_flaky_test_stabilization_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The file at /workspace/cypress/e2e/checkout.cy.js (the Cypress test agents are asked to analyze) is NOT a Cypress JavaScript test — it is a JSON file pre-populated with the exact answer: {\"total_issues\":12,\"critical_issues\":8,\"issue_types\":[...8 items...]}. The grading test (test_exact_total_and_critical_issues, test_expected_issue_types_present) demands these exact hardcoded values, which can only be obtained by copying the fixture rather than performing any real analysis, making the task trivially passable but not a meaningful evaluation."
+      },
+      {
+        "task": "dask_out_of_memory_chunking_hard",
+        "bug_type": "too_weak",
+        "evidence": "The instruction claims the dataset exceeds available memory and requires chunking, but the actual deployed data is only 3 CSV files with 99 data rows each (297 rows total, ~trivial size). The grading tests (test_outputs.py) contain no memory-limit enforcement, no check that chunking is used, and no performance assertion — any naive `pd.read_csv` + `pd.concat` solution with zero chunking passes all 6 tests identically to a correct chunked solution."
+      },
+      {
+        "task": "dask_profiling_performance_report_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test only checks that /workspace/metrics.json exists, is valid JSON, has exactly 3 fields, and each value is a float between 0.1 and 300. It does NOT verify the benchmark.py was actually instrumented or run — an agent trivially passes by writing {\"phase1_seconds\": 1.0, \"phase2_seconds\": 1.0, \"phase3_seconds\": 1.0} without executing any Dask computation."
+      },
+      {
+        "task": "dask_profiling_performance_report_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test suite has no hardcoded values but all checks are structurally too weak: an agent can pass every test by writing any plausible numbers (e.g., execution_time=1.0, task_count=3, data_processed_mb=0.01) without running the pipeline at all. The loosest check is test_data_processed_matches_actual_files which only requires reported MB to be within 0.5x-10x of actual file sizes (~0.0085 MB), and test_task_count_reflects_dask_operations only requires task_count >= 3. No test verifies that dask was actually invoked, that the execution time was measured via a timer, or that task_count reflects a real Dask scheduler graph — a trivially fabricated metrics.txt with any positive values satisfying the bounds passes."
+      },
+      {
+        "task": "dask_ucx_infiniband_communication_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The Dockerfile runs `RUN mkdir -p /tmp/cluster_spec.json /tmp/solution`, which creates `/tmp/cluster_spec.json` as a directory. The subsequent `COPY data/cluster_spec.json /tmp/cluster_spec.json` then copies the JSON file into that directory (landing at `/tmp/cluster_spec.json/cluster_spec.json`), not at the path `/tmp/cluster_spec.json` that the instruction tells the agent to read. This makes the fixture unreadable at the specified path, preventing correct task completion as described."
+      },
+      {
+        "task": "databricks_autoloader_schema_hints_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test `test_appropriate_types_for_problematic_fields` accepts `\"int\"` or `\"long\"` for the `quantity` column, but the real CSV data contains values like `1.5`, `unknown`, `multiple`, `???`, `NA`, and `-1` — none of which are valid integers. Any agent that outputs `\"int\"` for quantity passes the test despite specifying a type that would fail actual data loading. Similarly, the test accepts `\"double\"` for `amount` even though the real data contains non-numeric strings (`N/A`, `ERROR`, `PENDING`, `TBD`, `-`). The test is too weak: it passes answers that are demonstrably wrong for the provided data."
+      },
+      {
+        "task": "delimited_file_inconsistent_columns_medium",
+        "bug_type": "too_weak",
+        "evidence": "All 9 test assertions check only format/structure, never the actual computed values. For example, TOTAL_TRANSACTIONS only requires >0 and <=191, TOTAL_SALES_VALUE only requires a valid decimal >0 with <=2 decimal places, and TOP_REGION only requires it matches [A-Z_]+. The correct answers from the real data are TOTAL_TRANSACTIONS=191, TOTAL_SALES_VALUE=1280657.59, TOP_REGION=UNKNOWN, SKIPPED_ROWS=0, but any plausible-looking wrong answer (e.g. TOTAL_TRANSACTIONS=1, TOTAL_SALES_VALUE=1.00, TOP_REGION=NORTH) would pass all tests."
+      },
+      {
+        "task": "delta_lake_time_travel_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test file contains zero hardcoded expected values and only checks structural properties: file exists, valid JSON, correct field names, integer types, non-negative values, west_record_count > 0, and version in range 0-100. The correct answers derivable from setup_delta_table.py are last_version_with_west=2 and west_record_count=63 (45+10+8 WEST records across versions 0-2, all deleted in version 3), but any agent submitting {\"last_version_with_west\": 1, \"west_record_count\": 1} would pass all tests despite being completely wrong."
+      },
+      {
+        "task": "deseq2_size_factor_error_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The test hardcodes expect 500 total genes, 50 all-zero (removed), and 450 retained. The actual deployed data at /environment/data/raw_counts.tsv has only 417 genes total, with 57 all-zero genes and 360 non-zero genes — making it impossible for any correct solution to produce the expected values."
+      },
+      {
+        "task": "dfa_minimization_hopcroft_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test suite contains no language-equivalence check: it never simulates the minimized DFA on any input string to verify it accepts/rejects the same strings as the original. An agent could pass all 8 tests by returning structurally valid but semantically wrong minimized DFAs (e.g., a 1-state sink that accepts nothing, or accepting everything), as long as minimized_states <= original_states, all states are reachable, and transitions reference valid states — none of which guarantee the minimized DFA recognizes the same language."
+      },
+      {
+        "task": "dig_dns_query_troubleshooting_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_report_identifies_failing_domains (line 25) hardcodes expected domains ['api.example.com', 'secure.bank.net', 'mail.corporate.org'] and requires at least 2 appear in the report, but none of these three domains exist anywhere in the real dns_queries.log — the actual failing domains are api.problem-domain.com, internal-app1.example.com, broken-dns.example.org, and misconfigured.example.net. A correct agent analyzing the real log would never mention the three hardcoded domains, causing this test to always fail."
+      },
+      {
+        "task": "directx_constant_buffer_alignment_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test's cbuffer regex `r'cbuffer\\s+(\\w+)\\s*{([^}]+)}'` requires the `{` to follow immediately after the buffer name, but every shader in the environment uses `cbuffer Name : register(b0) { ... }` syntax. The pattern never matches any cbuffer, so `expected_violations` is always empty, and any output (including an empty file) passes all assertions. In reality there are 6 real violations (e.g., vertex_transform.hlsl:TransformBuffer:12, post_process.hlsl:VignetteSettings:12, etc.) that a correct solution would report — but reporting them would trigger the false-positive check and fail the test."
+      },
+      {
+        "task": "directx_constant_buffer_alignment_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test never checks the actual violation count or correctness of individual violations — test_violations_detected only asserts total_violations > 0. A correct solution finds 7 real violations (3 in MaterialParams, 1 in BloomSettings, 1 in TerrainData/clipPlane, 2 in EmitterData), but the shader files also contain misleading comments claiming false violations (e.g., BasicLighting's shadowBias at offset 32 spans 32-39, never crossing a 16-byte boundary). Any agent that outputs at least 1 arbitrarily chosen violation in valid JSON format passes all tests, making the grading effectively unable to distinguish correct from incorrect analysis."
+      }
+    ]
+  }
+}

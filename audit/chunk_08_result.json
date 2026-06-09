@@ -1,0 +1,384 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=28 CLEAN=17 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 28,
+    "n_clean": 17,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.6222222222222222,
+    "verdicts": [
+      {
+        "task": "pdf_forensics_analysis_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "pdf_table_extraction_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "perceptual_loss_implementation_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "perpetual_check_detection_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "picard_mark_duplicates_optical_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "picosat_incremental_assumptions_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "picosat_incremental_assumptions_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "pip_dependency_conflict_resolution_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "podman_rootless_permission_denied_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "power_bi_dataflow_transformation_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "prody_normal_mode_analysis_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "proguard_obfuscation_configuration_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "prometheus_high_cardinality_metrics_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "prometheus_high_cardinality_metrics_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "prometheus_query_optimization_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "prometheus_query_optimization_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "prometheus_query_timeout_heavy_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "prophet_seasonality_modeling_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "pst_outlook_forensics_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "pulsar_topic_consumer_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "pulsar_topic_consumer_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "pvs_typechecking_tcc_discharge_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "pycaret_low_code_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "pymol_selection_algebra_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "pytest_fixture_debugging_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "python3_modulenotfound_path_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "pytorch_geometric_edge_index_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "qchem_solvent_pcm_model_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "qiime2_artifact_import_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "qlora_quantized_lora_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "quantization_int8_inference_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "query_result_caching_redis_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "quota_user_disk_limits_enforcement_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "quota_user_disk_limits_enforcement_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "r_matrix_singularity_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "randomforest_variable_importance_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "range_tree_orthogonal_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "rave_rapid_action_value_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "ray_dataset_distributed_loading_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "ray_workflow_durable_execution_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "rdp_bluekeep_vulnerability_exploit_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "readelf_elf_header_inspection_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "redis_pubsub_messaging_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "regex_pattern_matching_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "regex_pattern_matching_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "pdf_table_extraction_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py checks only format/structure (file exists, 3 lines, pattern `invoice_XXX: digits.XX`, positive numbers) but never validates that the extracted amounts match the actual totals in the PDF files. An agent could write `invoice_001: 0.01\\ninvoice_002: 0.01\\ninvoice_003: 0.01` and pass all 5 tests without reading any PDF at all."
+      },
+      {
+        "task": "perceptual_loss_implementation_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test suite only reads /workspace/solution.txt and checks that three score values fall in the ranges (>0.90, >0.70, <0.30). No test verifies the actual algorithm runs, loads VGG features, or produces scores derived from the real image pairs. An agent can trivially pass all 8 tests by writing fabricated values like \"test_1_score: 0.95\\ntest_2_score: 0.80\\ntest_3_score: 0.10\" without implementing any perceptual loss logic."
+      },
+      {
+        "task": "picard_mark_duplicates_optical_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction asks agents to count individual optical duplicate reads (51 reads out of 94 total duplicates = 54.26%), but the test's grading logic in test_optical_duplicates_calculation counts pairs of reads within 100px of each other (27 pairs = 28.72%). An agent correctly following the instruction would report optical_duplicates=51, but the test asserts it should be 27, causing the test to fail."
+      },
+      {
+        "task": "picosat_incremental_assumptions_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed CNF at /environment/data/circuit.cnf has zero satisfying assignments (completely UNSAT with 42 clauses over 15 variables, verified by brute force over all 2^15=32768 combinations). The instruction example output shows SAT assignments for scenarios A and C, but those are impossible — a correct solution must output UNSAT for all three scenarios. Additionally, the instruction's own example assignment for scenario_a (`1,0,1,1,1,...`) has variable 2 = 0, contradicting the scenario requirement that vars 1-5 all be TRUE."
+      },
+      {
+        "task": "pip_dependency_conflict_resolution_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test at line 60 asserts `numpy == \"1.24.2\"` and its comment claims this satisfies `==1.24.2, ==1.23.5, and >=1.23.0,<1.25.0`, but `==1.24.2` and `==1.23.5` are mutually exclusive exact pins — no version can satisfy both simultaneously. The real data has `analytics/requirements.txt: numpy==1.24.2` and `scheduler/requirements.txt: numpy==1.23.5`, making numpy genuinely unsatisfiable, yet the test grades `1.24.2` as correct."
+      },
+      {
+        "task": "prody_normal_mode_analysis_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test checks only type/range constraints (most_flexible_residue is int 1-5, non_rigid_modes is positive int, collective_motion is bool) without verifying any computed value. A trivially incorrect answer like {\"most_flexible_residue\": 1, \"non_rigid_modes\": 1, \"collective_motion\": false} passes every test, making the grader unable to distinguish a correct NMA computation from a hardcoded stub."
+      },
+      {
+        "task": "prometheus_high_cardinality_metrics_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_series_reduction_significant (line 130) asserts series_reduction >= 2,000,000, but the real cardinality_report.txt totals only 1,054,046 series across all metrics. Even a perfect solution reducing every series to zero yields a maximum reduction of ~1.05M, making this test impossible to pass. The instruction also falsely claims \"~2.3 million\" total series."
+      },
+      {
+        "task": "prometheus_high_cardinality_metrics_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_correct_total_series_count hardcodes 204 (from the comment: 60+60+20+16+12+20+16=204), but counting the real /environment/data/metrics_snapshot.txt yields 206 unique series (http_requests_total=61, api_response_time_seconds=60, container_cpu_usage=21, database_queries_total=20, cache_hits_total=16, network_bytes_total=16, node_memory_bytes=12). The test will always fail a correct solution."
+      },
+      {
+        "task": "prometheus_query_optimization_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test suite only checks structural properties (file exists, valid JSON, 5 keys, non-empty strings > 10 chars, no placeholder text). For q1 it checks for \"by\"/\"without\" keyword presence; for q2-q5 it only checks length > 10. An agent can trivially pass by submitting any arbitrary strings (e.g., \"sum(rate(x[1m])) by (job)\" for q1 and any 11+ char strings for q2-q5) with no actual optimization quality verified — making the \"hard\" benchmark grade entirely disconnected from correctness."
+      },
+      {
+        "task": "prometheus_query_optimization_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The real dashboard_queries.txt has 15 queries, but test_audit_results_has_all_queries hardcodes expected_keys = [\"query_1\"...\"query_5\"] and test_audit_results_correct_format asserts len(data) == 5. A correct solution that maps all 15 queries would fail with \"Expected exactly 5 entries, found 15\"."
+      },
+      {
+        "task": "prometheus_query_timeout_heavy_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test at line 29-35 hardcodes `expected_keys = [\"query_1\"...\"query_5\"]` and asserts `len(actual_keys) == 5`, but the real deployed `/workspace/queries.txt` (in environment/data/queries.txt) contains 15 queries. A correct solution analyzing all 15 queries produces 15 keys and fails the count assertion."
+      },
+      {
+        "task": "prophet_seasonality_modeling_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The West region's test period (last 30 days: 2023-10-03 to 2023-12-29) contains a corrupted outlier: 2023-12-02 has sales_amount=300 (all other West values are 47,000–280,000). Any reasonable model predicts ~100,000 for that date, yielding a single-point MAPE of ~33,233%, and an average MAPE ≥ 1,107% for the 30-point West test set — making the `validation_error_pct < 30` threshold in test_validation_error_pct_below_threshold mathematically unpassable regardless of model quality."
+      },
+      {
+        "task": "pulsar_topic_consumer_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes messages_consumed == 17 (6+6+5 based on counting one message per file: orders files named 295,298,301,305,308,312 etc.), but each msg_*.json file actually contains a list of multiple messages. Running the real data yields 112 total pending messages (41 orders + 27 inventory + 44 notifications), while final_positions (312/289/246) match correctly. The test was authored assuming one message per file but the deployed data has multi-message lists in each file."
+      },
+      {
+        "task": "pulsar_topic_consumer_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test's `test_problematic_consumers_identified` logic only flags consumer5.json (invalid topic) from the real data, missing consumer3.json (disabled consumer whose subscription \"orders-disabled\" doesn't exist in subscription_state at all), consumer2.json (subscription \"events-exclusive-sub\" not in subscription_state), and consumer6.json (subscription \"orders-mismatch\" not in subscription_state). The test requires an exact sorted match, so an agent that correctly identifies all 4 problematic consumers (per the instruction's stated problem types) would fail, while an agent returning only [\"consumer5.json\"] would pass despite an incomplete analysis."
+      },
+      {
+        "task": "pvs_typechecking_tcc_discharge_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The grading test's keyword check (`\"unproved\" in log_content.lower()`) incorrectly flags deadlock_freedom and resource_manager as UNSAFE because their summary lines contain \"TCCs unproved: 0\" — but both logs clearly show 0 unproved TCCs and all obligations discharged. A correct solution would classify these two modules as SAFE per the instruction's definition, but the test would assert UNSAFE, making a correct solution fail."
+      },
+      {
+        "task": "pytorch_geometric_edge_index_hard",
+        "bug_type": "too_weak",
+        "evidence": "All tests only check structural properties (file existence, format, no negatives, within bounds, no self-loops, no duplicates, internal report consistency) with no hardcoded expected values and no check that any valid edges are preserved. An agent can write all 5 edge files as empty (two blank lines each), report total_edges_before=N, total_edges_after=0, edges_removed=N, edges_added=0 and every single test passes — the grading never verifies that any correct edges were retained or that transitivity edges were added."
+      },
+      {
+        "task": "qlora_quantized_lora_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "Two fixture problems: (1) small_model.json is missing entirely from the environment/config directory - the Dockerfile only COPYs medium_model.json and large_model.json, but the instruction says all 3 configs exist in /workspace/configs/; (2) medium_model.json is corrupted - instead of a broken QLoRA config, it contains AI-generated reasoning notes formatted as JSON (identical keys mapping to strings like \"Based on the task requirements:\", \"1. **Small model (1.5B)**: Needs lower LoRA rank...\", etc.), making it impossible for agents to \"analyze and fix\" the config as the task requires."
+      },
+      {
+        "task": "quantization_int8_inference_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed fixture /environment/data/model_weights.bin (copied to /workspace/model_weights.bin in the container) contains Python source code rather than binary weight data. Its first bytes are \"import struct\\nimport numpy as np...\" — a generator script. When parsed as binary int32, num_matrices reads as 1,869,639,017, making correct execution impossible."
+      },
+      {
+        "task": "query_result_caching_redis_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The `query_handler.py` file contains a commented-out \"correct implementation\" reference using `hashlib.md5` with lowercased, normalized queries (32-char hex), but `test_keys_are_deterministic` validates keys using `hashlib.sha256` without lowercasing (64-char hex), and `test_keys_follow_format` enforces exactly 64 hex chars. An agent following the in-code reference implementation would produce MD5 keys that fail both tests, while the instruction gives no indication that SHA256 is the expected algorithm."
+      },
+      {
+        "task": "quota_user_disk_limits_enforcement_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes 5 expected violators {david, grace, heidi, kate, liam} and excess=195000, but the real data files yield 17 unique violators (charlie, david, frank, grace, heidi, irene, karen, kate, laura, liam, olivia, oscar, paula, steve, uma, victor, zack) with total excess=1,312,000. The test was written for a small example/preview of the data, not the full deployed dataset."
+      },
+      {
+        "task": "quota_user_disk_limits_enforcement_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test's expected_violators set includes 'alice', but per the real data alice never violates: in server1 used=350000 < soft=400000; in server2 used=450000 < soft=500000; in server3 used=450000 > soft=400000 but grace='no' (no violation). The test's own comment even notes \"alice...NOT violation\" yet still asserts alice in usernames. Meanwhile the real data produces 23 violators (bob, charlie, david, emily, frank, grace, heidi, isaac, ivy, jessica, karen, kevin, laura, liam, linda, megan, nancy, oliver, paula, quinn, sarah, thomas, xavier) — a correct solution omitting alice would fail test_output_has_all_violators and test_specific_violators_present."
+      },
+      {
+        "task": "rave_rapid_action_value_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py has zero hardcoded expected ranking values; all tests verify only structure/format. The sole quality check (test_ranking_demonstrates_statistical_reasoning) uses the condition `best_win_rate >= worst_win_rate * 0.8 OR best_visits >= worst_visits`, which is so permissive that virtually any ordering of the 8 moves passes — e.g., placing move_4 (wr=0.400) as best and move_5 (wr=0.338) as worst satisfies 0.400 >= 0.270. A correct UCB1 ranking is move_3 best, move_4 worst, but the test cannot distinguish this from a random or reversed ranking."
+      },
+      {
+        "task": "ray_dataset_distributed_loading_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "5 of 20 data files are corrupted (txn_2023_03, txn_2023_06, txn_2023_10, txn_2024_04, txn_2024_09) — they contain embedded Python source code stored as Parquet with column name `#!/usr/bin/env python3` rather than transaction data. A correct solution must reject these (unknown schema), yielding files_loaded=15, but the test asserts files_loaded >= 16 (line 54 of test_outputs.py). The instruction claims 2-3 empty 2023 files and 1-2 corrupted 2024 files, but no files are 0-bytes — instead 3 in 2023 and 2 in 2024 have bogus schemas, making it arithmetically impossible to satisfy both the spec (reject unknown schema files) and the test threshold (>=16 loaded)."
+      },
+      {
+        "task": "rdp_bluekeep_vulnerability_exploit_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "test_correct_attack_sources hardcodes exactly 3 IPs {'203.0.113.45','198.51.100.23','192.0.2.100'} with strict equality, but the real rdp_events.log has 7 distinct attack sources (10.0.1.50, 198.18.0.15, 172.31.255.88, 10.20.30.77 are additional). The instruction says \"up to 5 IPs ordered by frequency,\" so a correct solution would submit 5 IPs (top-5 = 203.0.113.45, 198.51.100.23, 192.0.2.100, 10.0.1.50, 198.18.0.15), causing the test to fail even though the analysis is correct."
+      },
+      {
+        "task": "readelf_elf_header_inspection_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "All 7 binary files in environment/data/binaries/ are corrupted UTF-8 text files where the ELF magic byte 0x7f has been replaced by the UTF-8 replacement character sequence 0xefbfbd (U+FFFD). Running `readelf -h` on any of them returns \"Not an ELF file - it has the wrong magic bytes at the start\", making it impossible for an agent to extract architecture or bitwidth information and pass the grading tests."
+      },
+      {
+        "task": "redis_pubsub_messaging_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction.md example output shows {\"general\": 18, \"gaming\": 23, \"support\": 9} but the real messages.json has general=16, gaming=24, support=10. An agent that copies the instructed example values will fail test_message_distribution_matches_input, which dynamically computes expected counts from the actual file. The spec's hardcoded example directly contradicts what the grading test requires."
+      },
+      {
+        "task": "regex_pattern_matching_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test suite trusts the agent's self-reported results.txt for the all-pass check (test_all_tests_passed reads PASSED/FAILED/TOTAL the agent wrote itself), while the only independent functional verification (test_pattern_matcher_correctness_sample) only runs the first 10 test cases — none of which exercise the 8 null-text entries or null-pattern entry present in the real test_cases.json. An agent can write \"PASSED=92\\nFAILED=0\\nTOTAL=92\" without ever correctly handling null inputs, and all grading tests will pass."
+      },
+      {
+        "task": "regex_pattern_matching_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_pattern_matching_correctness hardcodes expected = [True, True, True, False, True] (5 items) and asserts len(results[\"matches\"]) == 5, but the deployed test_cases.txt has 31 lines — a correct solution writes 31 results, failing the length check (31 != 5)."
+      }
+    ]
+  }
+}

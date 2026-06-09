@@ -1,0 +1,187 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "parallel[15] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[19] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[21] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[25] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[26] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[27] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[28] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[29] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[30] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[31] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[32] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[33] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[34] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[35] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[36] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[37] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[38] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[39] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[40] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[41] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[42] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[43] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "parallel[44] failed: agent({schema}): subagent completed without calling StructuredOutput (after 2 in-conversation nudges)",
+    "audited 22/45: BUG=7 CLEAN=15 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 22,
+    "n_tasks": 45,
+    "n_bug": 7,
+    "n_clean": 15,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.3181818181818182,
+    "verdicts": [
+      {
+        "task": "regular_expression_nfa_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "relion_particle_picking_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "rendezvous_hashing_placement_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "reservoir_sampling_uniform_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "rest_api_idor_exploitation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "roberta_ner_tagging_hard",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "roc_curve_multiclass_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "rsync_incremental_backup_strategy_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "rsync_partial_transfer_resumed_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "rust_cargo_features_conditional_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "rust_cargo_workspace_multi_crate_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "saga_pattern_microservices_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "samba_share_active_directory_integration_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "samtools_bam_index_corrupt_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "scd_type2_implementation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "scp_connection_reset_by_peer_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "scp_connection_reset_by_peer_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "secrets_management_vault_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "seki_mutual_life_go_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "selenium_stale_element_reference_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "sentry_event_rate_limiting_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "seq2seq_translation_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "regular_expression_nfa_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_output_contains_all_patterns hardcodes expected_patterns = {\"a\", \"ab\", \"a|b\", \"a*\", \"(ab)*\"} (5 patterns), but the real /workspace/data/regex_patterns.txt contains 12 patterns (also includes \"a*b\", \"(a|b)*\", \"ab|cd\", \"a(b|c)*d\", \"(abc)*d\", \"x|y|z\", \"(a|b)(c|d)\"). A correct solution producing output for all 12 patterns will fail the equality assertion, while one that only outputs the 5 hardcoded patterns will correctly pass — making the test grade the wrong behavior."
+      },
+      {
+        "task": "reservoir_sampling_uniform_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test `test_all_tests_passed` in test_outputs.py trusts a results.txt file that the agent writes itself — an agent can trivially pass by writing \"TEST_SMALL=PASS\\nTEST_MEDIUM=PASS\\nTEST_LARGE=PASS\\nMEMORY_BOUNDED=PASS\" with no actual validation. The functional tests (test_sampler_small_stream, test_sampler_medium_stream) only check that output line count equals K and each line is valid JSON, which means any script that outputs K dummy JSON objects (without any real reservoir sampling) would pass all grading tests."
+      },
+      {
+        "task": "roberta_ner_tagging_hard",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_correct_number_of_documents hardcodes `assert len(documents) == 5` with comment \"matching documents.txt line count\", but the real deployed /data/raw_annotations/documents.txt contains 20 lines (documents 0-19). A correct solution producing all 20 document sections would fail this test."
+      },
+      {
+        "task": "saga_pattern_microservices_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test suite has no hardcoded expected per-order outcomes and never verifies that the saga coordinator actually runs against the real service mocks. A trivial solution writing \"ORD-001:completed:yes\" through \"ORD-008:completed:yes\" (all 'completed', no compensation logic ever actually executed) passes every test: file-exists checks pass, format checks pass, test_all_orders_consistent passes (all 'yes'), test_verification_has_both_outcomes passes ('completed' in outcomes is True), and test_saga_coordinator_has_compensation_logic only requires a keyword like 'rollback' anywhere in the source. The real data has ORD-002 (item3, stock=0), ORD-003 (CARD-DECLINE-001), ORD-004 (ADDR-FAIL-001), ORD-006 (CARD-DECLINE-002), ORD-007 (ADDR-FAIL-002) which should all be 'compensated', but no test enforces this."
+      },
+      {
+        "task": "samtools_bam_index_corrupt_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "Both deployed .bai files are fake: sample_A.bam.bai is a plain-text LLM explanation (starts \"I cannot generate a valid BAM index...\"), and sample_C.bam.bai starts with \"BAI\" magic but is filled with UTF-8 replacement characters (0xEFBFBD). Neither is a valid binary BAM index. The instruction example shows sample_A: OK and sample_C: OK (implying their indexes are already valid), but running samtools idxstats on them would fail, causing test_bam_indexes_are_valid to fail for any agent that follows the instruction's guidance."
+      },
+      {
+        "task": "seki_mutual_life_go_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction.md hardcodes expected output values (board_1=3, board_3=5, board_5=1) in its OUTPUT REQUIREMENTS section, but computing shared liberties from the actual deployed board files yields board_1=4, board_3=3, board_5=2. The test dynamically computes the correct answer from the board files and will reject an agent that follows the instruction's example output literally."
+      },
+      {
+        "task": "seq2seq_translation_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction specifies 10 sentences requiring \"at least 8 out of 10\" matches and \"exactly 10 lines\", but the deployed data has only 9 sentences (test_input.txt and expected_output.txt each have 9 lines), and the grading tests require only >=5 lines and 4-out-of-5 matches — drastically weaker than the stated spec, allowing a mostly-wrong solution to pass."
+      }
+    ]
+  }
+}

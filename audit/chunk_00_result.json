@@ -1,0 +1,369 @@
+{
+  "summary": "Audit all hardcoded-expected terminal-bench tasks for benchmark bugs (compute real answer vs hardcoded); return every verdict",
+  "agentCount": 46,
+  "logs": [
+    "audited 45/45: BUG=25 CLEAN=20 UNCERTAIN=0"
+  ],
+  "result": {
+    "n_audited": 45,
+    "n_tasks": 45,
+    "n_bug": 25,
+    "n_clean": 20,
+    "n_uncertain": 0,
+    "bug_rate_excl_uncertain": 0.5555555555555556,
+    "verdicts": [
+      {
+        "task": "Rscript_segfault_debugging_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "aar_android_library_packaging_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "abc_synthesis_optimization_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "active_directory_golden_ticket_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "adversarial_attack_fgsm_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "aes_ecb_mode_exploitation_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "agda_cubical_homotopy_types_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "agda_termination_checker_failure_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "aircrack_wifi_analysis_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "airtable_api_rate_limit_handling_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "alloy_analyzer_scope_insufficient_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "alloy_temporal_logic_extension_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "alt_ergo_polymorphic_types_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "annovar_annotation_databases_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "ansible_async_task_status_check_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "ansible_handler_not_notified_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "ansible_ssh_timeout_unreachable_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "ansible_template_rendering_error_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "ansible_vault_decrypt_failed_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "api_key_rotation_strategy_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "appium_mobile_automation_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "applescript_mac_automation_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "apt_cache_depends_circular_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "ar_archive_index_corrupted_hard",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "ar_static_library_creation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "arena_allocator_implementation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "arp_spoofing_mitm_attack_medium",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "articulation_points_bridges_medium",
+        "verdict": "BUG",
+        "bug_type": "hardcoded_preview"
+      },
+      {
+        "task": "asana_task_custom_fields_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "attribute_packed_gcc_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "autopsy_disk_forensics_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "awk_floating_point_precision_error_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "aws_iam_privilege_escalation_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "aws_lambda_timeout_increase_medium",
+        "verdict": "BUG",
+        "bug_type": "corrupted_fixture"
+      },
+      {
+        "task": "aws_s3_bucket_enumeration_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "azure_blob_public_access_hard",
+        "verdict": "BUG",
+        "bug_type": "spec_contradicts_test"
+      },
+      {
+        "task": "azure_keyvault_secret_rotation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "bash_arithmetic_octal_interpretation_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "bash_globbing_no_match_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "bash_subshell_variable_scope_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "bayesian_network_structure_learning_medium",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "bayesplot_posterior_visualization_hard",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "beam_pipeline_execution_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      },
+      {
+        "task": "bedtools_chromosome_ordering_mismatch_hard",
+        "verdict": "BUG",
+        "bug_type": "too_weak"
+      },
+      {
+        "task": "bedtools_unsorted_input_medium",
+        "verdict": "CLEAN",
+        "bug_type": "none"
+      }
+    ],
+    "bugs": [
+      {
+        "task": "adversarial_attack_fgsm_hard",
+        "bug_type": "too_weak",
+        "evidence": "All 10 test checks are purely structural/range-based: file exists, valid JSON, values in [0,1], baseline_accuracy > 0.3, attack_success_rate > 0, effective_epsilon in [0.01, 1.0]. No test verifies reported values against actual model/data computation — an agent can fabricate {\"baseline_accuracy\": 0.85, \"attack_success_rate\": 0.72, \"effective_epsilon\": 0.15} (the example values from the instruction) and pass every test without ever loading the model or data."
+      },
+      {
+        "task": "aes_ecb_mode_exploitation_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The three encrypted BMP fixture files in environment/data/encrypted/ are corrupted: their actual sizes (21,863 / 19,515 / 17,560 bytes) are roughly half the expected 49,206 bytes for 128x128 24-bit BMPs, and the files are riddled with 0xEFBFBD (UTF-8 replacement character) sequences — indicating binary data was passed through a UTF-8 decoder. PIL raises \"Truncated File Read\" on all three files, making it impossible for any solution to satisfy test_output_files_are_valid_bmp (requires PIL to open as 'BMP') while also satisfying test_bmp_header_preserved (requires copying the corrupted header unchanged)."
+      },
+      {
+        "task": "agda_cubical_homotopy_types_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction.md example output shows `proof_02=VALID` and `proof_03=INVALID`, but test_proof_02_is_invalid hardcodes proof_02=INVALID (because it lacks a CONCLUSION keyword). The instruction's example output directly contradicts the test's expected answer for proof_02, meaning any agent that follows the instruction's example output will fail the test."
+      },
+      {
+        "task": "aircrack_wifi_analysis_medium",
+        "bug_type": "too_weak",
+        "evidence": "The real network_hashes.txt has 11 networks, but test_all_networks_recovered only asserts len(recovered_ssids) >= 4 and hardcodes expected_ssids = {'OfficeWiFi', 'GuestNetwork', 'SecureNet', 'DevLab'} (4 entries, not 11). Additionally, test_specific_network_passwords only validates hash correctness for 3 of the 11 networks. A partial solution recovering only 4 networks passes all tests, violating the instruction's requirement to recover all networks."
+      },
+      {
+        "task": "airtable_api_rate_limit_handling_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction hardcodes `synced=195` and `skipped=5` as the exact expected output, but the real /data/customers.json has 196 valid emails (with @) and only 4 invalid emails (missing @). A correct solution yields synced=196/skipped=4, contradicting the instructed example that could cause agents to write those wrong values directly into summary.txt."
+      },
+      {
+        "task": "alloy_analyzer_scope_insufficient_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test hardcodes only {texture_units, uniform_buffers} as needing adjustment and asserts vertex_attributes and fragment_outputs must NOT be included. However, scene_complexity.json shows vertex_attributes requires max=12 (exceeds current limit 10) and fragment_outputs requires max=6 (exceeds current limit 4) — so both resources also need increases. The test comment even contains wrong data (\"scenes requiring 8\" for vertex_attributes when scenes actually require up to 12). A correct solution based on the real data must include all four resources."
+      },
+      {
+        "task": "annovar_annotation_databases_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "test_installed_count_correct hardcodes expected_count=3, but humandb_databases.txt has 13 .txt files (not .idx); the test comment admits it was derived from a truncated \"preview\" of the file. Additionally, test_missing_databases_correct expects only {\"hg38_cosmic70\",\"hg38_exac03\"} but hg38_revel is also in required_databases.txt and absent from humandb_databases.txt, so the correct missing set is {\"hg38_cosmic70\",\"hg38_exac03\",\"hg38_revel\"}."
+      },
+      {
+        "task": "ansible_async_task_status_check_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction says identify failed tasks where \"status != 0 OR finished != 1\", which yields 6 failed jobs (adding 111222333.44444 and 333444555.66677 which have finished=1 but rc=1). The test hardcodes only 4 expected failed jobs [\"987654321.54321\", \"222333444.55566\", \"777888999.11122\", \"888999000.22233\"] — only the finished=0 subset — with its own comment admitting \"Jobs with finished=0 based on the preview data\", ignoring the rc!=0 criterion from the spec."
+      },
+      {
+        "task": "ansible_handler_not_notified_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test never checks that the reported line numbers correspond to the actual buggy lines in deploy.yml. It only validates format (regex pattern), that all 3 issue type strings are present, and sorting. A trivially wrong answer like \"1|missing_notify\\n2|wrong_condition\\n3|name_mismatch\" would pass all 9 tests even though lines 1-3 are just the YAML front-matter with no tasks or handlers."
+      },
+      {
+        "task": "ansible_vault_decrypt_failed_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "test_vault_files_decryptable uses base_dir = Path(\"/workspace/output/ansible_vault_decrypt_failed_medium/files\"), but the Dockerfile copies all vault files to /workspace (not that subdirectory). The assertion `assert standard_password_file.exists()` will always fail with \"Standard vault password file not found\" since the path /workspace/output/ansible_vault_decrypt_failed_medium/files/config/vault_password_standard.txt is never created, making this test permanently unpassable regardless of agent behavior."
+      },
+      {
+        "task": "api_key_rotation_strategy_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The deployed /opt/auth/keys.json (from environment/data/keys.json) contains only `{\"active\": false}` — a bare object with no `key` or `created` fields and no `key_abc123` entry — while the instruction claims the file has \"malformed JSON\" with a timestamp issue to fix, and test_validation_system_works hardcodes `key_abc123` expecting output `VALID`. An agent cannot \"fix\" missing data that was never there; the fixture does not match what the task description says is broken."
+      },
+      {
+        "task": "appium_mobile_automation_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test checks that validation_result.txt contains all-true values but does NOT verify that those values were honestly computed by running validate_framework.py. An agent can trivially pass by writing \"config_valid=true\\ncapabilities_valid=true\\ndependencies_valid=true\\ntests_valid=true\" directly to the file, then creating minimal syntactically-valid (but semantically incorrect) JSON/YAML files to satisfy the structural tests — bypassing the actual capability, dependency, and test-scenario semantic validation entirely."
+      },
+      {
+        "task": "applescript_mac_automation_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test hardcodes `invalid_entries == 0` (line 39) but the real config at /workspace/launcher_config.txt has 18 lines: lines 1-5 are all valid (5 valid apps), and lines 6-18 are all invalid (13 invalid entries — misspelled names, out-of-range coords, missing/malformed params, duplicates, non-existent apps). The instruction explicitly states the file \"contains several issues,\" so a correct solution must report 13 invalid entries, not 0, making the test unpassable."
+      },
+      {
+        "task": "apt_cache_depends_circular_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes expected_packages = {'libssl', 'libcrypto', 'python-requests', 'python-urllib3'} (4 packages), but the real /tmp/package_dependencies.txt (64 lines) yields 14 packages in circular deps: babel, binutils, containerd, cpp, docker, gcc, libcrypto, libmysql, libssl, mysql-client, python-requests, python-urllib3, runc, webpack. The test comment says \"Based on the input file preview\" — it was written from a truncated view of the file, missing cycles gcc<->binutils/cpp, mysql-client<->libmysql, docker<->containerd<->runc, and webpack<->babel."
+      },
+      {
+        "task": "ar_archive_index_corrupted_hard",
+        "bug_type": "corrupted_fixture",
+        "evidence": "5 of the 8 `.a` files are plain-text LLM-generated output (not ELF archives): libcore.a, libnetwork.a, libprotocol.a, libtemp.a, libgpio.a contain human-readable text like \"I need to create a valid static library archive...\". The remaining 3 (libutils.a, libserial.a, libmiddleware.a) start with the `!<arch>` magic bytes but are \"malformed archive\" per `ar -t` (rc=1). All 8 fail `ar -t`, making `test_all_archives_have_valid_index` unpassable because there is no intact object code to rebuild the symbol tables from."
+      },
+      {
+        "task": "arp_spoofing_mitm_attack_medium",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The instruction's example output shows ATTACKER_MAC: aa:bb:cc:dd:ee:ff (the persistent attacker appearing on lines 14, 20, 24, 30+ of the log), but the test's `test_correct_attack_detection` uses `break` on the first baseline mismatch, which is line 10 where 192.168.1.100 appears with MAC 00:1a:2b:3c:4d:a0 (also different from baseline 00:0c:29:23:45:67). An agent following the instruction's example would report aa:bb:cc:dd:ee:ff, but the test would reject it and expect 00:1a:2b:3c:4d:a0 instead."
+      },
+      {
+        "task": "articulation_points_bridges_medium",
+        "bug_type": "hardcoded_preview",
+        "evidence": "The test hardcodes expected_critical_nodes=[\"D\"] and expected_critical_links=[[\"D\",\"E\"]], matching only the 5-node toy example described in the test comments (A-B, A-C, B-D, C-D, D-E). However, the real deployed /workspace/network_topology.txt has 62 edges and ~50 nodes; computing Tarjan's algorithm on it yields 27 articulation points (e.g. Router1, Gateway1, Firewall1, Switch1..Switch7, etc.) and 41 bridges — making the hardcoded expected values completely wrong for the actual data."
+      },
+      {
+        "task": "asana_task_custom_fields_hard",
+        "bug_type": "too_weak",
+        "evidence": "The only data-content check (test_contains_expected_tasks, line 129-142) uses `any(tid in task_ids for tid in {\"2001\",\"1234567890\",\"1001\",\"1006001\"})` — a single-task output containing just task \"2001\" would satisfy all tests. The real data spans 6 JSON files with ~60+ distinct task entries requiring complex deduplication, encoding fixes, and orphan filtering, but no test verifies count, completeness, or correctness of custom field mappings."
+      },
+      {
+        "task": "attribute_packed_gcc_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test hardcodes record_size=21 bytes and total_records=5, but reference_format.txt specifies 24 bytes per record (uint64 timestamp is 8 bytes, not 4) and test_data.txt has 15 lines of data. The test's struct unpack '<IIfffB' uses a 4-byte uint32 timestamp contradicting the spec's uint64_t timestamp at offset 4-11 (8 bytes)."
+      },
+      {
+        "task": "autopsy_disk_forensics_hard",
+        "bug_type": "too_weak",
+        "evidence": "The test in test_outputs.py checks ONLY format/structural validity (JSON exists, fields present, timestamp matches YYYY-MM-DD HH:MM:SS regex, IP matches xxx.xxx.xxx.xxx regex, types are strings) but never validates the actual content against the real forensic data. Any submission with a validly-formatted timestamp, non-empty username, and valid IP (e.g., {\"breach_timestamp\": \"2000-01-01 00:00:00\", \"compromised_account\": \"x\", \"exfiltration_target\": \"1.2.3.4\"}) passes all 8 tests despite being entirely wrong. The correct answers from the data are breach_timestamp=\"2024-01-15 14:25:33\", compromised_account=\"dbadmin\", exfiltration_target=\"198.51.100.78\", but none of these are checked."
+      },
+      {
+        "task": "aws_iam_privilege_escalation_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The `dev-user-policy.json` fixture is malformed — it contains only `{\"Statement\": [{\"Resource\": \"*\"}]}` with no `Action` or `Effect` fields, so there is no `iam:PassRole` permission to discover through legitimate policy analysis. The instruction hardcodes the expected answer (`\"dangerous_permission\": \"iam:PassRole\"`, `\"escalation_target\": \"admin-role\"`) but the actual data does not contain this information, making it impossible to derive the correct answer from the provided files."
+      },
+      {
+        "task": "aws_lambda_timeout_increase_medium",
+        "bug_type": "corrupted_fixture",
+        "evidence": "The environment config files are corrupted/mismatched: lambda_config_email-sender.json, lambda_config_notification-service.json, and lambda_config_report-generator.json all contain CloudWatch log data (execution_time_ms fields) instead of Lambda configurations; lambda_config_payment-handler.json has scrambled fields (Timeout is a string \"RETRY_ATTEMPTS:\\\"3\\\"\", Runtime=512, Handler=8); and there are no config files for image-resizer or data-processor at all, causing test_config_files_updated to fail with \"Config file for X does not exist\" for any agent that correctly identifies those functions as needing updates."
+      },
+      {
+        "task": "azure_blob_public_access_hard",
+        "bug_type": "spec_contradicts_test",
+        "evidence": "The test hardcodes expected_secrets as only 3 files (public-data/config.txt, backups/env.properties, app-logs/application.log), but the real deployed file temp-uploads/settings.ini contains \"PASSWORD=TempPass2024!\" which matches the instruction's PASSWORD= pattern. A correct solution produces 4 files with secrets, causing test_files_with_secrets_detected to fail for a correct agent."
+      },
+      {
+        "task": "bayesian_network_structure_learning_medium",
+        "bug_type": "too_weak",
+        "evidence": "The test file checks only format/structure (file exists, 4 lines, correct edge names in correct order, STATUS is SUPPORTED or REJECTED) but never validates which edges should be SUPPORTED vs REJECTED. Any output with the correct 4 lines and valid status strings passes — including trivially wrong answers like all REJECTED or all SUPPORTED — making the grading test unable to distinguish a correct statistical analysis from a random or fabricated one."
+      },
+      {
+        "task": "bedtools_chromosome_ordering_mismatch_hard",
+        "bug_type": "too_weak",
+        "evidence": "The instruction's example output shows `unique_chr=25`, but the real deployed data has 50 distinct chromosome names across the 6 BED files (25 with \"chr\" prefix from Facilities A/B, plus 25 without prefix from Facility C). However, `test_status_file_values` only asserts `unique_chr > 0`, so an agent that copies the example verbatim and writes `unique_chr=25` (the wrong answer) passes the test, making the check too weak to grade correctness."
+      }
+    ]
+  }
+}
