@@ -1,0 +1,269 @@
+{
+  "summary": "Verify too_weak tasks by actually running the grading test against a deliberately-wrong/trivial answer",
+  "agentCount": 37,
+  "logs": [
+    "verified 36/36: TRIVIAL_PASSES=33 FAILS=3 CANT_RUN=0"
+  ],
+  "result": {
+    "n": 36,
+    "n_tasks": 36,
+    "trivial_passes": 33,
+    "fails": 3,
+    "cant_run": 0,
+    "confirm_rate_excl_cantrun": 0.9166666666666666,
+    "details": [
+      {
+        "task": "adversarial_attack_fgsm_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 10,
+        "total": 10,
+        "evidence": "A deliberately fabricated JSON answer {\"baseline_accuracy\": 0.5, \"attack_success_rate\": 0.6, \"effective_epsilon\": 0.5} passed all 10 grading tests. The test file (/home/juny116/Workspace/terminal-bench-env/environments_harbor/adversarial_attack_fgsm_hard/tests/test_outputs.py) only checks: file existence, valid JSON, presence of 3 required fields, that values are numeric and within plausible ranges (baseline_accuracy in [0,1] and >0.3; attack_success_rate in [0,1] and >0; effective_epsilon in [0.01,1.0]). No test verifies that values were computed by actually running FGSM gradient-based attacks on the model/data. Any sufficiently plausible arbitrary numbers pass all tests. Ran with python3.12 -m pytest test_outputs.py -v; result: 10 passed in 0.02s."
+      },
+      {
+        "task": "aircrack_wifi_analysis_medium",
+        "result": "FAILS",
+        "passed": 4,
+        "total": 6,
+        "evidence": "Ran pytest against /tmp/test_outputs_modified.py (path-redirected copy of test_outputs.py) with a deliberately wrong answer: OfficeWiFi=wrongpassword123, GuestNetwork=badguess456, SecureNet=incorrectpass, DevLab=fakecredential. Result: 4 tests passed (file_exists, not_empty, format, all_networks_recovered) and 2 tests FAILED (test_password_hash_correctness and test_specific_network_passwords). The hash verification tests correctly computed MD5/SHA1/SHA256 of the fake passwords and compared them against the hashes in network_hashes.txt, catching the wrong values. The grading is not too weak — wrong answers are properly rejected by the hash-checking tests."
+      },
+      {
+        "task": "ansible_handler_not_notified_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 9,
+        "total": 9,
+        "evidence": "All 9 tests passed with a deliberately wrong answer (lines 1|missing_notify, 2|wrong_condition, 3|name_mismatch — completely incorrect line numbers that point to the YAML document header, not actual task definitions). The test suite in /home/juny116/Workspace/terminal-bench-env/environments_harbor/ansible_handler_not_notified_hard/tests/test_outputs.py only validates: file exists, not empty, exactly 3 lines, format matches regex, valid issue type values, sorted ascending, positive integers, all 3 issue types present, no duplicates. It never verifies that the line numbers actually correspond to the buggy tasks in deploy.yml. The correct answer would be 35|missing_notify, 93|wrong_condition, 132|name_mismatch, but any 3-line answer with the right format and all 3 issue types in sorted order passes all 9 tests."
+      },
+      {
+        "task": "appium_mobile_automation_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 8,
+        "total": 8,
+        "evidence": "All 8 grading tests pass with a deliberately wrong/trivial answer. The trivial answer consists of: (1) /workspace/validation_result.txt with all four values set to \"true\" (hardcoded, no actual validation performed), (2) /workspace/output/appium_mobile_automation_hard/files/config/appium_config.json with arbitrary fake JSON dict {\"fake\": \"data\", \"platformName\": \"wrong\"}, (3) dependencies.json with {\"fake_dependency\": \"0.0.0\"}, and (4) test_suite.yaml with trivial fake YAML. The test only checks that validation_result.txt exists, has 4 lines in the right format with \"true\" values, and that the three config files are syntactically valid JSON/YAML - it never verifies that the Appium configuration actually contains correct mandatory capabilities, valid dependency specs, or proper test suite structure. A model can score 100% by simply writing 'config_valid=true\\ncapabilities_valid=true\\ndependencies_valid=true\\ntests_valid=true' and four arbitrary syntactically-valid config files, without doing any actual Appium framework repair work."
+      },
+      {
+        "task": "asana_task_custom_fields_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 14,
+        "total": 14,
+        "evidence": "Built the Docker image from the Dockerfile, then wrote a deliberately wrong answer to /workspace/output/tasks_with_custom_fields.json containing only 3 fabricated tasks with fake names (\"Fake Task One\", etc.) and arbitrary custom field values (\"Low\", \"Open\", \"Unknown\"). The answer included two of the expected task IDs (1001, 2001) to satisfy the weakest content check. All 14 tests passed: test_output_file_exists, test_output_is_valid_json, test_output_is_list, test_output_not_empty, test_task_structure, test_task_id_format, test_task_name_format, test_custom_fields_format, test_custom_fields_not_empty, test_custom_field_values_are_strings, test_no_duplicate_task_ids, test_custom_field_names_resolved, test_encoding_is_utf8, test_contains_expected_tasks. The test suite only verifies structural format and presence of at least one known task ID — it never validates actual values, correct deduplication, encoding repair, orphan filtering, or the number of tasks extracted from the source data."
+      },
+      {
+        "task": "autopsy_disk_forensics_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 8,
+        "total": 8,
+        "evidence": "All 8 tests passed with a deliberately wrong answer: {\"breach_timestamp\": \"2000-01-01 00:00:00\", \"compromised_account\": \"fakeuser\", \"exfiltration_target\": \"1.2.3.4\"}. The test file (/home/juny116/Workspace/terminal-bench-env/environments_harbor/autopsy_disk_forensics_hard/tests/test_outputs.py) only checks format/structure: file existence, valid JSON, presence of the three required keys, timestamp regex format (YYYY-MM-DD HH:MM:SS), non-empty string for account, valid IP octet format, correct data types, and no extra fields. No test verifies the actual correct values derived from forensic analysis of the evidence archive. Any format-valid JSON with plausible-looking fabricated values passes all 8 tests."
+      },
+      {
+        "task": "bayesian_network_structure_learning_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 7,
+        "total": 7,
+        "evidence": "A deliberately wrong answer with all 4 edges labeled REJECTED (instead of the correct SUPPORTED/REJECTED values) passed all 7 grading tests. The test suite checks: file existence, non-empty content, exactly 4 lines, format regex match, valid variable names, correct edge pairs in order, and valid status strings. However, NO test verifies whether each edge is correctly classified as SUPPORTED or REJECTED — only that the status is one of those two strings. Running `/usr/bin/python3 -m pytest test_outputs_patched.py -v` on a trivial wrong answer (all REJECTED) produced 7 passed, 0 failed."
+      },
+      {
+        "task": "bedtools_chromosome_ordering_mismatch_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 11,
+        "total": 11,
+        "evidence": "All 11 tests passed with a deliberately wrong/trivial answer. The trivial solution used: (1) 6 corrected BED files with only 3 lines each of fabricated data (chr1/chr2/chr3 with fake coordinates, not derived from original files), (2) a fake fix_chromosomes.sh that just echoes \"done\", (3) a status.txt with unique_chr=5 (wrong - actual count across 3 naming conventions would be ~73), and (4) a mock bedtools binary that always exits 0. All 11 tests passed including test_corrected_files_sorted_correctly, test_corrected_files_use_chr_prefix, test_bedtools_compatibility, and test_status_file_values. The tests never verify that corrected files contain the same data as originals, never check fix_chromosomes.sh actually processes files correctly, only require unique_chr > 0 (not the actual count), and the bedtools test accepts any exit-0 binary. Test run path: /tmp/test_run/test_outputs_modified.py (modified to use /tmp/solution instead of /solution since that path couldn't be created without root)."
+      },
+      {
+        "task": "blast_interpolation_sequences_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 8,
+        "total": 8,
+        "evidence": "A deliberately wrong/trivial answer (violations=0, total_interpolants=0, max_trace_length=0) passes all 8 grading tests. The test file at /home/juny116/Workspace/terminal-bench-env/environments_harbor/blast_interpolation_sequences_medium/tests/test_outputs.py only checks: file existence, exactly 3 lines, key=value format, correct key names in order, numeric values, violations in range 0-4, and total_interpolants/max_trace_length >= 0. None of the tests compare values against the actual log files in /workspace/blast_logs/. Any format-valid answer with non-negative integers in range passes all 8 tests. Verified by running pytest with Python 3.12 on a patched copy of the test file: 8 passed in 0.02s."
+      },
+      {
+        "task": "brms_custom_prior_specification_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 6,
+        "total": 6,
+        "evidence": "Ran pytest with two deliberately wrong answers: (1) all-true (even though age_valid and sigma_valid should clearly be false per clinical constraints) and (2) all-false (even though treatment_valid, severity_valid, intercept_valid should be true). Both pass all 6 tests 6/6.\n\nRoot cause: test_validation_results_correct_values (line 41-80 of test_outputs.py) is named \"correct_values\" but only checks that the five required field keys exist in the JSON — it never compares the boolean values to any expected ground truth. The comment \"Without seeing the actual priors file, we check that the agent has made a reasonable assessment\" shows the author intentionally omitted value-correctness checking. The remaining tests only check: file exists, valid JSON, all 5 required keys present, all values are booleans, no extra keys. Any JSON with exactly the five required keys set to any boolean values passes all tests.\n\nTest file patched: /tmp/brms_test/test_outputs.py (only changed /workspace/ to /tmp/brms_test/ — no logic altered). Wrong outputs written to /tmp/brms_test/validation_results.json."
+      },
+      {
+        "task": "cache_friendly_data_layout_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 11,
+        "total": 11,
+        "evidence": "All 11/11 grading tests pass with a trivial answer: a correct but naive (cache-unfriendly, slow) C transpose + a fabricated result.txt with fake timing values. The performance tests (test_performance_target, test_speedup_calculation, test_significant_speedup) only read from result.txt — they never actually time the program. By writing \"BASELINE_TIME=47.3\\nOPTIMIZED_TIME=2.8\\nSPEEDUP=16.89\" to /workspace/result.txt, all three performance tests pass. The only substantive test is test_transpose_correctness, which checks a few positions of the binary output file against the real input matrix — this requires a mathematically correct transpose, but any correct naive implementation (even O(N^2) with poor cache behavior) satisfies it. The key weakness: the grading never actually runs or times the optimized program; it trusts the numbers in result.txt entirely. Confirmed by running: naive transpose O(N^2) code compiled+run + fake result.txt → 11/11 tests pass inside the Docker environment (ghcr.io/laude-institute/t-bench/ubuntu-24-04 base image)."
+      },
+      {
+        "task": "cadical_inprocessing_simplification_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 10,
+        "total": 10,
+        "evidence": "A deliberately wrong answer with fabricated values (original_clauses=500, simplified_clauses=400, reduction_percent=20.00) passed all 10 tests. The tests only check: file existence, line count=3, key=value format with correct key names, that original_clauses is a positive integer, that simplified_clauses is a positive integer, that reduction_percent is a float in [0,100], that reduction_percent has exactly 2 decimal places, that the reduction calculation is internally consistent (matches the formula), that simplified <= original, and no trailing whitespace. No test reads problem.cnf to verify original_clauses matches the actual CNF header, and no test checks that simplified_clauses reflects actual removal of duplicate/tautological/subsumed clauses. Any two positive integers with a consistent percentage satisfies all tests."
+      },
+      {
+        "task": "cadical_inprocessing_simplification_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 11,
+        "total": 11,
+        "evidence": "All 11 tests passed with a deliberately trivial/wrong answer. The \"simplified\" files were simply copied verbatim from the originals (no simplification at all), and the report claimed 0.0% reduction for all 5 formulas. The test suite has no check that any actual clause reduction occurred — it only verifies: (1) files exist at expected paths, (2) JSON is valid and has required keys, (3) reduction_percent is internally consistent with the reported clause counts, (4) simplified CNF files have valid DIMACS format, and (5) the reported simplified_clauses matches the DIMACS header. Since we copied originals unchanged, all structural checks pass trivially. Test run: `/usr/bin/python3.12 -m pytest test_outputs.py -v` in a temp dir with paths substituted for /workspace — 11/11 passed."
+      },
+      {
+        "task": "catboost_gpu_training_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 7,
+        "total": 7,
+        "evidence": "All 7 tests in test_outputs.py passed with a fabricated answer of {\"optimal_threads\": 1, \"training_time_seconds\": 0.5}. The tests only check: (1) file exists, (2) valid JSON, (3) required fields present, (4) optimal_threads is one of [1,2,4,8], (5) training_time_seconds is a positive number, (6) training_time_seconds is between 0.1 and 3600, (7) no extra fields. No test verifies that the values are derived from actual measurements, that optimal_threads is the genuinely fastest configuration, or that training_time_seconds reflects real wall-clock time. Any arbitrary value satisfying the structural constraints (a valid thread count and a positive number in range) passes all tests regardless of correctness."
+      },
+      {
+        "task": "chipseeker_peak_annotation_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 10,
+        "total": 10,
+        "evidence": "All 10 tests passed with a deliberately trivial/wrong answer: {\"total_peaks_annotated\": 100, \"samples_processed\": 3, \"promoter_peaks_percentage\": 50.00, \"top_annotated_gene\": \"FAKEGENE1\"}. The test file (/home/juny116/Workspace/terminal-bench-env/environments_harbor/chipseeker_peak_annotation_hard/tests/test_outputs.py) only checks structural properties: file existence, valid JSON, presence of 4 required fields, type checks (int/float/string), samples_processed==3 (hardcoded), promoter_peaks_percentage in [0,100], at most 2 decimal places, and no extra fields. No test verifies that total_peaks_annotated, promoter_peaks_percentage, or top_annotated_gene are computed from the actual ChIP-seq data. A completely fabricated gene name \"FAKEGENE1\" and arbitrary numbers like 100 peaks and 50% promoter rate all pass without any validation against the real annotation data."
+      },
+      {
+        "task": "chipseeker_peak_annotation_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 9,
+        "total": 9,
+        "evidence": "All 9 grading tests passed with a deliberately wrong answer that assigned \"FAKEGENE\" to every peak and distance=0 for every entry. The test suite only checks: (1) file exists, (2) valid JSON, (3) correct entry count, (4) correct fields (peak_id/gene/distance), (5) peak_id format (chr:start-end), (6) distance is integer, (7) distance is non-negative, (8) gene is non-empty string, (9) peak order matches input order. No test verifies actual gene assignment correctness or actual distance calculations. The trivial answer was run inside the chipseeker-test-env Docker container with /workspace/output/nearest_genes.json containing 122 entries of {\"peak_id\": \"<correct id from bed file>\", \"gene\": \"FAKEGENE\", \"distance\": 0}. Result: 9 passed in 0.02s."
+      },
+      {
+        "task": "clickjacking_attack_iframe_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 7,
+        "total": 7,
+        "evidence": "A deliberately wrong answer with fabricated domains (fake-domain-1.com through fake-domain-5.com) and arbitrary technique assignments passed all 7 grading tests. The test file at /home/juny116/Workspace/terminal-bench-env/environments_harbor/clickjacking_attack_iframe_medium/tests/test_outputs.py checks: (1) file exists, (2) valid JSON, (3) correct field structure, (4) expected filenames present (page1.html, page2.html, page3.html, mixed_techniques.html, opacity_attack_advanced.html), (5) domains have no protocol/path prefix, (6) at least 2 different techniques used, (7) no duplicate entries. Critically, test_target_domains_extracted only validates domain FORMAT (no protocol, no path, non-empty string) — it never verifies the actual domain VALUES are correct. So any plausible-looking domain string like 'fake-domain-1.com' passes. The grading is too weak because it never checks whether the extracted target domains match what's actually in the HTML files."
+      },
+      {
+        "task": "cuda_unified_memory_thrashing_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 9,
+        "total": 9,
+        "evidence": "Built the Docker image from the environment Dockerfile and ran all 9 tests in test_outputs.py against a deliberately fabricated answer: {\"total_issues\": 3, \"critical_patterns\": 1, \"file_analyzed\": \"/workspace/gpu_kernel.cu\"}. All 9 tests passed. The tests only verify structural constraints: file existence, valid JSON, presence of the three required fields, that total_issues and critical_patterns are non-negative integers, that file_analyzed == \"/workspace/gpu_kernel.cu\", that critical_patterns <= total_issues, and that total_issues > 0. No test checks whether the numeric counts actually reflect correct analysis of the CUDA source code gpu_kernel.cu. Any arbitrary positive integer pair (e.g., total_issues=3, critical_patterns=1) satisfying those structural constraints passes all tests."
+      },
+      {
+        "task": "cufflinks_gtf_parsing_error_medium",
+        "result": "FAILS",
+        "passed": 6,
+        "total": 7,
+        "evidence": "A deliberately wrong answer (reporting line 1 as \"invalid_coordinates\" when it is actually valid) passed 6/7 tests but was correctly rejected by test_coordinate_violations. That test independently recomputes all lines in the GTF where start > end (lines 5, 19, 33, 45, 55, 71, 84) and asserts each appears in the reported violations. The trivial answer only contained line 1, so the test failed with \"AssertionError: Line 5 has invalid coordinates but was not reported\". The grading test is NOT too weak — it correctly catches a wrong answer."
+      },
+      {
+        "task": "crossencoder_reranking_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 11,
+        "total": 11,
+        "evidence": "All 11 tests pass with a fabricated trivial answer: {\"queries_processed\": 30, \"avg_position_change\": 1.5}. No actual reranking, cross-encoder model usage, or position change computation was performed. The tests only check: file existence, non-empty content, valid JSON, presence of 2 required fields (queries_processed, avg_position_change), that queries_processed == 30 (hardcoded), that avg_position_change is numeric, > 0, and <= 4. Any value like 1.5 satisfies all constraints without doing any real work. Test run: 11/11 passed with python3.12 -m pytest on the patched test file (paths adjusted from /solution and /data to /tmp/crossencoder_test). The original test.sh runs pytest /tests/test_outputs.py which is identical logic."
+      },
+      {
+        "task": "dask_out_of_memory_chunking_hard",
+        "result": "FAILS",
+        "passed": 5,
+        "total": 7,
+        "evidence": "Ran 7 tests against a deliberately wrong answer (2 fake customers with all-zero amounts, transaction_count=1, fake categories). Results: 5 passed (test_solution_script_exists, test_output_json_exists, test_output_json_valid, test_output_has_customers, test_customer_metrics_structure) and 2 FAILED. test_metrics_correctness correctly caught the wrong customer set (expected ~43 customers, got 2) and wrong values. test_all_files_processed correctly caught the wrong total transaction count (expected 300, got 2). The grading tests are NOT too weak — they do verify correctness of the computed metrics against the actual data."
+      },
+      {
+        "task": "dask_profiling_performance_report_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 8,
+        "total": 8,
+        "evidence": "All 8 tests passed against a completely fabricated answer. The trivial /tmp/workspace/metrics.json contained invented values {\"phase1_seconds\": 1.5, \"phase2_seconds\": 2.3, \"phase3_seconds\": 0.8} — none derived from actually running the benchmark. The test only checks: (1) file exists, (2) valid JSON, (3) has all 3 fields, (4) no extra fields, (5) phase1 value is number > 0 and 0.1–300, (6) phase2 same bounds, (7) phase3 same bounds, (8) float_value == value (a no-op tautology). There is zero verification that the values were produced by actually timing the benchmark execution; any positive number in [0.1, 300] passes all tests. Test run: 8 passed, 0 failed in 0.02s using /usr/bin/python3.12 with pytest 8.4.1. Test file: /home/juny116/Workspace/terminal-bench-env/environments_harbor/dask_profiling_performance_report_hard/tests/test_outputs.py (patched only to replace /workspace with /tmp/workspace for path accessibility)."
+      },
+      {
+        "task": "dask_profiling_performance_report_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 10,
+        "total": 10,
+        "evidence": "All 10 tests passed with a completely fabricated metrics.txt containing `execution_time=1.5`, `task_count=5`, `data_processed_mb=0.05` — none of which reflect actual Dask pipeline execution. The tests only check: (1) file exists, (2) not empty, (3) exactly 3 lines, (4-6) each key present with a positive numeric value, (7) all 3 keys present, (8) values in loose ranges (exec_time in 0.001..3600, task_count>=1, data_mb>0), (9) data_processed_mb within 0.5x-10x of actual CSV file size (actual ~0.00854 MB, so range is [0.00427, 0.0854] — 0.05 is in range), (10) task_count>=3. No test verifies the values were derived from actually running the Dask pipeline. Docker run command: `docker run --rm dask-trivial-test python -m pytest /tests/test_outputs.py -v` → 10 passed in 0.02s."
+      },
+      {
+        "task": "databricks_autoloader_schema_hints_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 7,
+        "total": 7,
+        "evidence": "Created a deliberately wrong but format-valid answer at /tmp/solution/schema_hints.json with all 8 columns (transaction_id, customer_id, transaction_date, amount, quantity, is_refund, status, category) set to \"string\" type — no analysis of CSV files was performed, no appropriate type selection was made. Ran the test suite (modified to use /tmp/solution path) with python3.12 -m pytest test_schema_hints.py -v and ALL 7 tests passed (7/7). The test's test_appropriate_types_for_problematic_fields explicitly accepts \"string\" as a valid type for every column including amount and quantity, making it impossible to distinguish a trivially wrong all-string answer from a correct solution that carefully selected types based on data analysis."
+      },
+      {
+        "task": "delimited_file_inconsistent_columns_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 9,
+        "total": 9,
+        "evidence": "All 9 tests passed with a deliberately wrong answer (TOTAL_TRANSACTIONS=1, TOTAL_SALES_VALUE=1.00, TOP_REGION=EAST, SKIPPED_ROWS=0). The test file at /home/juny116/Workspace/terminal-bench-env/environments_harbor/delimited_file_inconsistent_columns_medium/tests/test_outputs.py only validates format/structure: that the file exists, is non-empty, has KEY=VALUE lines in the right order, that numeric fields parse as numbers in a plausible range (>0, <=191), and that TOP_REGION matches [A-Z_]+. It never computes the actual correct values from the CSV data files or compares any value against ground truth. A completely fabricated answer with any positive integer for TOTAL_TRANSACTIONS, any positive decimal for TOTAL_SALES_VALUE, any uppercase letters for TOP_REGION, and any non-negative integer for SKIPPED_ROWS will pass all tests."
+      },
+      {
+        "task": "delta_lake_time_travel_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 9,
+        "total": 9,
+        "evidence": "All 9 tests passed with deliberately wrong values {\"last_version_with_west\": 5, \"west_record_count\": 99}. The test suite in /home/juny116/Workspace/terminal-bench-env/environments_harbor/delta_lake_time_travel_hard/tests/test_outputs.py only checks: (1) solution directory and file exist, (2) valid JSON, (3) required field names present, (4) exactly two fields, (5) both are integers, (6) both non-negative, (7) west_record_count > 0, (8) last_version_with_west in range 0-100. None of the tests verify that the values match the actual answers from querying the Delta Lake table's version history. Any format-valid answer with arbitrary in-range integers passes all grading tests."
+      },
+      {
+        "task": "dfa_minimization_hopcroft_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 9,
+        "total": 9,
+        "evidence": "All 9 tests passed with a deliberately wrong output that does not correctly minimize any DFA. The wrong output uses fabricated minimized DFAs with incorrect transitions and accept states that do NOT preserve the original language semantics. The test suite only checks: (1) file exists, (2) valid JSON format, (3) all 6 DFA keys present, (4) required fields in structure, (5) minimized_states <= original_states, (6) valid state/transition references within the minimized DFA, (7) state count consistency, (8) all states reachable from start, (9) dfa1 has fewer minimized states than original. Critically, there is NO test that verifies the minimized DFA accepts the same language as the original — any structurally valid output with fewer or equal states will pass. Test run: 9 passed, 0 failed."
+      },
+      {
+        "task": "directx_constant_buffer_alignment_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 4,
+        "total": 4,
+        "evidence": "The grading test in test_outputs.py uses cbuffer_pattern = re.compile(r'cbuffer\\s+(\\w+)\\s*{([^}]+)}') to calculate expected violations, but all three shader files declare buffers with register annotations (e.g., `cbuffer TransformBuffer : register(b0) {`). The regex requires whitespace-only between the buffer name and `{`, so it never matches any cbuffer block. As a result, expected_violations is always empty. Submitting an empty /workspace/alignment_report.txt (the trivially wrong answer claiming zero violations) passes all 4 tests: test_alignment_report_exists, test_alignment_report_format, test_alignment_calculations, and test_only_violations_reported. Verified by running in Docker: `4 passed in 0.01s`. When a genuinely wrong non-empty answer with fabricated violations was submitted, test_alignment_calculations correctly caught the false positives (1 failed, 3 passed), confirming the empty-file loophole is the specific weakness."
+      },
+      {
+        "task": "directx_constant_buffer_alignment_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 8,
+        "total": 8,
+        "evidence": "All 8 tests passed with a deliberately wrong answer containing fabricated cbuffer names (\"FakeBuffer\", \"FakeBuffer2\", \"FakeBuffer3\"), fake member variables (\"fakeVar\", etc.), and arbitrary offset/padding values. The test suite at /home/juny116/Workspace/terminal-bench-env/environments_harbor/directx_constant_buffer_alignment_medium/tests/test_outputs.py only checks: (1) file existence, (2) valid JSON, (3) correct key structure and types, (4) total_violations matches array length, (5) referenced filenames belong to the expected set and the shader files exist on disk, (6) offsets non-negative and padding < 16, (7) at least one violation is reported. It never validates that cbuffer names, member variable names, or the actual offset/padding numbers correspond to real alignment violations in the shader files. A completely fabricated answer with valid structure and any filename from the expected set passes every test."
+      },
+      {
+        "task": "distributed_lock_redlock_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 10,
+        "total": 10,
+        "evidence": "All 10 grading tests passed with a deliberately wrong/trivial answer. The trivial implementation: (1) lock_manager.py contains a stub LockManager with acquire() always returning True and release() doing nothing - no actual distributed locking, no Redis/Redlock, no majority voting across nodes; (2) test_locks.py is an empty stub; (3) result.txt was hand-crafted to say \"single_lock_test=PASS\\nconcurrent_test=PASS\\nrelease_test=PASS\". The test_outputs.py grading only checks: file existence, that LockManager class has acquire/release methods, that result.txt has the correct 3-line format, and that result.txt says PASS for each test. It never actually executes the lock manager or verifies correctness of concurrent locking behavior. A student can pass all tests by simply writing stub files and a fabricated result.txt without implementing any real distributed locking logic. Docker run output: 10 passed in 0.02s."
+      },
+      {
+        "task": "dns_zone_transfer_enumeration_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 7,
+        "total": 7,
+        "evidence": "Wrote deliberately wrong answer {\"total_records\": 0, \"unique_hosts\": 0, \"mail_servers\": 0} to /tmp/zone_analysis.json and ran the 7 tests in test_outputs.py using /usr/bin/python3 (Python 3.12.3, pytest 8.4.1). All 7 tests passed. The tests only check: (1) file exists, (2) valid JSON, (3) required fields present, (4) fields are integers, (5) non-negative values, (6) mail_servers <= total_records, (7) required fields are a subset. No test verifies actual correct values against the real zone_transfer.txt data, which contains 2 MX records, ~27 A/CNAME/TXT records, and many unique hosts. The zero-answer satisfies all constraints trivially (0 <= 0 for the consistency check). Confirmed too-weak grading."
+      },
+      {
+        "task": "Verify whether terminal-bench task \"doubly_robust_estimation_medium\" has a too-weak grading test by running a deliberately wrong/trivial answer through it.",
+        "result": "TRIVIAL_PASSES",
+        "passed": 7,
+        "total": 7,
+        "evidence": "All 7 tests passed with a completely fabricated answer: {\"ate\": 5.00, \"treatment_mean\": 55.00, \"control_mean\": 50.00}. The actual data has a naive treatment_mean ~279, control_mean ~107, ATE ~171 — my fake values are off by 30-55x yet pass every test. The critical test `test_doubly_robust_implementation` (line 85-110 of test_outputs.py) ends with `assert True`, making it unconditionally pass regardless of the estimate quality. The other tests only check: file exists, valid JSON, required keys present, values are numeric (not NaN/inf), ate == treatment_mean - control_mean within 0.015 tolerance, and treatment_mean/control_mean >= 0 with abs(ate) < 10000. None of these checks verify that the doubly robust method was actually applied or that the numeric result is close to the correct answer. Test file: /home/juny116/Workspace/terminal-bench-env/environments_harbor/doubly_robust_estimation_medium/tests/test_outputs.py"
+      },
+      {
+        "task": "dtrace_probe_scripting_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 10,
+        "total": 10,
+        "evidence": "A deliberately wrong answer that hardcodes {\"slowest_service\": \"web_frontend\", \"most_errors\": \"web_frontend\", \"highest_avg_latency\": \"web_frontend\"} — without reading or analyzing any strace file — passed ALL 10 grading tests. The test suite in test_outputs.py only checks structural validity: script exists, looks like Python, runs without error, output JSON is valid, has the three required fields, and values are one of the three service name strings. There is no test that checks whether the values are actually correct (i.e., match what real analysis of the strace data would produce). Strace files were placed at /tmp/traces/ as the Dockerfile specifies; /tmp/analyze_traces.py was the trivial script; /tmp/incident_report.json was produced. All 10 tests passed in 0.95s using /usr/bin/python3.12."
+      },
+      {
+        "task": "email_header_analysis_phishing_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 13,
+        "total": 13,
+        "evidence": "A deliberately wrong answer passed ALL 13 tests. The test only spot-checks a subset of emails: it requires email_003, 007, 009, 015 to be in phishing_emails and email_001, 002, 004, 008 to be in legitimate_emails, but never checks the remaining 7 emails (005, 006, 010, 011, 012, 013, 014). My wrong answer mis-classified 4 of those 7 (put 006 and 010 in phishing instead of legitimate; put 011 and 013 in legitimate instead of phishing), yet all 13 tests passed. The structural tests (file exists, valid JSON, required fields, all 15 emails present, no duplicates, sorted arrays, confidence score range/completeness) also all passed because the JSON format was correct. The correct full classification per the test comments should be phishing={003,005,007,009,011,013,015} and legitimate={001,002,004,006,008,010,012,014}, but the tests only enforce a 4-email subset of each category. Test file used: /tmp/workspace_test/test_outputs_phishing.py (path rewritten from /workspace to /tmp/workspace_test). Result: 13/13 tests passed with the wrong answer."
+      },
+      {
+        "task": "email_header_analysis_phishing_medium",
+        "result": "TRIVIAL_PASSES",
+        "passed": 8,
+        "total": 8,
+        "evidence": "A deliberately wrong answer with inverted classifications (email2, email4, email6, email8 as phishing; email1, email3, email5, email7 as legitimate) passed all 8 tests. A second wrong answer (only email1 and email2 as phishing, the rest as legitimate) also passed all 8 tests.\n\nThe test in test_outputs_modified.py (path-patched copy of test_outputs.py) only checks: (1) file exists, (2) valid JSON, (3) required fields present, (4) correct data types, (5) all 8 emails classified, (6) no duplicates between categories, (7) suspicious_count matches len(phishing_emails), and (8) phishing count is between 2 and 6 and legitimate count > 0.\n\nThe critical flaw: test_phishing_detection_accuracy() never verifies WHICH specific emails are classified as phishing. The comment in the test even acknowledges the expected answer (\"email1, email3, email5, email7 are likely phishing\") but the actual assertion only checks that phishing count is between 2 and 6. Any answer with 2-6 random emails labeled phishing and the rest labeled legitimate passes all tests, even if the classification is completely inverted or random."
+      },
+      {
+        "task": "envoy_listener_drain_timeout_hard",
+        "result": "TRIVIAL_PASSES",
+        "passed": 10,
+        "total": 10,
+        "evidence": "All 10 tests passed with deliberately wrong/trivial values: envoy_drain_timeout=999, k8s_grace_period=1999, prestop_delay=5. These values have no relationship to the actual Envoy/Kubernetes configuration files in the environment. The tests only check mathematical relationships between the three values (e.g., envoy_drain_timeout >= 90, k8s_grace_period > envoy_drain_timeout, 5 <= prestop_delay <= 30, sufficient buffer), not whether the values are actually derived from or match the configuration files that the task asks the agent to analyze. Any set of numbers satisfying these inequalities will pass all tests, confirming the grading is too weak."
+      }
+    ]
+  }
+}
